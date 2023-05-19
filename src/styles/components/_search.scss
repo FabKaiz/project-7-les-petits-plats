@@ -5,7 +5,7 @@
 	width: 100%;
 	position: relative;
 
-	&:after {
+/*	&:after {
 		content: '';
 		position: absolute;
 		top: 50%;
@@ -17,6 +17,24 @@
 		background-repeat: no-repeat;
 		background-position: center;
 		background-size: cover;
+		transition: all 0.3s ease-in-out;
+	}*/
+
+	.search__button {
+		content: '';
+		position: absolute;
+		top: 50%;
+		right: 37px;
+		transform: translateY(-50%);
+		width: 26px;
+		height: 26px;
+		background-color: transparent;
+		background-image: url('../assets/search.svg');
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
+		border: none;
+		cursor: pointer;
 		transition: all 0.3s ease-in-out;
 	}
 
@@ -36,6 +54,10 @@
 		&:focus {
 			outline: none;
 			box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+
+			+.search__button {
+				transform: translateY(-50%) rotate(360deg);
+			}
 
 			&::placeholder {
 				color: transparent;

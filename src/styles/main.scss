@@ -1,6 +1,6 @@
-* {
-  background-color: blueviolet;
-  &:hover {
-    background-color: red;
-  }
-}
+@import './global/base';
+
+//@use './components/buttons';
+//@use './components/cards';
+
+@import './layouts/header';

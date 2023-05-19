@@ -30,6 +30,14 @@ module.exports = {
         type: 'asset/resource',
       },
       {
+        test: /\.html$/,
+        use: [
+          {
+            loader: 'html-loader'
+          }
+        ]
+      },
+      {
         test: /\.(scss|css)$/,
         use: [
           'style-loader',

@@ -8,8 +8,35 @@
     <title>Les petits plats</title>
 </head>
 <body>
-<h1>Les petits plats</h1>
+<header>
+    <div class="header__logo">
+        <img src="assets/logo.png" alt="logo">
+    </div>
+    <h1>Les petits plats</h1>
+</header>
+<main class="main">
+    <section class="search__container">
+        <label for="search" class="hidden">Rechercher</label>
+        <input type="search" id="search" placeholder="Rechercher une recette">
+    </section>
+    <section class="tags__container"></section>
+    <section class="filters__container">
+        <div class="custom__select">
+            <input type="button" value="ingredients">
+        </div>
 
-<script src="./bundle.js"></script>
+        <div class="custom__select">
+            <input type="button" value="appareil">
+        </div>
+
+        <div class="custom__select">
+            <input type="button" value="ustensiles">
+        </div>
+    </section>
+
+    <section class="cards__container"></section>
+</main>
+
+
 </body>
 </html>

@@ -1,6 +1,8 @@
 @import './global/base';
 
-//@use './components/buttons';
-//@use './components/cards';
+@import './components/filters';
+@import './components/cards';
+@import './components/search';
+@import './components/tags';
 
 @import './layouts/header';

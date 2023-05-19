@@ -24,7 +24,7 @@
 		}
 	}
 	@if $breakpoint == max-content-width {
-		@media only screen and (min-width: $max-content-width) {
+		@media only screen and (min-width: $max-content-width + 48px) {
 			@content;
 		}
 	}

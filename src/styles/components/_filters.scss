@@ -1,0 +1,49 @@
+@import '../global/helpers';
+
+
+.filters__container {
+	@include flex(row, flex-start, center);
+	gap: 20px;
+
+	.custom__select {
+		@include flex(row, flex-start, center);
+		gap: 10px;
+		position: relative;
+		padding: 23px 10px 23px 15px;
+		border-radius: 5px;
+		cursor: pointer;
+
+		&:has(input[value="ingredients"]) {
+			background-color: $ingredients-color;
+		}
+
+		&:has(input[value="appareils"]) {
+			background-color: $appareils-color;
+		}
+
+		&:has(input[value="ustensiles"]) {
+			background-color: $ustensiles-color;
+		}
+
+		input {
+			border: none;
+			background: inherit;
+			font-weight: 700;
+			font-size: 18px;
+			line-height: 22px;
+			text-transform: capitalize;
+			color: $white;
+		}
+
+		.custom__select-arrow {
+			background: url(../assets/arrow-d.svg) no-repeat center;
+			width: 20px;
+			height: 20px;
+			transition: transform .3s ease-in-out;
+
+			&.active {
+				transform: rotate(180deg);
+			}
+		}
+	}
+}

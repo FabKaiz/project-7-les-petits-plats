@@ -65,20 +65,16 @@ class CardComponents extends HTMLElement {
   }
 
   init() {
-    // console.log(this.recipes)
-
     this.recipes.forEach(recipe => {
-      // console.log(recipe)
-
-
+      // Create li element for each ingredient
       recipe.ingredients.forEach(ingredient => {
-        // Create li element for each ingredient
         this.createIngredientsList(ingredient)
       })
 
-
+      // Create a card for each recipe
       this.innerHTML += this.createCardHTML(recipe.name, recipe.time, this.ingredientsArr, recipe.description)
 
+      // Reset ingredients array
       this.ingredientsArr = []
     })
   }

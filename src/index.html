@@ -15,11 +15,13 @@
     <h1>Les petits plats</h1>
 </header>
 <main class="main">
-    <section class="search__container">
-        <label for="search" class="hidden">Rechercher</label>
-        <input type="search" id="search" placeholder="Rechercher une recette">
-        <button class="search__button"></button>
-    </section>
+    <search-component>
+        <section class="search__container">
+            <label for="search" class="hidden">Rechercher</label>
+            <input type="search" id="search" placeholder="Rechercher une recette">
+            <button class="search__button"></button>
+        </section>
+    </search-component>
     <section class="tags__container"></section>
     <section class="filters__container">
         <div class="custom__select">
@@ -39,44 +41,8 @@
     </section>
 
     <section class="cards__container">
-        <article class="card">
-            <div class="card__image-container">
-            </div>
-
-            <div class="card__content-container">
-                <div class="card__header">
-                    <h2 class="card__header__title">Limonade de Coco</h2>
-
-                    <div class="recipe__time">
-                        <img src="assets/time.svg" alt="cooking time" class="time-logo">
-                        <p>10 min</p>
-                    </div>
-                </div>
-
-                <div class="card__content">
-                    <div class="ingredients__container">
-                        <ul>
-                            <li><strong>Lait de coco:</strong> 400ml</li>
-                            <li><strong>Jus de citron: </strong>2</li>
-                            <li><strong>Créme de coco:</strong> 4 cuillères</li>
-                            <li><strong>Sucre:</strong> 20g</li>
-                            <li><strong>Glaçons:</strong> 2</li>
-                        </ul>
-                    </div>
-
-                    <div class="description__container">
-                        <p>
-                            Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus
-                            de
-                            2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </article>
+        <card-component></card-component>
     </section>
 </main>
-
-
 </body>
 </html>

@@ -1,6 +1,6 @@
 @import '../global/helpers';
 
-.cards__container {
+.cards__container card-component {
 	display: flex;
 	flex-wrap: wrap;
 	margin: 25px auto;
@@ -54,6 +54,7 @@
 
 	.card__content {
 		display: flex;
+		gap: 10px;
 
 		.ingredients__container {
 			width: 50%;

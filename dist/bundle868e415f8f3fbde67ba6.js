@@ -37,7 +37,7 @@ var recipes = [{
   "time": 10,
   "description": "Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée",
   "appliance": "Blender",
-  "ustensils": ["cuillère à Soupe", "verres", "presse citron"]
+  "utensils": ["cuillère à Soupe", "verres", "presse citron"]
 }, {
   "id": 2,
   "name": "Poisson Cru à la tahitienne",
@@ -66,7 +66,7 @@ var recipes = [{
   "time": 60,
   "description": "Découper le thon en dés, mettre dans un plat et recouvrir de jus de citron vert (mieux vaut prendre un plat large et peu profond). Laisser reposer au réfrigérateur au moins 2 heures. (Si possible faites-le le soir pour le lendemain. Après avoir laissé mariner le poisson, coupez le concombre en fines rondelles sans la peau et les tomates en prenant soin de retirer les pépins. Rayer la carotte. Ajouter les légumes au poissons avec le citron cette fois ci dans un Saladier. Ajouter le lait de coco. Pour ajouter un peu plus de saveur vous pouvez ajouter 1 à 2 cuillères à soupe de Crème de coco",
   "appliance": "Saladier",
-  "ustensils": ["presse citron"]
+  "utensils": ["presse citron"]
 }, {
   "id": 3,
   "name": "Poulet coco réunionnais",
@@ -96,7 +96,7 @@ var recipes = [{
   "time": 80,
   "description": "Découper le poulet en morceaux, les faire dorer dans une cocotte avec de l'huile d'olive. Salez et poivrez. Une fois doré, laisser cuire en ajoutant de l'eau. Au bout de 30 minutes, ajouter le coulis de tomate, le lait de coco ainsi que le poivron et l'oignon découpés en morceaux. Laisser cuisiner 30 minutes de plus. Servir avec du riz",
   "appliance": "Cocotte",
-  "ustensils": ["couteau"]
+  "utensils": ["couteau"]
 }, {
   "id": 4,
   "name": "Salade de riz",
@@ -127,7 +127,7 @@ var recipes = [{
   "time": 50,
   "description": "Faire cuire le riz. Une fois le riz cuit, le laisser refroidir. Couper les oeufs dur en quarts ou en lamelle au choix, coupez le tomates en dés, ajouter au riz les oeufs, les tomates, le poisson, le maïs et la vinaigrette. Ajouter au gout de chacun des corniches, olives etc..",
   "appliance": "Cuiseur de riz",
-  "ustensils": ["saladier", "passoire"]
+  "utensils": ["saladier", "passoire"]
 }, {
   "id": 5,
   "name": "Tarte au thon",
@@ -158,7 +158,7 @@ var recipes = [{
   "time": 45,
   "description": "Étaler la pâte feuilleté aux dimensions du moule, étaler la moutarde sur la pâte feuilleté, ajouter le thon. Découper les tomates en rondelles et les poser sur le poisson, ajouter un peu de crème fraîche sur toute la tarte et recouvrez de gruyère râpé. Cuire au four 30 minutes",
   "appliance": "Four",
-  "ustensils": ["moule à tarte", "râpe à fromage", "couteau"]
+  "utensils": ["moule à tarte", "râpe à fromage", "couteau"]
 }, {
   "id": 6,
   "name": "Tarte aux pommes",
@@ -188,7 +188,7 @@ var recipes = [{
   "time": 50,
   "description": "Commencez par mélanger les oeufs le sucre et le sucre vanillé dans un saladier, découper les pommes en tranches, ajouter la crème fraîche aux oeufs. Une fois que tout est pret, étalez la tarte dans le moule. N'oubliez pas de piquer le fond avec une fourchette avant de positionner les pommes sur la tarte. Finalement verser la préparation à base d'oeufs et de crème fraîche. Laisser cuire au four pendant 30 minutes",
   "appliance": "Four",
-  "ustensils": ["moule à tarte", "saladier", "fourchette"]
+  "utensils": ["moule à tarte", "saladier", "fourchette"]
 }, {
   "id": 7,
   "name": "Tartelettes au chocolat et aux fraises",
@@ -215,7 +215,7 @@ var recipes = [{
   "time": 50,
   "description": "Étaler la pate dans les moules à tartelette. Faire cuire la pate 30 minutes. Découper le chocolat en morceau et le faire chauffer, y ajouter la crème liquide, ajouter le beurre et remuer jusqu'à avoir une pâte homogène. Verser la pate sur les tartelettes. Couper les fraises en 2 et les positionner sur ",
   "appliance": "Four",
-  "ustensils": ["moule à tartelettes (6)", "casserole"]
+  "utensils": ["moule à tartelettes (6)", "casserole"]
 }, {
   "id": 8,
   "name": "Brownie",
@@ -247,7 +247,7 @@ var recipes = [{
   "time": 60,
   "description": "Hachez les noix grossièrement. Faire fondre le chocolat avec le beurre. Mélanger les oeufs et le sucre et mélanger au chocolat. Ajouter la farine. Mélanger afin d'avoir quelque chose d'homogène puis incorporer les noix. Verser la préparation dans un moule de préférence rectangulaire. Cuire 2O à 25 minutes à 180°. Sortez du four et attendez quelques minutes pour démouler. Servir avec une boule de glace pour plus de gourmandise.",
   "appliance": "Four",
-  "ustensils": ["moule à gateaux", "casserole"]
+  "utensils": ["moule à gateaux", "casserole"]
 }, {
   "id": 9,
   "name": "Salade Méditerannéene fraîche au chèvre",
@@ -271,7 +271,7 @@ var recipes = [{
   "time": 15,
   "description": "Peler le concombre le couper 2, retirer les pépins. Couper les olives en morceaux, ainsi que le fromage de chèvre. Ajouter le basilic ainsi que le vinaigre balsamic et l'huile d'olives à votre gout.",
   "appliance": "Saladier",
-  "ustensils": ["cuillère en bois", "couteau"]
+  "utensils": ["cuillère en bois", "couteau"]
 }, {
   "id": 10,
   "name": "Tartiflette",
@@ -299,7 +299,7 @@ var recipes = [{
   "time": 60,
   "description": "Commencer par cuire les pommes de terre dans l'eau bouillante. Puis épluchez les et coupez les en rondelles. Émincer les oignons puis les faire dorer dans du beurre. Ajouter le jambon fumé coupé en en morceaux ainsi que les pommes de terres. Salez, poivrez à votre gout ( et celui de vos convives ) Laissez cuisiner durant environ 10 minutes puis ajouter le vin blanc. Après 5 minutes, mettre le tout dans un plat à gratin. Coupez le reblochon, soit en tranches, soit le couper en 2 dans le sens de l'épaisseur et recouvrir les pommes de terre. Cuire au four (environ 220°) durant 25 minutes. C'est prêt !",
   "appliance": "Four",
-  "ustensils": ["plat à gratin", "couteau", "Économe"]
+  "utensils": ["plat à gratin", "couteau", "Économe"]
 }, {
   "id": 11,
   "name": "Salade tomate, mozzarella et pommes",
@@ -330,7 +330,7 @@ var recipes = [{
   "time": 10,
   "description": "Commencer par couper les feuilles de salade, ajouter les tomates cerises et le fromage découpé en cubes ou en boules avec la cuillère à melon. Découper le jambon de parme en fines lamelles. Ajouter la pomme elle aussi découpée en petit morceaux. Assaisonnez à votre gout. ",
   "appliance": "Saladier",
-  "ustensils": ["couteau", "cuillère à melon"]
+  "utensils": ["couteau", "cuillère à melon"]
 }, {
   "id": 12,
   "name": "Compote pomme rhubarbe",
@@ -354,7 +354,7 @@ var recipes = [{
   "time": 40,
   "description": "Éplucher les fruits et les couper en morceaux, les mettre dans une casserole en ajoutant l'eau et le sucre vanillé. Laisser cuire 15 minutes en remuant régulièrement.",
   "appliance": "Casserole",
-  "ustensils": ["couteau", "économe"]
+  "utensils": ["couteau", "économe"]
 }, {
   "id": 13,
   "name": "Salade mâchée de patates",
@@ -382,7 +382,7 @@ var recipes = [{
   "time": 40,
   "description": "Cuire les pommes de terre environ 30 minutes. Découper les échalotes finement. Durant la cuisson des pommes de terre. Préparez la vinaigrette avec l'huile d'olive et le vinaigre de cidre. Salez poivrez à discrétion. Dans un saladier, mettre le mâche. Ajouter",
   "appliance": "Casserole",
-  "ustensils": ["couteau", "saladier", "cuillère en bois"]
+  "utensils": ["couteau", "saladier", "cuillère en bois"]
 }, {
   "id": 14,
   "name": "Galette Bretonne Saucisse et Fromage à raclette",
@@ -412,7 +412,7 @@ var recipes = [{
   "time": 100,
   "description": "Mélanger la farine et les oeufs, faire fondre 25 grammes de beurre et ajouter à la pâte. Ajouter du sel. Laisser reposer 1 heure. Faire les galettes et laisser refroidir. Faire chauffer les saucisses avec du beurre et l'oignon. Enrouler les saucisses dans les crêpes avec une partie du fromage. Mettre le reste du fromage à raclette par dessus les crêpes. Passer four pendant 20 minutes",
   "appliance": "Four",
-  "ustensils": ["poêle à frire", "couteau"]
+  "utensils": ["poêle à frire", "couteau"]
 }, {
   "id": 15,
   "name": "Crêpes Chocolat Banane",
@@ -443,7 +443,7 @@ var recipes = [{
   "time": 60,
   "description": "Mélangez dans un saladier, la farine, les oeufs, et le lait. Battez jusqu'à avoir une masse homogène. Pendant ce temps faites fondre le beurre et ajoutez en une partie à la pâte à crêpes. Faire fondre le chocolat ( avec le reste du beurre salé ). Lorsque vous chauffez les crêpes. Ajouter le chocolat fondu et les bananes coupées en rondelles. Ajoutez une touche de chantilly pour les gourmands",
   "appliance": "Poêle à crêpe",
-  "ustensils": ["saladier", "louche", "cuillère en bois"]
+  "utensils": ["saladier", "louche", "cuillère en bois"]
 }, {
   "id": 16,
   "name": "Gratin de pâtes à la tomate",
@@ -472,7 +472,7 @@ var recipes = [{
   "time": 45,
   "description": "Faire cuire les pâtes si vous n'avez pas de pennes des coquillettes peuvent faire l'affaire. Découper les tomates en petits morceaux, soit en tranches soit en dés. Coupez le basilic en petites morceaux et mélangez le aux tomates.  Coupez la mozzarella en tranche. Préchauffez le four à 200°. Alternez entre couches de pattes et couches de tomates, terminez par une couche de pates et recouvrir du fromage. Laisser au four 30 minutes et régalez vous ! Une recette simple qui fera plaisir au petits comme aux grands.",
   "appliance": "Four",
-  "ustensils": ["plat à gratin", "couteau", "râpe à fromage"]
+  "utensils": ["plat à gratin", "couteau", "râpe à fromage"]
 }, {
   "id": 17,
   "name": "Smoothie à la fraise",
@@ -497,7 +497,7 @@ var recipes = [{
   "time": 15,
   "description": "Coupez les fraises en morceaux, découpez la chaire de la pastèque en retirant les pépins. Mettre le tout dans le blender. Ajouter un cuillère à soupe de juste de citron ainsi que les glaçons. Ajoutez quelques feuilles de menthe pour plus de fraîcheur. Mixez le tout. Servir et déguster.",
   "appliance": "Blender",
-  "ustensils": ["verres", "couteau", "presse citron"]
+  "utensils": ["verres", "couteau", "presse citron"]
 }, {
   "id": 18,
   "name": "Smoothie ananas et vanille",
@@ -517,7 +517,7 @@ var recipes = [{
   "time": 10,
   "description": "Séparez 1/5ème d'Ananas ( une belle tranche qui servira pour la décoration des verres ), mettre le reste coupé en cubes au blender, ajouter la glace à la vanille et le lait. Mixez. Servir et décorer avec l'ananas restant. C'est prêt",
   "appliance": "Blender",
-  "ustensils": ["verres", "couteau"]
+  "utensils": ["verres", "couteau"]
 }, {
   "id": 19,
   "name": "Shake Banane Kiwi",
@@ -543,7 +543,7 @@ var recipes = [{
   "time": 0,
   "description": "Coupez les fruits en morceaux, ajouter le jus de citron et le lait ainsi que le sucre glace. Mixez. Ajoutez des glaçons si le lait n'a pas été mis au frais.",
   "appliance": "Blender",
-  "ustensils": ["couteau", "verres", "presse citron"]
+  "utensils": ["couteau", "verres", "presse citron"]
 }, {
   "id": 20,
   "name": "Pates Carbonara",
@@ -572,7 +572,7 @@ var recipes = [{
   "time": 30,
   "description": "Faire cuire les pates comme indiqué sur le paquet. Dorer les lardons dans une sauteuse avec l'huile d'olive. Ajouter la crème fraîche et baisser le feu au minimum. Quand les Tagliatelles sont prêtes les mettre dans la sauteuse et bien mélanger le tout en ajoutant le jaune d'oeuf. Servir et ajouter le parmesan râpé.",
   "appliance": "Sauteuse",
-  "ustensils": ["râpe à fromage", "cuillère en bois"]
+  "utensils": ["râpe à fromage", "cuillère en bois"]
 }, {
   "id": 21,
   "name": "Spaghettis à la bolognaise",
@@ -604,7 +604,7 @@ var recipes = [{
   "time": 30,
   "description": "Cuisiner la viande hachée dans une poêle à frire. Dans une autre faire cuire les oignons découpés en fins dés avec un peu de beurre. Ajouter du vin rouge. Mélanger les oignons avec la viande hachée. Faire cuire les pates le temps indiqué sur le paquet. Ajouter le coulis de tomates à la viande hachée. Une fois que les pates sont cuites, ajouter la crème fraîche à la viande hachée. Servir.",
   "appliance": "Casserole",
-  "ustensils": ["Cuillère en bois", "louche", "couteau"]
+  "utensils": ["Cuillère en bois", "louche", "couteau"]
 }, {
   "id": 22,
   "name": "Fondant au chocolat",
@@ -632,7 +632,7 @@ var recipes = [{
   "time": 30,
   "description": "Faire fondre le chocolat et le beurre au bain marie. Dans un saladier battre les oeufs avec le sucre jusqu'à obtenir une texture de type mousse. Ajouter la farine ainsi que le mélange de beurre et chocolat fondu. Beurrez le moule à gateaux. Mettre au four préchauffé à 200° puis faites chauffer pendant 15 minutes. C'est prêt. Servir avec une boule de glace ou une crème dessert.",
   "appliance": "Four",
-  "ustensils": ["moule à gateaux", "fouet", "casserole"]
+  "utensils": ["moule à gateaux", "fouet", "casserole"]
 }, {
   "id": 23,
   "name": "Quiche lorraine",
@@ -664,7 +664,7 @@ var recipes = [{
   "time": 60,
   "description": "Étaler la pate dans un moule et la piquer.Parsemer de beurre. Faire chauffer les lardon dans une poêle. Battre les oeufs en ajoutant la crème fraîche et le lait. Finalement ajouter les lardons, salez poivrez à votre gout. Verser l'ensemble sur la pâte. Cuire environ 50 minutes.",
   "appliance": "Four",
-  "ustensils": ["moule à gateaux", "rouleau à patisserie", "fouet"]
+  "utensils": ["moule à gateaux", "rouleau à patisserie", "fouet"]
 }, {
   "id": 24,
   "name": "Salade de pâtes",
@@ -695,7 +695,7 @@ var recipes = [{
   "time": 40,
   "description": "Découper le concombre et les tomates en dés, les mettre dans un saladier avec le mais et les miettes de poisson, ajouter les pates. Ajouter la mayonnaise. Mélanger le tout et servir frais.",
   "appliance": "Saladier",
-  "ustensils": ["couteau", "cuillère en bois"]
+  "utensils": ["couteau", "cuillère en bois"]
 }, {
   "id": 25,
   "name": "Cookies",
@@ -723,7 +723,7 @@ var recipes = [{
   "time": 30,
   "description": "Faire fondre le beurre et le mélanger avec le sucre. Finalement ajouter l'oeuf. Ajouter la farine tout en mélangeant peu pa peu pour avoir une masse sans grumeaux. Ajouter les pépites de chocolat. Faire, une plaque de cuisson de petites boules pour les cookies. Mettre au four à 180° pour 10 minutes.",
   "appliance": "Four",
-  "ustensils": ["fouet", "saladier", "plaque de cuisson"]
+  "utensils": ["fouet", "saladier", "plaque de cuisson"]
 }, {
   "id": 26,
   "name": "Soupe de tomates",
@@ -747,7 +747,7 @@ var recipes = [{
   "time": 25,
   "description": "Verser de l'huile dans une cocotte minute couper les légumes et les verser dans l'huile chaude. Laisser cuire et remuer pendant 10 minutes. Passer aux mixer. Servir.",
   "appliance": "Mixer",
-  "ustensils": ["cocotte minute", "couteau"]
+  "utensils": ["cocotte minute", "couteau"]
 }, {
   "id": 27,
   "name": "Soupe à l'oseille",
@@ -774,7 +774,7 @@ var recipes = [{
   "time": 15,
   "description": "Faire fondre l'oseille avec du beurre demi sel, ajouter un litre d'eau. Ajouter les vermicelles. Laisser cuire. une fois prêt, sortir du feu et après 5 minutes ajouter le jaune d'oeuf et la crème fraîche",
   "appliance": "Casserole",
-  "ustensils": ["couteau", "cuillère en bois"]
+  "utensils": ["couteau", "cuillère en bois"]
 }, {
   "id": 28,
   "name": "Soupe de poireaux",
@@ -802,7 +802,7 @@ var recipes = [{
   "time": 80,
   "description": "Émincer les blanc de poireaux et les faire chauffer dans 25 grammes de beurre. AJouter les pommes de terres coupées en morceaux. Ajouter l'eau et laisser mijoter pour 45 minutes. Chauffer l'oseille avec le beurre restant puis incorporer le tout. Mixez. Ajoutez la crème. Bon appetit.",
   "appliance": "Mixer",
-  "ustensils": ["casserole", "couteau"]
+  "utensils": ["casserole", "couteau"]
 }, {
   "id": 29,
   "name": "Houmous Express",
@@ -826,7 +826,7 @@ var recipes = [{
   "time": 30,
   "description": "Prendre les pois chiches, les mettre dans le mixer avec de l'huile d'olive, ajouter le jus des 2 citrons et du paprika selon le gout.",
   "appliance": "Mixer",
-  "ustensils": ["cuillère en bois", "presse citron"]
+  "utensils": ["cuillère en bois", "presse citron"]
 }, {
   "id": 30,
   "name": "Purée de pois cassés",
@@ -846,7 +846,7 @@ var recipes = [{
   "time": 60,
   "description": "Mettre tous les ingrédients dans une cocotte. ajouter de l'eau pour recouvrir l'ensemble et laisser cuire à petit feu pour 1 heure. Passer au mixer. Salez, poivrez. C'est prêt",
   "appliance": "Mixer",
-  "ustensils": ["casserole", "cuillère en bois"]
+  "utensils": ["casserole", "cuillère en bois"]
 }, {
   "id": 31,
   "name": "Jardinière de légumes",
@@ -873,7 +873,7 @@ var recipes = [{
   "time": 60,
   "description": "Découper en cubes les carottes et pommes de terre. Faire revenir dans du beurre. Ajouter les lardons, une fois les lardons dorés, ajouter un grand verre d'eau. Ajouter les petit poids et les haricots verts ( tous deux pré cuits ). Ajouter Sel, poivre, thyms et laurier",
   "appliance": "Poêle",
-  "ustensils": ["Couteau", "économe"]
+  "utensils": ["Couteau", "économe"]
 }, {
   "id": 32,
   "name": "Croque Monsieur à la dinde",
@@ -906,7 +906,7 @@ var recipes = [{
   "time": 20,
   "description": "Beurrer les tranches de pain, ajouter entre 2 tranches de pain de mie 1 tranche d’emmental, une de blanc de dinde, et une autre d'emmental. Dans un récipient, mélanger le gruyère rappé avec le lait et la noix de muscade. Mettre sur les croque monsieur. Placer au four durant 10 minutes.",
   "appliance": "Four",
-  "ustensils": ["râpe à fromage", "cuillère à Soupe", "couteau"]
+  "utensils": ["râpe à fromage", "cuillère à Soupe", "couteau"]
 }, {
   "id": 33,
   "name": "Sandwich au saumon fumé",
@@ -934,7 +934,7 @@ var recipes = [{
   "time": 5,
   "description": "Mélanger le fromage blanc avec le citron. Ajouter un peu de sel et poivre à votre gout. Faire dorer le pain de mie. Puis étaler le mélange. Ajouter une feuille de salade puis le saumon fumé. C'est prêt.",
   "appliance": "Four",
-  "ustensils": ["couteau", "cuillère en bois"]
+  "utensils": ["couteau", "cuillère en bois"]
 }, {
   "id": 34,
   "name": "Purée de patate douce",
@@ -956,7 +956,7 @@ var recipes = [{
   "time": 25,
   "description": "Éplucher les patates douces et coupez les en morceaux. Les faire cuire durant 20 minute dans une casserole d'eau bouillante. Passer au mixer en ajoutant la crème et l'huile d'olive à son gout. Salez, poivrez. Pressez l'orange et ajouter le jus à l'ensemble. Servir.",
   "appliance": "Mixer",
-  "ustensils": ["couteau", "économe", "cuillère en bois"]
+  "utensils": ["couteau", "économe", "cuillère en bois"]
 }, {
   "id": 35,
   "name": "Purée de carottes",
@@ -987,7 +987,7 @@ var recipes = [{
   "time": 25,
   "description": "Éplucher les légumes, les couper en morceaux et les mettre à cuire dans une cocotte minute environ 15 minutes. Mixer en ajoutant le beurre, la crème. Ajouter le cumin et la noix de muscade.",
   "appliance": "Mixer",
-  "ustensils": ["cocotte minute", "couteau", "cuillère en bois"]
+  "utensils": ["cocotte minute", "couteau", "cuillère en bois"]
 }, {
   "id": 36,
   "name": "Lasagne Courgettes et Chèvre",
@@ -1018,7 +1018,7 @@ var recipes = [{
   "time": 35,
   "description": "Raper les courgette et les faire revenir durant 15 minutes. Ajouter les fromages de chèvre frais. Préparer la béchamel avec le lait et la maïzena. Salez poivrez, ajouter de la noix de muscade selon les gouts. Dans un plat, mettre un peu de sauces au fond, puis des lasagnes, puis des courgettes etc... terminer par de la sauces et ajouter le gruyère. Passer au four à 180° durant 20 à 25 minutes.",
   "appliance": "Four",
-  "ustensils": ["plat à gratin", "râpe à fromage", "fouet"]
+  "utensils": ["plat à gratin", "râpe à fromage", "fouet"]
 }, {
   "id": 37,
   "name": "Courgettes farcies au boeuf",
@@ -1049,7 +1049,7 @@ var recipes = [{
   "time": 60,
   "description": "Couper les courgettes dans le sens de la longueur. Vider les courgette dans un saladier. Réserver.Faire revenir la chair des courgettes dans 25cl d'huile d'olive. Ajouter l'oignon puis la viande hachée. Mettre la farce dans les courgettes. Ajouter le coulis de tomates. Mettre au four pendant 30 minutes. Avant la fin de la cuisson ajouter le fromage râpé",
   "appliance": "Four",
-  "ustensils": ["couteau", "cuillère en bois", "Poêle à frire"]
+  "utensils": ["couteau", "cuillère en bois", "Poêle à frire"]
 }, {
   "id": 38,
   "name": "Pain Perdu",
@@ -1073,7 +1073,7 @@ var recipes = [{
   "time": 20,
   "description": "Fouettez les oeufs, le sucre et le lait. tremper les tranches de pain. Le cuire au four pendant environ 10 minutes à 180°. Servir",
   "appliance": "Four",
-  "ustensils": ["fouet", "bol", "Cuillère à Soupe"]
+  "utensils": ["fouet", "bol", "Cuillère à Soupe"]
 }, {
   "id": 39,
   "name": "Crumble aux pommes",
@@ -1097,7 +1097,7 @@ var recipes = [{
   "time": 40,
   "description": "Découper les pommes en dé. Mélanger dans un saladier la farine, le sucre et le beurre. Bien mélanger. Beurrer le moule et ajouter les pommes. Par dessus placez la pate que vous avez obtenu. Cuire 20 minutes au four",
   "appliance": "Four",
-  "ustensils": ["saladier", "couteau", "fouet"]
+  "utensils": ["saladier", "couteau", "fouet"]
 }, {
   "id": 40,
   "name": "Limonade",
@@ -1121,7 +1121,7 @@ var recipes = [{
   "time": 10,
   "description": "Dans un saladier mettre l'eau, le jus des citrons et le sucre. Bien mélanger. Ajouter le bicarbonate. Servir. Ajouter des glaçon et une feuille de menthe pour la déco.",
   "appliance": "Saladier",
-  "ustensils": ["cuillère en bois"]
+  "utensils": ["cuillère en bois"]
 }, {
   "id": 41,
   "name": "Mousse au chocolat",
@@ -1141,7 +1141,7 @@ var recipes = [{
   "time": 20,
   "description": "Séparer les blancs d'oeufs. Faire fondre le chocolat au bain marie. Ajouter les jaunes et le sucre au chocolat hors du feu. Battre les blancs en neige. Ajouter les blancs au mélange de chocolat. Mélangez délicatement avec une spatule. Servir dans un plat ou dans des verres. Mettre au frais",
   "appliance": "Casserole",
-  "ustensils": ["fouet", "spatule", "verres"]
+  "utensils": ["fouet", "spatule", "verres"]
 }, {
   "id": 42,
   "name": "Charlotte au poires",
@@ -1164,7 +1164,7 @@ var recipes = [{
   "time": 60,
   "description": "Commencez par préparer la mousse au chocolat au moins 2 heures avant. Quand la mousse est prête et a reposée. Alors mouiller les boudoirs dans le jus des poires. Disposer. Alterner : mousse au chocolat, boudoirs et poires. Mettre au frais.",
   "appliance": "Moule à charlotte",
-  "ustensils": ["saladier", "couteau", "fouet"]
+  "utensils": ["saladier", "couteau", "fouet"]
 }, {
   "id": 43,
   "name": "Tarte au citron",
@@ -1190,7 +1190,7 @@ var recipes = [{
   "time": 50,
   "description": "Préchauffez le fours à 200°. Étaler la pate. La mettre dans un moule. Battre les oeufs avec le sucre. Ajouter le jus de citron et le beurre. Verser le tout sur la pate. Au four 30 minutes. Bon appetit ",
   "appliance": "Four",
-  "ustensils": ["rouleau à patisserie", "moule à tarte", "presse citron"]
+  "utensils": ["rouleau à patisserie", "moule à tarte", "presse citron"]
 }, {
   "id": 44,
   "name": "Crème dessert au chocolat",
@@ -1219,7 +1219,7 @@ var recipes = [{
   "time": 15,
   "description": "Mélanger la farine et le beurre fondu en ajoutant le lait peu à peu. Ajouter du sucre après la cuisson. Bien mélanger. Ajouter le chocolat en morceaux et laisser chauffer 8 minutes en mélangeant avec une cuillère en bois. Mettre dans des verres",
   "appliance": "Casserole",
-  "ustensils": ["cuillère en bois"]
+  "utensils": ["cuillère en bois"]
 }, {
   "id": 45,
   "name": "Crème pâtissière",
@@ -1243,7 +1243,7 @@ var recipes = [{
   "time": 30,
   "description": "Faire bouillir le lait ( on peut y ajouter de l'essence de vanille. Battre les oeufs et le sucre, ajouter la farine puis finalement ajouter le lait chaud. Remettre à feu doux pour faire épaissir en remuant pendant 5 à 10 minutes.",
   "appliance": "Casserole",
-  "ustensils": ["fouet", "saladier"]
+  "utensils": ["fouet", "saladier"]
 }, {
   "id": 46,
   "name": "Far breton",
@@ -1275,7 +1275,7 @@ var recipes = [{
   "time": 60,
   "description": "Mélanger la farine avec le sucre et les oeufs en ajoutant du sucre vanillé. Ajouter le lait petit à petit. Ajouter un petit vers de rhum. Verser la masse dans un plat beurré y placer les pruneaux et faire cuire à 200° pendant 45 minutes",
   "appliance": "Four",
-  "ustensils": ["fouet", "moule", "verres"]
+  "utensils": ["fouet", "moule", "verres"]
 }, {
   "id": 47,
   "name": "Mousse au citron",
@@ -1300,7 +1300,7 @@ var recipes = [{
   "time": 5,
   "description": "Mélanger le jus de citron avec le sucre et la mascarpone. Ajouter la crème fraîche. Mélanger le tout et mettre au congélateur pendant 1 heure. Servir",
   "appliance": "Saladier",
-  "ustensils": ["fouet", "verres", "cuillère en bois"]
+  "utensils": ["fouet", "verres", "cuillère en bois"]
 }, {
   "id": 48,
   "name": "Pizza",
@@ -1328,7 +1328,7 @@ var recipes = [{
   "time": 40,
   "description": "Étaler la pate a pizza. Écraser les tomates pelées, les étaler sur la pâte, ajouter les lardons et les champignons. Ajouter le gruyère eet passer au four à 220° durant 20 minutes",
   "appliance": "Four",
-  "ustensils": ["rouleau à patisserie", "râpe à fromage", "couteau"]
+  "utensils": ["rouleau à patisserie", "râpe à fromage", "couteau"]
 }, {
   "id": 49,
   "name": "Smoothie tropical",
@@ -1354,7 +1354,7 @@ var recipes = [{
   "time": 0,
   "description": "Découper les fruits. Le passer au blender jusqu'à obtenir une texture liquide. Mettre au frais. Servir",
   "appliance": "Blender",
-  "ustensils": ["couteau", "verres"]
+  "utensils": ["couteau", "verres"]
 }, {
   "id": 50,
   "name": "Frangipane",
@@ -1382,7 +1382,7 @@ var recipes = [{
   "time": 60,
   "description": "Préparer la frangipane : Mélanger le sucre la poudre d'amandes, le beurre et les oeufs. Étaler la moitié de la pate feuilleté et mettre dans un moule à tarte. Garnir de frangipane et recouvrir du reste de pate feuilletée. Mettre au four 30 minutes",
   "appliance": "Four",
-  "ustensils": ["rouleau à patisserie", "fouet"]
+  "utensils": ["rouleau à patisserie", "fouet"]
 }];
 
 /***/ }),
@@ -1391,8 +1391,11 @@ var recipes = [{
 /*!**********************************!*\
   !*** ./src/js/cardComponents.js ***!
   \**********************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _assets_time_svg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../assets/time.svg */ "./src/assets/time.svg");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
@@ -1409,6 +1412,7 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 function _isNativeFunction(fn) { return Function.toString.call(fn).indexOf("[native code]") !== -1; }
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
 var CardComponents = /*#__PURE__*/function (_HTMLElement) {
   _inherits(CardComponents, _HTMLElement);
   var _super = _createSuper(CardComponents);
@@ -1426,7 +1430,7 @@ var CardComponents = /*#__PURE__*/function (_HTMLElement) {
   _createClass(CardComponents, [{
     key: "createCardHTML",
     value: function createCardHTML(headerTitle, recipeTime, ingredients, description) {
-      return "\n      <article class=\"card\">\n        <div class=\"card__image-container\">\n        </div>\n    \n        <div class=\"card__content-container\">\n          <div class=\"card__header\">\n            <h2 class=\"card__header__title\">".concat(this.attrTitle, "</h2>\n    \n            <div class=\"recipe__time\">\n              <img src=\"time.svg\" alt=\"cooking time\" class=\"time-logo\">\n              <p>").concat(recipeTime, "</p>\n            </div>\n          </div>\n    \n          <div class=\"card__content\">\n            <div class=\"ingredients__container\">\n              <ul>\n                ").concat(ingredients.replace(/,/g, ''), "\n              </ul>\n              </div>\n    \n              <div class=\"description__container\">\n                <p class=\"line-clamp\">").concat(description, "</p>\n              </div>\n          </div>\n        </div>\n      </article>\n    ");
+      return "\n      <article class=\"card\">\n        <div class=\"card__image-container\">\n        </div>\n    \n        <div class=\"card__content-container\">\n          <div class=\"card__header\">\n            <h2 class=\"card__header__title\">".concat(this.attrTitle, "</h2>\n    \n            <div class=\"recipe__time\">\n              <img src=\"").concat(_assets_time_svg__WEBPACK_IMPORTED_MODULE_0__, "\" alt=\"cooking time\" class=\"time-logo\">\n              <p>").concat(recipeTime, "</p>\n            </div>\n          </div>\n    \n          <div class=\"card__content\">\n            <div class=\"ingredients__container\">\n              <ul>\n                ").concat(ingredients.replace(/,/g, ''), "\n              </ul>\n              </div>\n    \n              <div class=\"description__container\">\n                <p class=\"line-clamp\">").concat(description, "</p>\n              </div>\n          </div>\n        </div>\n      </article>\n    ");
     }
   }, {
     key: "init",
@@ -1446,7 +1450,206 @@ customElements.get('card-component') || customElements.define('card-component', 
   \*************************************/
 /***/ (() => {
 
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct.bind(); } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeFunction(fn) { return Function.toString.call(fn).indexOf("[native code]") !== -1; }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+var FiltersComponents = /*#__PURE__*/function (_HTMLElement) {
+  _inherits(FiltersComponents, _HTMLElement);
+  var _super = _createSuper(FiltersComponents);
+  function FiltersComponents() {
+    var _this;
+    _classCallCheck(this, FiltersComponents);
+    _this = _super.call(this);
 
+    // Make an array of the filters we want to create
+    _this.filtersTitle = ['ingredients', 'appliance', 'utensils'];
+
+    // Create an empty array for each filter
+    _this.filtersTitle.forEach(function (filter) {
+      _this[filter] = [];
+    });
+    _this.init();
+    return _this;
+  }
+  _createClass(FiltersComponents, [{
+    key: "createFiltersArray",
+    value: function createFiltersArray(filterName) {
+      var _this2 = this;
+      this.filtersArray = [];
+      this.tags = Array.from(document.querySelectorAll('.tag'));
+      this.$cards = Array.from(document.querySelectorAll('card-component:not(.hide)'));
+      this.$cards.forEach(function (card) {
+        var cardFilterTypes = card.dataset[filterName].toLowerCase().split(',');
+        cardFilterTypes.forEach(function (filterType) {
+          var isFilterTypePresent = _this2.filtersArray.includes(filterType);
+          var isTagPresent = _this2.tags.some(function (tag) {
+            return tag.dataset.tagName.toLowerCase() === filterType;
+          });
+          if (!isFilterTypePresent && !isTagPresent) {
+            _this2.filtersArray.push(filterType);
+          }
+        });
+      });
+      return this.filtersArray;
+    }
+  }, {
+    key: "capitalizeFirstLetter",
+    value: function capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+  }, {
+    key: "createList",
+    value: function createList(filterName) {
+      var _this3 = this;
+      this.list = '';
+      this.createFiltersArray(filterName).forEach(function (item) {
+        _this3.list += "<li class=\"filter__item\"><p>".concat(_this3.capitalizeFirstLetter(item), "</p></li>");
+      });
+      return this.list;
+    }
+  }, {
+    key: "closeFilters",
+    value: function closeFilters(customSelect) {
+      var _this4 = this;
+      this.filtersContainer = document.querySelector('.filters__container__content');
+      if (!this.filtersContainer) return;
+      this.filtersContainer.remove();
+      customSelect.querySelector('input').value = "".concat(this.translateFilters(customSelect.dataset.value));
+      customSelect.querySelector('input').type = 'button';
+
+      // remove the open class to the custom select
+      customSelect.classList.remove('open');
+
+      // add the event listener to open the filters container
+      setTimeout(function () {
+        customSelect.addEventListener('click', function () {
+          return _this4.openFilters(customSelect);
+        }, {
+          once: true
+        });
+      }, 10);
+    }
+  }, {
+    key: "createTag",
+    value: function createTag(tagTitle, customSelect) {
+      this.tag = document.createElement('tag-component');
+      this.tag.setAttribute('tag-title', tagTitle);
+      this.tag.setAttribute('tag-family', customSelect.dataset.value);
+
+      // append the tag to the tags container
+      document.querySelector('.tags__container').appendChild(this.tag);
+
+      // remove the filter item from the list
+      this.filterItems.forEach(function (filterItem) {
+        if (filterItem.innerText === tagTitle) filterItem.parentElement.remove();
+      });
+
+      // close the filters container
+      this.closeFilters(customSelect);
+    }
+  }, {
+    key: "openFilters",
+    value: function openFilters(customSelect) {
+      var _this5 = this;
+      // check if there is already a filters container
+      if (document.querySelector('.filters__container__content')) {
+        // get the parent of the filters container and call the closeFilters function
+        this.parent = document.querySelector('.filters__container__content').parentElement;
+        this.closeFilters(this.parent);
+      }
+
+      // add open class to the custom select
+      customSelect.classList.add('open');
+
+      // create the filters container
+      customSelect.innerHTML += "\n            <div class=\"filters__container__content\">\n                <div class=\"filters__container__content__list\">\n                    <ul>\n                    ".concat(this.createList(customSelect.dataset.value), "\n                    </ul>\n                </div>\n            </div>\n        ");
+      customSelect.querySelector('input').focus();
+      customSelect.querySelector('input').value = '';
+      customSelect.querySelector('input').type = 'search';
+      customSelect.querySelector('input').placeholder = "Rechercher un ".concat(this.translateFilters(customSelect.dataset.value));
+
+      // add the event listener to close the filters container
+      this.closeFiltersBtn = customSelect.querySelector('.input__container');
+      this.closeFiltersBtn.addEventListener('click', function () {
+        return _this5.closeFilters(customSelect);
+      }, {
+        once: true
+      });
+
+      // add the event listener to each filter item
+      this.filterItems = customSelect.querySelectorAll('.filter__item p');
+      this.filterItems.forEach(function (filterItem) {
+        filterItem.addEventListener('click', function () {
+          return _this5.createTag(filterItem.innerText, customSelect);
+        });
+      });
+    }
+  }, {
+    key: "translateFilters",
+    value: function translateFilters(filterName) {
+      // translate the key value to french
+      switch (filterName) {
+        case 'ingredients':
+          this.displayValue = 'Ingrédients';
+          break;
+        case 'appliance':
+          this.displayValue = 'Appareil';
+          break;
+        case 'utensils':
+          this.displayValue = 'Ustensiles';
+          break;
+        default:
+          break;
+      }
+      return this.displayValue;
+    }
+  }, {
+    key: "createFiltersHTML",
+    value: function createFiltersHTML(value) {
+      this.filterHTML = "\n           <div class=\"custom__select\" data-value=\"".concat(value, "\">\n               <div class=\"input__container\">\n                    <input type=\"button\" value=\"").concat(this.translateFilters(value), "\">\n                    <span class=\"custom__select-arrow\"></span>\n                </div>\n            </div>\n        ");
+      return this.filterHTML;
+    }
+  }, {
+    key: "createEventListeners",
+    value: function createEventListeners() {
+      var _this6 = this;
+      this.filtersContainer = document.querySelector('.filters__container');
+      // Open the filters container
+      this.customSelects = this.filtersContainer.querySelectorAll('.custom__select');
+      this.customSelects.forEach(function (customSelect) {
+        customSelect.addEventListener('click', function () {
+          return _this6.openFilters(customSelect);
+        }, {
+          once: true
+        });
+      });
+    }
+  }, {
+    key: "init",
+    value: function init() {
+      var _this7 = this;
+      this.filtersTitle.forEach(function (key) {
+        return _this7.innerHTML += _this7.createFiltersHTML(key);
+      });
+      this.createEventListeners();
+    }
+  }]);
+  return FiltersComponents;
+}( /*#__PURE__*/_wrapNativeSuper(HTMLElement));
+customElements.get('filters-component') || customElements.define('filters-component', FiltersComponents);
 
 /***/ }),
 
@@ -1487,6 +1690,7 @@ var SearchComponent = /*#__PURE__*/function (_HTMLElement) {
     _this.cardContainer = document.querySelector('.cards__container');
     _this.ingredientsArr = [];
     _this.recipesArray = [];
+    _this.ingredientsNameArr = [];
     _this.init();
     return _this;
   }
@@ -1511,21 +1715,27 @@ var SearchComponent = /*#__PURE__*/function (_HTMLElement) {
         // Create li element for each ingredient
         recipe.ingredients.forEach(function (ingredient) {
           _this2.createIngredientsList(ingredient);
+          _this2.ingredientsNameArr.push(ingredient.ingredient);
         });
-        var cardElements = document.createElement('card-component');
-        cardElements.setAttribute('header-title', recipe.name);
-        cardElements.setAttribute('recipe-time', recipe.time);
-        cardElements.setAttribute('ingredients-array', _this2.ingredientsArr);
-        cardElements.setAttribute('description', recipe.description);
-        _this2.cardContainer.appendChild(cardElements);
+        _this2.cardElements = document.createElement('card-component');
+        _this2.cardElements.setAttribute('header-title', recipe.name);
+        _this2.cardElements.setAttribute('recipe-time', recipe.time);
+        _this2.cardElements.setAttribute('ingredients-array', _this2.ingredientsArr);
+        _this2.cardElements.setAttribute('description', recipe.description);
+        // attribute for the filters tags
+        _this2.cardElements.setAttribute('data-appliance', recipe.appliance);
+        _this2.cardElements.setAttribute('data-utensils', recipe.utensils);
+        _this2.cardElements.setAttribute('data-ingredients', _this2.ingredientsNameArr);
+        _this2.cardContainer.appendChild(_this2.cardElements);
 
         // Reset ingredients array
         _this2.ingredientsArr = [];
+        _this2.ingredientsNameArr = [];
         return {
           title: recipe.name,
           ingredients: recipe.ingredients,
           description: recipe.description,
-          element: cardElements
+          element: _this2.cardElements
         };
       });
       this.searchInput.addEventListener('keyup', function (e) {
@@ -1537,14 +1747,29 @@ var SearchComponent = /*#__PURE__*/function (_HTMLElement) {
         // })
         // console.log(filteredRecipes)
 
-        // Start filtering recipes after 3 characters, but show all recipes if less than 3 characters
+        // Function that will remove diacritics from a string (é => e, à => a, etc.)
+        var removeDiacritics = function removeDiacritics(str) {
+          return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        };
+
+        // If search input is < 3, show all recipes
         if (e.target.value.length < 3) return _this2.recipesArray.forEach(function (recipe) {
           return recipe.element.classList.remove('hide');
         });
+
+        // remove diacritics from search value and make it lowercase
+        var searchValue = removeDiacritics(e.target.value.toLowerCase());
+
+        // Loop through recipes array and check if search value is included in title, ingredients or description
         _this2.recipesArray.forEach(function (recipe) {
-          var isVisible = recipe.title.toLowerCase().includes(e.target.value.toLowerCase()) || recipe.ingredients.some(function (ingredient) {
-            return ingredient.ingredient.toLowerCase().includes(e.target.value.toLowerCase());
-          }) || recipe.description.toLowerCase().includes(e.target.value.toLowerCase());
+          var isTitleVisible = removeDiacritics(recipe.title.toLowerCase()).includes(searchValue);
+          var areIngredientsVisible = recipe.ingredients.some(function (ingredient) {
+            return removeDiacritics(ingredient.ingredient.toLowerCase()).includes(searchValue);
+          });
+          var isDescriptionVisible = removeDiacritics(recipe.description.toLowerCase()).includes(searchValue);
+          var isVisible = isTitleVisible || areIngredientsVisible || isDescriptionVisible;
+
+          // Toggle hide class depending on if recipe is visible or not
           recipe.element.classList.toggle('hide', !isVisible);
         });
       });
@@ -1556,13 +1781,74 @@ customElements.get('search-component') || customElements.define('search-componen
 
 /***/ }),
 
-/***/ "./src/js/tagsComponents.js":
-/*!**********************************!*\
-  !*** ./src/js/tagsComponents.js ***!
-  \**********************************/
+/***/ "./src/js/tagComponent.js":
+/*!********************************!*\
+  !*** ./src/js/tagComponent.js ***!
+  \********************************/
 /***/ (() => {
 
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct.bind(); } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeFunction(fn) { return Function.toString.call(fn).indexOf("[native code]") !== -1; }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+var TagComponent = /*#__PURE__*/function (_HTMLElement) {
+  _inherits(TagComponent, _HTMLElement);
+  var _super = _createSuper(TagComponent);
+  function TagComponent() {
+    _classCallCheck(this, TagComponent);
+    return _super.call(this);
+  }
+  _createClass(TagComponent, [{
+    key: "connectedCallback",
+    value: function connectedCallback() {
+      this.tagFamily = this.getAttribute('tag-family');
+      this.tagTitle = this.getAttribute('tag-title');
+      if (this.checkTag(this.tagTitle, this.tagFamily)) return;
+      this.innerHTML = this.createTagHTML(this.tagTitle, this.tagFamily);
+      this.filterCards(this.tagFamily);
+    }
 
+    // Check if the tag is already in the list
+  }, {
+    key: "checkTag",
+    value: function checkTag(tagName, tagFamily) {
+      this.tag = document.querySelector(".tag[data-tag-name=\"".concat(tagName, "\"][data-tag-family=\"").concat(tagFamily, "\"]"));
+      if (this.tag) return true;
+    }
+
+    // Filter the cards with the tags
+  }, {
+    key: "filterCards",
+    value: function filterCards(tagFamily) {
+      var _this = this;
+      this.cards = document.querySelectorAll('card-component:not(.hide)');
+      this.cards.forEach(function (card) {
+        if (!card.dataset[tagFamily].toLowerCase().split(',').includes(_this.tagTitle.toLowerCase())) {
+          card.classList.add('hide');
+        }
+      });
+    }
+  }, {
+    key: "createTagHTML",
+    value: function createTagHTML(tagName, tagFamily) {
+      return "\n        <li class=\"tag\" data-tag-name=\"".concat(tagName, "\" data-tag-family=\"").concat(tagFamily, "\">\n          <p class=\"tag__name\">").concat(tagName, "</p>\n          <button class=\"remove\"></button>\n        </li>\n      ");
+    }
+  }]);
+  return TagComponent;
+}( /*#__PURE__*/_wrapNativeSuper(HTMLElement));
+customElements.get('tag-component') || customElements.define('tag-component', TagComponent);
 
 /***/ }),
 
@@ -1596,7 +1882,7 @@ var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_g
 var ___CSS_LOADER_URL_REPLACEMENT_1___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_1___);
 var ___CSS_LOADER_URL_REPLACEMENT_2___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_2___);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "*,\nhtml,\nbody {\n  padding: 0;\n  margin: 0;\n  box-sizing: border-box;\n  font-family: \"Lato\", sans-serif; }\n\nhtml {\n  scroll-behavior: smooth; }\n\nbody {\n  min-height: 100vh;\n  display: flex;\n  flex-direction: column; }\n\na {\n  text-decoration: none;\n  color: inherit; }\n\nul,\nli {\n  list-style: none; }\n\nh1, .h1-style {\n  font-family: \"DM Sans\", sans-serif;\n  color: #D04F4F; }\n\nmain {\n  max-width: 1240px;\n  margin: 0 auto;\n  width: 100%; }\n\n.hidden {\n  position: absolute !important;\n  width: 1px !important;\n  height: 1px !important;\n  padding: 0 !important;\n  margin: -1px !important;\n  overflow: hidden !important;\n  clip: rect(0, 0, 0, 0) !important;\n  white-space: nowrap !important;\n  border: 0 !important; }\n\n.hide {\n  display: none; }\n\nsection {\n  padding: 0 24px; }\n  @media only screen and (min-width: 1288px) {\n    section {\n      padding: 0; } }\n\n.line-clamp {\n  display: -webkit-box;\n  -webkit-line-clamp: 6;\n  overflow: hidden;\n  -webkit-box-orient: vertical; }\n\n.filters__container {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 20px; }\n  .filters__container .custom__select {\n    display: flex;\n    flex-direction: row;\n    justify-content: flex-start;\n    align-items: center;\n    gap: 10px;\n    position: relative;\n    padding: 23px 10px 23px 15px;\n    border-radius: 5px;\n    cursor: pointer; }\n    .filters__container .custom__select:has(input[value=\"ingredients\"]) {\n      background-color: #3282F7; }\n    .filters__container .custom__select:has(input[value=\"appareils\"]) {\n      background-color: #68D9A4; }\n    .filters__container .custom__select:has(input[value=\"ustensiles\"]) {\n      background-color: #ED6454; }\n    .filters__container .custom__select input {\n      cursor: pointer;\n      border: none;\n      background: inherit;\n      font-weight: 700;\n      font-size: 18px;\n      line-height: 22px;\n      text-transform: capitalize;\n      color: #FFFFFF; }\n    .filters__container .custom__select .custom__select-arrow {\n      background: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ") no-repeat center;\n      width: 20px;\n      height: 20px;\n      transition: transform .3s ease-in-out; }\n      .filters__container .custom__select .custom__select-arrow.active {\n        transform: rotate(180deg); }\n\n.cards__container {\n  display: flex;\n  flex-wrap: wrap;\n  margin: 25px auto;\n  gap: 25px; }\n  @media only screen and (min-width: 1024px) {\n    .cards__container {\n      gap: 50px; } }\n\ncard-component {\n  background: #E7E7E7;\n  border-radius: 5px;\n  min-width: 350px;\n  width: 100%; }\n  @media only screen and (min-width: 1024px) {\n    card-component {\n      width: calc((100% / 3) - 34px); } }\n  card-component .card__image-container {\n    background: #C7BEBE;\n    height: 178px;\n    border-radius: 5px 5px 0 0; }\n  card-component .card__content-container {\n    border-radius: 5px;\n    padding: 20px; }\n    card-component .card__content-container .card__header {\n      display: flex;\n      flex-direction: row;\n      justify-content: space-between;\n      align-items: center;\n      margin-bottom: 20px; }\n      card-component .card__content-container .card__header .card__header__title {\n        font-style: normal;\n        font-weight: 400;\n        font-size: 18px;\n        line-height: 22px; }\n      card-component .card__content-container .card__header .recipe__time {\n        display: flex;\n        flex-direction: row;\n        justify-content: space-between;\n        align-items: center;\n        gap: 5px;\n        font-weight: 700;\n        font-size: 18px;\n        line-height: 22px; }\n  card-component .card__content {\n    display: flex;\n    gap: 10px; }\n    card-component .card__content .ingredients__container {\n      width: 50%; }\n      card-component .card__content .ingredients__container li {\n        font-weight: 400;\n        font-size: 12px;\n        line-height: 14px;\n        color: #000000; }\n    card-component .card__content .description__container {\n      width: 50%;\n      font-family: \"Roboto\", sans-serif;\n      font-weight: 400;\n      font-size: 12px;\n      line-height: 100%;\n      color: #000000; }\n\nsearch-component .search__container {\n  margin-bottom: 25px;\n  width: 100%;\n  position: relative;\n  /*\t&:after {\n\t\tcontent: '';\n\t\tposition: absolute;\n\t\ttop: 50%;\n\t\tright: 37px;\n\t\ttransform: translateY(-50%);\n\t\twidth: 26px;\n\t\theight: 26px;\n\t\tbackground-image: url('../assets/search.svg');\n\t\tbackground-repeat: no-repeat;\n\t\tbackground-position: center;\n\t\tbackground-size: cover;\n\t\ttransition: all 0.3s ease-in-out;\n\t}*/ }\n  search-component .search__container .search__button {\n    content: '';\n    position: absolute;\n    top: 50%;\n    right: 37px;\n    transform: translateY(-50%);\n    width: 26px;\n    height: 26px;\n    background-color: transparent;\n    background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_1___ + ");\n    background-repeat: no-repeat;\n    background-position: center;\n    background-size: cover;\n    border: none;\n    cursor: pointer;\n    transition: all 0.3s ease-in-out; }\n  search-component .search__container input[type=\"search\"] {\n    width: 100%;\n    height: 69px;\n    padding: 24px;\n    border-radius: 5px;\n    border: none;\n    font-weight: 400;\n    font-size: 18px;\n    line-height: 22px;\n    color: #000000;\n    background-color: #E7E7E7;\n    transition: all 0.3s ease-in-out; }\n    search-component .search__container input[type=\"search\"]:focus {\n      outline: none;\n      box-shadow: 0 0 10px rgba(0, 0, 0, 0.25); }\n      search-component .search__container input[type=\"search\"]:focus + .search__button {\n        transform: translateY(-50%) rotate(360deg); }\n      search-component .search__container input[type=\"search\"]:focus::placeholder {\n        color: transparent; }\n\n.tags__container {\n  display: flex;\n  flex-wrap: wrap;\n  margin-bottom: 15px;\n  min-height: 40px; }\n  .tags__container .tag {\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n    align-items: center;\n    border-radius: 5px;\n    padding: 10px 20px;\n    gap: 13px;\n    color: #FFFFFF;\n    font-weight: 700;\n    font-size: 14px;\n    line-height: 17px;\n    background-color: #E7E7E7; }\n    .tags__container .tag .remove {\n      width: 20px;\n      height: 20px;\n      border: none;\n      cursor: pointer;\n      background: url(" + ___CSS_LOADER_URL_REPLACEMENT_2___ + ") no-repeat center; }\n    .tags__container .tag:not(:last-child) {\n      margin-right: 0.5rem; }\n\nheader {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  margin: 42px 0 17px; }\n", "",{"version":3,"sources":["webpack://./src/styles/global/_base.scss","webpack://./src/styles/global/_fonts.scss","webpack://./src/styles/global/_colors.scss","webpack://./src/styles/global/_mixins.scss","webpack://./src/styles/components/_filters.scss","webpack://./src/styles/components/_cards.scss","webpack://./src/styles/components/_search.scss","webpack://./src/styles/main.scss","webpack://./src/styles/components/_tags.scss","webpack://./src/styles/layouts/_header.scss"],"names":[],"mappings":"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","sourcesContent":["@import './fonts';\n@import \"../global/helpers\";\n\n$max-content-width: 1240px;\n\n*,\nhtml,\nbody {\n\tpadding: 0;\n\tmargin: 0;\n\tbox-sizing: border-box;\n\tfont-family: $font-base;\n}\n\nhtml {\n\tscroll-behavior: smooth;\n}\n\nbody {\n\tmin-height: 100vh;\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\na {\n\ttext-decoration: none;\n\tcolor: inherit;\n}\n\nul,\nli {\n\tlist-style: none;\n}\n\nh1, .h1-style {\n\tfont-family: $font-title;\n\tcolor: $title-color;\n}\n\nmain {\n\tmax-width: $max-content-width;\n\tmargin: 0 auto;\n\twidth: 100%;\n}\n\n.hidden {\n\tposition: absolute !important;\n\twidth: 1px !important;\n\theight: 1px !important;\n\tpadding: 0 !important;\n\tmargin: -1px !important;\n\toverflow: hidden !important;\n\tclip: rect(0, 0, 0, 0) !important;\n\twhite-space: nowrap !important;\n\tborder: 0 !important;\n}\n\n.hide {\n\tdisplay: none;\n}\n\nsection {\n\tpadding: 0 24px;\n\n\t@include media(max-content-width) {\n\t\tpadding: 0;\n\t}\n}\n\n.line-clamp {\n\tdisplay: -webkit-box;\n\t-webkit-line-clamp: 6;\n\toverflow: hidden;\n\t-webkit-box-orient: vertical;\n}","@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&family=Lato:wght@400;700&family=Roboto&display=swap');\n\n$font-base: 'Lato', sans-serif;\n$font-title: 'DM Sans', sans-serif;\n$font-description: 'Roboto', sans-serif;\n","// header\n$title-color: #D04F4F;\n\n// search\n$ingredients-color: #3282F7;\n$appareils-color: #68D9A4;\n$ustensiles-color: #ED6454;\n\n// cards\n$card-img-background-color: #C7BEBE;\n\n// all\n$grey-background-color: #E7E7E7;\n$black: #000000;\n$white: #FFFFFF;\n","// flex\n@mixin flex($direction, $justify, $align) {\n\tdisplay: flex;\n\tflex-direction: $direction;\n\tjustify-content: $justify;\n\talign-items: $align;\n}\n\n// media queries\n@mixin media($breakpoint) {\n\t@if $breakpoint == phone {\n\t\t@media only screen and (max-width: 767px) {\n\t\t\t@content;\n\t\t}\n\t}\n\t@if $breakpoint == tablet {\n\t\t@media only screen and (min-width: 768px) and (max-width: 1023px) {\n\t\t\t@content;\n\t\t}\n\t}\n\t@if $breakpoint == desktop {\n\t\t@media only screen and (min-width: 1024px) {\n\t\t\t@content;\n\t\t}\n\t}\n\t@if $breakpoint == max-content-width {\n\t\t@media only screen and (min-width: $max-content-width + 48px) {\n\t\t\t@content;\n\t\t}\n\t}\n}","@import '../global/helpers';\n\n\n.filters__container {\n\t@include flex(row, flex-start, center);\n\tgap: 20px;\n\n\t.custom__select {\n\t\t@include flex(row, flex-start, center);\n\t\tgap: 10px;\n\t\tposition: relative;\n\t\tpadding: 23px 10px 23px 15px;\n\t\tborder-radius: 5px;\n\t\tcursor: pointer;\n\n\t\t&:has(input[value=\"ingredients\"]) {\n\t\t\tbackground-color: $ingredients-color;\n\t\t}\n\n\t\t&:has(input[value=\"appareils\"]) {\n\t\t\tbackground-color: $appareils-color;\n\t\t}\n\n\t\t&:has(input[value=\"ustensiles\"]) {\n\t\t\tbackground-color: $ustensiles-color;\n\t\t}\n\n\t\tinput {\n\t\t\tcursor: pointer;\n\t\t\tborder: none;\n\t\t\tbackground: inherit;\n\t\t\tfont-weight: 700;\n\t\t\tfont-size: 18px;\n\t\t\tline-height: 22px;\n\t\t\ttext-transform: capitalize;\n\t\t\tcolor: $white;\n\t\t}\n\n\t\t.custom__select-arrow {\n\t\t\tbackground: url(../assets/arrow-d.svg) no-repeat center;\n\t\t\twidth: 20px;\n\t\t\theight: 20px;\n\t\t\ttransition: transform .3s ease-in-out;\n\n\t\t\t&.active {\n\t\t\t\ttransform: rotate(180deg);\n\t\t\t}\n\t\t}\n\t}\n}","@import '../global/helpers';\n\n.cards__container {\n\tdisplay: flex;\n\tflex-wrap: wrap;\n\tmargin: 25px auto;\n\tgap: 25px;\n\n\t@include media(desktop) {\n\t\tgap: 50px;\n\t}\n}\n\ncard-component {\n\tbackground: $grey-background-color;\n\tborder-radius: 5px;\n\tmin-width: 350px;\n\twidth: 100%;\n\n\t@include media(desktop) {\n\t\twidth: calc((100% / 3) - 34px);\n\t}\n\n\t.card__image-container {\n\t\tbackground: $card-img-background-color;\n\t\theight: 178px;\n\t\tborder-radius: 5px 5px 0 0;\n\t}\n\n\t.card__content-container {\n\t\tborder-radius: 5px;\n\t\tpadding: 20px;\n\n\t\t.card__header {\n\t\t\t@include flex(row, space-between, center);\n\t\t\tmargin-bottom: 20px;\n\n\t\t\t.card__header__title {\n\t\t\t\tfont-style: normal;\n\t\t\t\tfont-weight: 400;\n\t\t\t\tfont-size: 18px;\n\t\t\t\tline-height: 22px;\n\t\t\t}\n\n\t\t\t.recipe__time {\n\t\t\t\t@include flex(row, space-between, center);\n\t\t\t\tgap: 5px;\n\t\t\t\tfont-weight: 700;\n\t\t\t\tfont-size: 18px;\n\t\t\t\tline-height: 22px;\n\t\t\t}\n\t\t}\n\t}\n\n\t.card__content {\n\t\tdisplay: flex;\n\t\tgap: 10px;\n\n\t\t.ingredients__container {\n\t\t\twidth: 50%;\n\n\t\t\tli {\n\t\t\t\tfont-weight: 400;\n\t\t\t\tfont-size: 12px;\n\t\t\t\tline-height: 14px;\n\t\t\t\tcolor: #000000;\n\t\t\t}\n\t\t}\n\n\t\t.description__container {\n\t\t\twidth: 50%;\n\t\t\tfont-family: $font-description;\n\t\t\tfont-weight: 400;\n\t\t\tfont-size: 12px;\n\t\t\tline-height: 100%;\n\t\t\tcolor: #000000;\n\t\t}\n\t}\n}\n\n","@import '../global/_helpers';\n\nsearch-component .search__container {\n\tmargin-bottom: 25px;\n\twidth: 100%;\n\tposition: relative;\n\n/*\t&:after {\n\t\tcontent: '';\n\t\tposition: absolute;\n\t\ttop: 50%;\n\t\tright: 37px;\n\t\ttransform: translateY(-50%);\n\t\twidth: 26px;\n\t\theight: 26px;\n\t\tbackground-image: url('../assets/search.svg');\n\t\tbackground-repeat: no-repeat;\n\t\tbackground-position: center;\n\t\tbackground-size: cover;\n\t\ttransition: all 0.3s ease-in-out;\n\t}*/\n\n\t.search__button {\n\t\tcontent: '';\n\t\tposition: absolute;\n\t\ttop: 50%;\n\t\tright: 37px;\n\t\ttransform: translateY(-50%);\n\t\twidth: 26px;\n\t\theight: 26px;\n\t\tbackground-color: transparent;\n\t\tbackground-image: url('../assets/search.svg');\n\t\tbackground-repeat: no-repeat;\n\t\tbackground-position: center;\n\t\tbackground-size: cover;\n\t\tborder: none;\n\t\tcursor: pointer;\n\t\ttransition: all 0.3s ease-in-out;\n\t}\n\n\tinput[type=\"search\"] {\n\t\twidth: 100%;\n\t\theight: 69px;\n\t\tpadding: 24px;\n\t\tborder-radius: 5px;\n\t\tborder: none;\n\t\tfont-weight: 400;\n\t\tfont-size: 18px;\n\t\tline-height: 22px;\n\t\tcolor: $black;\n\t\tbackground-color: $grey-background-color;\n\t\ttransition: all 0.3s ease-in-out;\n\n\t\t&:focus {\n\t\t\toutline: none;\n\t\t\tbox-shadow: 0 0 10px rgba(0, 0, 0, 0.25);\n\n\t\t\t+.search__button {\n\t\t\t\ttransform: translateY(-50%) rotate(360deg);\n\t\t\t}\n\n\t\t\t&::placeholder {\n\t\t\t\tcolor: transparent;\n\t\t\t}\n\t\t}\n\t}\n}","@import './global/base';\n\n@import './components/filters';\n@import './components/cards';\n@import './components/search';\n@import './components/tags';\n\n@import './layouts/header';\n","@import '../global/helpers';\n\n.tags__container {\n\tdisplay: flex;\n\tflex-wrap: wrap;\n\tmargin-bottom: 15px;\n\tmin-height: 40px;\n\n\t.tag {\n\t\t@include flex(row, center, center);\n\t\tborder-radius: 5px;\n\t\tpadding: 10px 20px;\n\t\tgap: 13px;\n\t\tcolor: $white;\n\t\tfont-weight: 700;\n\t\tfont-size: 14px;\n\t\tline-height: 17px;\n\t\tbackground-color: $grey-background-color;\n\n\t\t.remove {\n\t\t\twidth: 20px;\n\t\t\theight: 20px;\n\t\t\tborder: none;\n\t\t\tcursor: pointer;\n\t\t\tbackground: url(../assets/remove.svg) no-repeat center;\n\t\t}\n\n\t\t&:not(:last-child) {\n\t\t\tmargin-right: 0.5rem;\n\t\t}\n\t}\n}","@import '../global/helpers';\n\nheader {\n\t@include flex(column, center, center);\n\tmargin: 42px 0 17px;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "@charset \"UTF-8\";\n*,\nhtml,\nbody {\n  padding: 0;\n  margin: 0;\n  box-sizing: border-box;\n  font-family: \"Lato\", sans-serif; }\n\nhtml {\n  scroll-behavior: smooth; }\n\nbody {\n  min-height: 100vh;\n  display: flex;\n  flex-direction: column; }\n\na {\n  text-decoration: none;\n  color: inherit; }\n\nul,\nli {\n  list-style: none; }\n\nh1, .h1-style {\n  font-family: \"DM Sans\", sans-serif;\n  color: #D04F4F; }\n\nmain {\n  max-width: 1240px;\n  margin: 0 auto;\n  width: 100%; }\n\n/* clears the ‘X’ from Internet Explorer */\ninput[type=search]::-ms-clear {\n  display: none;\n  width: 0;\n  height: 0; }\n\ninput[type=search]::-ms-reveal {\n  display: none;\n  width: 0;\n  height: 0; }\n\n/* clears the ‘X’ from Chrome */\ninput[type=\"search\"]::-webkit-search-decoration,\ninput[type=\"search\"]::-webkit-search-cancel-button,\ninput[type=\"search\"]::-webkit-search-results-button,\ninput[type=\"search\"]::-webkit-search-results-decoration {\n  display: none; }\n\n.hidden {\n  position: absolute !important;\n  width: 1px !important;\n  height: 1px !important;\n  padding: 0 !important;\n  margin: -1px !important;\n  overflow: hidden !important;\n  clip: rect(0, 0, 0, 0) !important;\n  white-space: nowrap !important;\n  border: 0 !important; }\n\n.hide {\n  display: none; }\n\nsection {\n  padding: 0 24px; }\n  @media only screen and (min-width: 1288px) {\n    section {\n      padding: 0; } }\n\n.line-clamp {\n  display: -webkit-box;\n  -webkit-line-clamp: 6;\n  overflow: hidden;\n  -webkit-box-orient: vertical; }\n\n.filters__container filters-component {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 20px; }\n  .filters__container filters-component .custom__select {\n    display: flex;\n    flex-direction: column;\n    padding: 23px 10px 23px 19px;\n    border-radius: 5px;\n    cursor: pointer;\n    min-width: 170px;\n    position: relative;\n    transition: all 0.3s ease-out;\n    width: 0; }\n    .filters__container filters-component .custom__select.open {\n      width: 62%; }\n      .filters__container filters-component .custom__select.open .custom__select-arrow {\n        transform: rotate(180deg); }\n      .filters__container filters-component .custom__select.open .filters__container__content {\n        width: 100%; }\n    .filters__container filters-component .custom__select[data-value=\"ingredients\"] {\n      background-color: #3282F7; }\n      .filters__container filters-component .custom__select[data-value=\"ingredients\"] .filters__container__content {\n        background-color: #3282F7; }\n    .filters__container filters-component .custom__select[data-value=\"appliance\"] {\n      background-color: #68D9A4; }\n      .filters__container filters-component .custom__select[data-value=\"appliance\"] .filters__container__content {\n        background-color: #68D9A4; }\n    .filters__container filters-component .custom__select[data-value=\"utensils\"] {\n      background-color: #ED6454; }\n      .filters__container filters-component .custom__select[data-value=\"utensils\"] .filters__container__content {\n        background-color: #ED6454; }\n    .filters__container filters-component .custom__select .input__container {\n      display: flex;\n      flex-direction: row;\n      justify-content: space-between;\n      align-items: center;\n      position: relative;\n      gap: 10px; }\n    .filters__container filters-component .custom__select input {\n      cursor: pointer;\n      border: none;\n      background: inherit;\n      font-weight: 700;\n      font-size: 18px;\n      line-height: 22px;\n      text-transform: capitalize;\n      color: #FFFFFF;\n      outline: none; }\n      .filters__container filters-component .custom__select input::placeholder {\n        text-transform: none;\n        font-weight: 700;\n        font-size: 18px;\n        line-height: 22px;\n        color: #FFFFFF;\n        opacity: 0.5; }\n    .filters__container filters-component .custom__select .custom__select-arrow {\n      background: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ") no-repeat center;\n      width: 20px;\n      height: 20px;\n      transition: transform .3s ease-in-out; }\n    .filters__container filters-component .custom__select .filters__container__content {\n      position: absolute;\n      padding: 10px 5px 10px 19px;\n      border-radius: 5px;\n      top: 92%;\n      left: 0; }\n    .filters__container filters-component .custom__select .filters__container__content__list ul {\n      display: grid;\n      grid-template-columns: repeat(3, 1fr);\n      grid-gap: 10px;\n      margin: 0;\n      list-style: none;\n      max-height: 350px;\n      overflow-y: auto; }\n      .filters__container filters-component .custom__select .filters__container__content__list ul::-webkit-scrollbar {\n        width: 5px; }\n      .filters__container filters-component .custom__select .filters__container__content__list ul::-webkit-scrollbar-track {\n        border-radius: 5px;\n        background: #f1f1f1; }\n      .filters__container filters-component .custom__select .filters__container__content__list ul::-webkit-scrollbar-thumb {\n        border-radius: 5px;\n        background: #888; }\n      .filters__container filters-component .custom__select .filters__container__content__list ul::-webkit-scrollbar-thumb:hover {\n        background: #555; }\n      .filters__container filters-component .custom__select .filters__container__content__list ul li p {\n        font-weight: 400;\n        font-size: 18px;\n        line-height: 22px;\n        color: #FFFFFF;\n        position: relative;\n        display: inline;\n        margin-bottom: 1px;\n        background-image: linear-gradient(currentColor, currentColor);\n        background-position: 0 99%;\n        background-repeat: no-repeat;\n        background-size: 0 1px;\n        transition: background-size 0.3s; }\n        .filters__container filters-component .custom__select .filters__container__content__list ul li p:hover {\n          background-size: 100% 1px; }\n\n.cards__container {\n  display: flex;\n  flex-wrap: wrap;\n  margin: 25px auto;\n  gap: 25px; }\n  @media only screen and (min-width: 1024px) {\n    .cards__container {\n      gap: 50px; } }\n\ncard-component {\n  background: #E7E7E7;\n  border-radius: 5px;\n  min-width: 350px;\n  width: 100%; }\n  @media only screen and (min-width: 1024px) {\n    card-component {\n      width: calc((100% / 3) - 34px); } }\n  card-component .card__image-container {\n    background: #C7BEBE;\n    height: 178px;\n    border-radius: 5px 5px 0 0; }\n  card-component .card__content-container {\n    border-radius: 5px;\n    padding: 20px; }\n    card-component .card__content-container .card__header {\n      display: flex;\n      flex-direction: row;\n      justify-content: space-between;\n      align-items: center;\n      margin-bottom: 20px; }\n      card-component .card__content-container .card__header .card__header__title {\n        font-style: normal;\n        font-weight: 400;\n        font-size: 18px;\n        line-height: 22px; }\n      card-component .card__content-container .card__header .recipe__time {\n        display: flex;\n        flex-direction: row;\n        justify-content: space-between;\n        align-items: center;\n        gap: 5px;\n        font-weight: 700;\n        font-size: 18px;\n        line-height: 22px; }\n  card-component .card__content {\n    display: flex;\n    gap: 10px; }\n    card-component .card__content .ingredients__container {\n      width: 50%; }\n      card-component .card__content .ingredients__container li {\n        font-weight: 400;\n        font-size: 12px;\n        line-height: 14px;\n        color: #000000; }\n    card-component .card__content .description__container {\n      width: 50%;\n      font-family: \"Roboto\", sans-serif;\n      font-weight: 400;\n      font-size: 12px;\n      line-height: 100%;\n      color: #000000; }\n\nsearch-component .search__container {\n  margin-bottom: 25px;\n  width: 100%;\n  position: relative;\n  /*\t&:after {\r\n\t\tcontent: '';\r\n\t\tposition: absolute;\r\n\t\ttop: 50%;\r\n\t\tright: 37px;\r\n\t\ttransform: translateY(-50%);\r\n\t\twidth: 26px;\r\n\t\theight: 26px;\r\n\t\tbackground-image: url('../assets/search.svg');\r\n\t\tbackground-repeat: no-repeat;\r\n\t\tbackground-position: center;\r\n\t\tbackground-size: cover;\r\n\t\ttransition: all 0.3s ease-in-out;\r\n\t}*/ }\n  search-component .search__container .search__button {\n    content: '';\n    position: absolute;\n    top: 50%;\n    right: 37px;\n    transform: translateY(-50%);\n    width: 26px;\n    height: 26px;\n    background-color: transparent;\n    background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_1___ + ");\n    background-repeat: no-repeat;\n    background-position: center;\n    background-size: cover;\n    border: none;\n    cursor: pointer;\n    transition: all 0.3s ease-in-out; }\n  search-component .search__container input[type=\"search\"] {\n    width: 100%;\n    height: 69px;\n    padding: 24px;\n    border-radius: 5px;\n    border: none;\n    font-weight: 400;\n    font-size: 18px;\n    line-height: 22px;\n    color: #000000;\n    background-color: #E7E7E7;\n    transition: all 0.3s ease-in-out; }\n    search-component .search__container input[type=\"search\"]:focus {\n      outline: none;\n      box-shadow: 0 0 10px rgba(0, 0, 0, 0.25); }\n      search-component .search__container input[type=\"search\"]:focus + .search__button {\n        transform: translateY(-50%) rotate(360deg); }\n      search-component .search__container input[type=\"search\"]:focus::placeholder {\n        color: transparent; }\n\n.tags__container {\n  display: flex;\n  flex-wrap: wrap;\n  margin-bottom: 15px;\n  min-height: 40px; }\n  .tags__container .tag {\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n    align-items: center;\n    border-radius: 5px;\n    padding: 10px 20px;\n    gap: 13px;\n    color: #FFFFFF;\n    font-weight: 700;\n    font-size: 14px;\n    line-height: 17px;\n    background-color: #E7E7E7; }\n    .tags__container .tag[data-tag-family=\"ingredients\"] {\n      background-color: #3282F7; }\n    .tags__container .tag[data-tag-family=\"appliance\"] {\n      background-color: #68D9A4; }\n    .tags__container .tag[data-tag-family=\"utensils\"] {\n      background-color: #ED6454; }\n    .tags__container .tag .remove {\n      width: 20px;\n      height: 20px;\n      border: none;\n      cursor: pointer;\n      background: url(" + ___CSS_LOADER_URL_REPLACEMENT_2___ + ") no-repeat center; }\n    .tags__container .tag:not(:last-child) {\n      margin-right: 0.5rem; }\n\nheader {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  margin: 42px 0 17px; }\n", "",{"version":3,"sources":["webpack://./src/styles/main.scss","webpack://./src/styles/global/_base.scss","webpack://./src/styles/global/_fonts.scss","webpack://./src/styles/global/_colors.scss","webpack://./src/styles/global/_mixins.scss","webpack://./src/styles/components/_filters.scss","webpack://./src/styles/components/_cards.scss","webpack://./src/styles/components/_search.scss","webpack://./src/styles/components/_tags.scss","webpack://./src/styles/layouts/_header.scss"],"names":[],"mappings":"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","sourcesContent":["@import './global/base';\r\n\r\n@import './components/filters';\r\n@import './components/cards';\r\n@import './components/search';\r\n@import './components/tags';\r\n\r\n@import './layouts/header';\r\n","@import './fonts';\r\n@import \"../global/helpers\";\r\n\r\n$max-content-width: 1240px;\r\n\r\n*,\r\nhtml,\r\nbody {\r\n\tpadding: 0;\r\n\tmargin: 0;\r\n\tbox-sizing: border-box;\r\n\tfont-family: $font-base;\r\n}\r\n\r\nhtml {\r\n\tscroll-behavior: smooth;\r\n}\r\n\r\nbody {\r\n\tmin-height: 100vh;\r\n\tdisplay: flex;\r\n\tflex-direction: column;\r\n}\r\n\r\na {\r\n\ttext-decoration: none;\r\n\tcolor: inherit;\r\n}\r\n\r\nul,\r\nli {\r\n\tlist-style: none;\r\n}\r\n\r\nh1, .h1-style {\r\n\tfont-family: $font-title;\r\n\tcolor: $title-color;\r\n}\r\n\r\nmain {\r\n\tmax-width: $max-content-width;\r\n\tmargin: 0 auto;\r\n\twidth: 100%;\r\n}\r\n\r\n/* clears the ‘X’ from Internet Explorer */\r\ninput[type=search]::-ms-clear { display: none; width : 0; height: 0; }\r\ninput[type=search]::-ms-reveal { display: none; width : 0; height: 0; }\r\n/* clears the ‘X’ from Chrome */\r\ninput[type=\"search\"]::-webkit-search-decoration,\r\ninput[type=\"search\"]::-webkit-search-cancel-button,\r\ninput[type=\"search\"]::-webkit-search-results-button,\r\ninput[type=\"search\"]::-webkit-search-results-decoration { display: none; }\r\n\r\n.hidden {\r\n\tposition: absolute !important;\r\n\twidth: 1px !important;\r\n\theight: 1px !important;\r\n\tpadding: 0 !important;\r\n\tmargin: -1px !important;\r\n\toverflow: hidden !important;\r\n\tclip: rect(0, 0, 0, 0) !important;\r\n\twhite-space: nowrap !important;\r\n\tborder: 0 !important;\r\n}\r\n\r\n.hide {\r\n\tdisplay: none;\r\n}\r\n\r\nsection {\r\n\tpadding: 0 24px;\r\n\r\n\t@include media(max-content-width) {\r\n\t\tpadding: 0;\r\n\t}\r\n}\r\n\r\n.line-clamp {\r\n\tdisplay: -webkit-box;\r\n\t-webkit-line-clamp: 6;\r\n\toverflow: hidden;\r\n\t-webkit-box-orient: vertical;\r\n}","@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&family=Lato:wght@400;700&family=Roboto&display=swap');\r\n\r\n$font-base: 'Lato', sans-serif;\r\n$font-title: 'DM Sans', sans-serif;\r\n$font-description: 'Roboto', sans-serif;\r\n","// header\r\n$title-color: #D04F4F;\r\n\r\n// search\r\n$ingredients-color: #3282F7;\r\n$appareils-color: #68D9A4;\r\n$utensils-color: #ED6454;\r\n\r\n// cards\r\n$card-img-background-color: #C7BEBE;\r\n\r\n// all\r\n$grey-background-color: #E7E7E7;\r\n$black: #000000;\r\n$white: #FFFFFF;\r\n","// flex\r\n@mixin flex($direction, $justify, $align) {\r\n\tdisplay: flex;\r\n\tflex-direction: $direction;\r\n\tjustify-content: $justify;\r\n\talign-items: $align;\r\n}\r\n\r\n// media queries\r\n@mixin media($breakpoint) {\r\n\t@if $breakpoint == phone {\r\n\t\t@media only screen and (max-width: 767px) {\r\n\t\t\t@content;\r\n\t\t}\r\n\t}\r\n\t@if $breakpoint == tablet {\r\n\t\t@media only screen and (min-width: 768px) and (max-width: 1023px) {\r\n\t\t\t@content;\r\n\t\t}\r\n\t}\r\n\t@if $breakpoint == desktop {\r\n\t\t@media only screen and (min-width: 1024px) {\r\n\t\t\t@content;\r\n\t\t}\r\n\t}\r\n\t@if $breakpoint == max-content-width {\r\n\t\t@media only screen and (min-width: $max-content-width + 48px) {\r\n\t\t\t@content;\r\n\t\t}\r\n\t}\r\n}","@import '../global/helpers';\r\n\r\n\r\n.filters__container filters-component {\r\n  @include flex(row, flex-start, center);\r\n  gap: 20px;\r\n\r\n  .custom__select {\r\n    display: flex;\r\n    flex-direction: column;\r\n    padding: 23px 10px 23px 19px;\r\n    border-radius: 5px;\r\n    cursor: pointer;\r\n    min-width: 170px;\r\n    position: relative;\r\n    transition: all 0.3s ease-out;\r\n    width: 0;\r\n\r\n    &.open {\r\n      width: 62%;\r\n\r\n      .custom__select-arrow {\r\n        transform: rotate(180deg);\r\n      }\r\n\r\n      .filters__container__content {\r\n        width: 100%;\r\n      }\r\n    }\r\n\r\n    &[data-value=\"ingredients\"] {\r\n      background-color: $ingredients-color;\r\n\r\n      .filters__container__content {\r\n        background-color: $ingredients-color;\r\n      }\r\n    }\r\n\r\n    &[data-value=\"appliance\"] {\r\n      background-color: $appareils-color;\r\n\r\n      .filters__container__content {\r\n        background-color: $appareils-color;\r\n      }\r\n    }\r\n\r\n    &[data-value=\"utensils\"] {\r\n      background-color: $utensils-color;\r\n\r\n      .filters__container__content {\r\n        background-color: $utensils-color;\r\n      }\r\n    }\r\n\r\n    .input__container {\r\n      @include flex(row, space-between, center);\r\n      position: relative;\r\n      gap: 10px;\r\n    }\r\n\r\n    input {\r\n      cursor: pointer;\r\n      border: none;\r\n      background: inherit;\r\n      font-weight: 700;\r\n      font-size: 18px;\r\n      line-height: 22px;\r\n      text-transform: capitalize;\r\n      color: $white;\r\n      outline: none;\r\n\r\n      &::placeholder {\r\n        text-transform: none;\r\n        font-weight: 700;\r\n        font-size: 18px;\r\n        line-height: 22px;\r\n        color: #FFFFFF;\r\n        opacity: 0.5;\r\n      }\r\n    }\r\n\r\n    .custom__select-arrow {\r\n      background: url(../assets/arrow-d.svg) no-repeat center;\r\n      width: 20px;\r\n      height: 20px;\r\n      transition: transform .3s ease-in-out;\r\n    }\r\n\r\n    .filters__container__content {\r\n      position: absolute;\r\n      padding: 10px 5px 10px 19px;\r\n      border-radius: 5px;\r\n      top: 92%;\r\n      left: 0;\r\n    }\r\n\r\n    .filters__container__content__list {\r\n      ul {\r\n        display: grid;\r\n        grid-template-columns: repeat(3, 1fr);\r\n        grid-gap: 10px;\r\n        margin: 0;\r\n        list-style: none;\r\n        max-height: 350px;\r\n        overflow-y: auto;\r\n\r\n        &::-webkit-scrollbar {\r\n          width: 5px;\r\n        }\r\n\r\n        &::-webkit-scrollbar-track {\r\n          border-radius: 5px;\r\n          background: #f1f1f1;\r\n        }\r\n\r\n        &::-webkit-scrollbar-thumb {\r\n          border-radius: 5px;\r\n          background: #888;\r\n        }\r\n\r\n        &::-webkit-scrollbar-thumb:hover {\r\n          background: #555;\r\n        }\r\n\r\n        li p {\r\n          font-weight: 400;\r\n          font-size: 18px;\r\n          line-height: 22px;\r\n          color: #FFFFFF;\r\n          position: relative;\r\n          display: inline;\r\n          margin-bottom: 1px;\r\n\r\n          background-image: linear-gradient(currentColor, currentColor);\r\n          background-position: 0 99%;\r\n          background-repeat: no-repeat;\r\n          background-size: 0 1px;\r\n          transition: background-size 0.3s;\r\n\r\n          &:hover {\r\n            background-size: 100% 1px;\r\n          }\r\n        }\r\n      }\r\n    }\r\n  }\r\n\r\n}","@import '../global/helpers';\r\n\r\n.cards__container {\r\n\tdisplay: flex;\r\n\tflex-wrap: wrap;\r\n\tmargin: 25px auto;\r\n\tgap: 25px;\r\n\r\n\t@include media(desktop) {\r\n\t\tgap: 50px;\r\n\t}\r\n}\r\n\r\ncard-component {\r\n\tbackground: $grey-background-color;\r\n\tborder-radius: 5px;\r\n\tmin-width: 350px;\r\n\twidth: 100%;\r\n\r\n\t@include media(desktop) {\r\n\t\twidth: calc((100% / 3) - 34px);\r\n\t}\r\n\r\n\t.card__image-container {\r\n\t\tbackground: $card-img-background-color;\r\n\t\theight: 178px;\r\n\t\tborder-radius: 5px 5px 0 0;\r\n\t}\r\n\r\n\t.card__content-container {\r\n\t\tborder-radius: 5px;\r\n\t\tpadding: 20px;\r\n\r\n\t\t.card__header {\r\n\t\t\t@include flex(row, space-between, center);\r\n\t\t\tmargin-bottom: 20px;\r\n\r\n\t\t\t.card__header__title {\r\n\t\t\t\tfont-style: normal;\r\n\t\t\t\tfont-weight: 400;\r\n\t\t\t\tfont-size: 18px;\r\n\t\t\t\tline-height: 22px;\r\n\t\t\t}\r\n\r\n\t\t\t.recipe__time {\r\n\t\t\t\t@include flex(row, space-between, center);\r\n\t\t\t\tgap: 5px;\r\n\t\t\t\tfont-weight: 700;\r\n\t\t\t\tfont-size: 18px;\r\n\t\t\t\tline-height: 22px;\r\n\t\t\t}\r\n\t\t}\r\n\t}\r\n\r\n\t.card__content {\r\n\t\tdisplay: flex;\r\n\t\tgap: 10px;\r\n\r\n\t\t.ingredients__container {\r\n\t\t\twidth: 50%;\r\n\r\n\t\t\tli {\r\n\t\t\t\tfont-weight: 400;\r\n\t\t\t\tfont-size: 12px;\r\n\t\t\t\tline-height: 14px;\r\n\t\t\t\tcolor: #000000;\r\n\t\t\t}\r\n\t\t}\r\n\r\n\t\t.description__container {\r\n\t\t\twidth: 50%;\r\n\t\t\tfont-family: $font-description;\r\n\t\t\tfont-weight: 400;\r\n\t\t\tfont-size: 12px;\r\n\t\t\tline-height: 100%;\r\n\t\t\tcolor: #000000;\r\n\t\t}\r\n\t}\r\n}\r\n\r\n","@import '../global/_helpers';\r\n\r\nsearch-component .search__container {\r\n\tmargin-bottom: 25px;\r\n\twidth: 100%;\r\n\tposition: relative;\r\n\r\n/*\t&:after {\r\n\t\tcontent: '';\r\n\t\tposition: absolute;\r\n\t\ttop: 50%;\r\n\t\tright: 37px;\r\n\t\ttransform: translateY(-50%);\r\n\t\twidth: 26px;\r\n\t\theight: 26px;\r\n\t\tbackground-image: url('../assets/search.svg');\r\n\t\tbackground-repeat: no-repeat;\r\n\t\tbackground-position: center;\r\n\t\tbackground-size: cover;\r\n\t\ttransition: all 0.3s ease-in-out;\r\n\t}*/\r\n\r\n\t.search__button {\r\n\t\tcontent: '';\r\n\t\tposition: absolute;\r\n\t\ttop: 50%;\r\n\t\tright: 37px;\r\n\t\ttransform: translateY(-50%);\r\n\t\twidth: 26px;\r\n\t\theight: 26px;\r\n\t\tbackground-color: transparent;\r\n\t\tbackground-image: url('../assets/search.svg');\r\n\t\tbackground-repeat: no-repeat;\r\n\t\tbackground-position: center;\r\n\t\tbackground-size: cover;\r\n\t\tborder: none;\r\n\t\tcursor: pointer;\r\n\t\ttransition: all 0.3s ease-in-out;\r\n\t}\r\n\r\n\tinput[type=\"search\"] {\r\n\t\twidth: 100%;\r\n\t\theight: 69px;\r\n\t\tpadding: 24px;\r\n\t\tborder-radius: 5px;\r\n\t\tborder: none;\r\n\t\tfont-weight: 400;\r\n\t\tfont-size: 18px;\r\n\t\tline-height: 22px;\r\n\t\tcolor: $black;\r\n\t\tbackground-color: $grey-background-color;\r\n\t\ttransition: all 0.3s ease-in-out;\r\n\r\n\t\t&:focus {\r\n\t\t\toutline: none;\r\n\t\t\tbox-shadow: 0 0 10px rgba(0, 0, 0, 0.25);\r\n\r\n\t\t\t+.search__button {\r\n\t\t\t\ttransform: translateY(-50%) rotate(360deg);\r\n\t\t\t}\r\n\r\n\t\t\t&::placeholder {\r\n\t\t\t\tcolor: transparent;\r\n\t\t\t}\r\n\t\t}\r\n\t}\r\n}","@import '../global/helpers';\r\n\r\n.tags__container {\r\n\tdisplay: flex;\r\n\tflex-wrap: wrap;\r\n\tmargin-bottom: 15px;\r\n\tmin-height: 40px;\r\n\r\n\t.tag {\r\n\t\t@include flex(row, center, center);\r\n\t\tborder-radius: 5px;\r\n\t\tpadding: 10px 20px;\r\n\t\tgap: 13px;\r\n\t\tcolor: $white;\r\n\t\tfont-weight: 700;\r\n\t\tfont-size: 14px;\r\n\t\tline-height: 17px;\r\n\t\tbackground-color: $grey-background-color;\r\n\r\n\t\t&[data-tag-family=\"ingredients\"] {\r\n\t\t\tbackground-color: $ingredients-color;\r\n\t\t}\r\n\r\n\t\t&[data-tag-family=\"appliance\"] {\r\n\t\t\tbackground-color: $appareils-color;\r\n\t\t}\r\n\r\n\t\t&[data-tag-family=\"utensils\"] {\r\n\t\t\tbackground-color: $utensils-color;\r\n\t\t}\r\n\r\n\t\t.remove {\r\n\t\t\twidth: 20px;\r\n\t\t\theight: 20px;\r\n\t\t\tborder: none;\r\n\t\t\tcursor: pointer;\r\n\t\t\tbackground: url(../assets/remove.svg) no-repeat center;\r\n\t\t}\r\n\r\n\t\t&:not(:last-child) {\r\n\t\t\tmargin-right: 0.5rem;\r\n\t\t}\r\n\t}\r\n}","@import '../global/helpers';\r\n\r\nheader {\r\n\t@include flex(column, center, center);\r\n\tmargin: 42px 0 17px;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2119,6 +2405,17 @@ module.exports = __webpack_require__.p + "remove.svg";
 "use strict";
 module.exports = __webpack_require__.p + "search.svg";
 
+/***/ }),
+
+/***/ "./src/assets/time.svg":
+/*!*****************************!*\
+  !*** ./src/assets/time.svg ***!
+  \*****************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "time.svg";
+
 /***/ })
 
 /******/ 	});
@@ -2268,12 +2565,11 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/main.scss */ "./src/styles/main.scss");
 /* harmony import */ var _js_searchComponent_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./js/searchComponent.js */ "./src/js/searchComponent.js");
-/* harmony import */ var _js_tagsComponents_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./js/tagsComponents.js */ "./src/js/tagsComponents.js");
-/* harmony import */ var _js_tagsComponents_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_js_tagsComponents_js__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _js_filtersComponents_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./js/filtersComponents.js */ "./src/js/filtersComponents.js");
-/* harmony import */ var _js_filtersComponents_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_js_filtersComponents_js__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _js_cardComponents_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./js/cardComponents.js */ "./src/js/cardComponents.js");
-/* harmony import */ var _js_cardComponents_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_js_cardComponents_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _js_filtersComponents_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./js/filtersComponents.js */ "./src/js/filtersComponents.js");
+/* harmony import */ var _js_filtersComponents_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_js_filtersComponents_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _js_cardComponents_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./js/cardComponents.js */ "./src/js/cardComponents.js");
+/* harmony import */ var _js_tagComponent_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./js/tagComponent.js */ "./src/js/tagComponent.js");
+/* harmony import */ var _js_tagComponent_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_js_tagComponent_js__WEBPACK_IMPORTED_MODULE_4__);
 
 
 // JS
@@ -2285,4 +2581,4 @@ __webpack_require__.r(__webpack_exports__);
 
 /******/ })()
 ;
-//# sourceMappingURL=bundlec7813d2979a7856e8560.js.map
+//# sourceMappingURL=bundle868e415f8f3fbde67ba6.js.map

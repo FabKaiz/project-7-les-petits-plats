@@ -1,4 +1,4 @@
-
+import logoTime from "../assets/time.svg";
 class CardComponents extends HTMLElement {
   constructor() {
     super();
@@ -21,7 +21,7 @@ class CardComponents extends HTMLElement {
             <h2 class="card__header__title">${this.attrTitle}</h2>
     
             <div class="recipe__time">
-              <img src="time.svg" alt="cooking time" class="time-logo">
+              <img src="${logoTime}" alt="cooking time" class="time-logo">
               <p>${recipeTime}</p>
             </div>
           </div>

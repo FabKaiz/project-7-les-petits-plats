@@ -1,50 +1,148 @@
 @import '../global/helpers';
 
 
-.filters__container {
-	@include flex(row, flex-start, center);
-	gap: 20px;
+.filters__container filters-component {
+  @include flex(row, flex-start, center);
+  gap: 20px;
 
-	.custom__select {
-		@include flex(row, flex-start, center);
-		gap: 10px;
-		position: relative;
-		padding: 23px 10px 23px 15px;
-		border-radius: 5px;
-		cursor: pointer;
+  .custom__select {
+    display: flex;
+    flex-direction: column;
+    padding: 23px 10px 23px 19px;
+    border-radius: 5px;
+    cursor: pointer;
+    min-width: 170px;
+    position: relative;
+    transition: all 0.3s ease-out;
+    width: 0;
 
-		&:has(input[value="ingredients"]) {
-			background-color: $ingredients-color;
-		}
+    &.open {
+      width: 62%;
 
-		&:has(input[value="appareils"]) {
-			background-color: $appareils-color;
-		}
+      .custom__select-arrow {
+        transform: rotate(180deg);
+      }
 
-		&:has(input[value="ustensiles"]) {
-			background-color: $ustensiles-color;
-		}
+      .filters__container__content {
+        width: 100%;
+      }
+    }
 
-		input {
-			cursor: pointer;
-			border: none;
-			background: inherit;
-			font-weight: 700;
-			font-size: 18px;
-			line-height: 22px;
-			text-transform: capitalize;
-			color: $white;
-		}
+    &[data-value="ingredients"] {
+      background-color: $ingredients-color;
 
-		.custom__select-arrow {
-			background: url(../assets/arrow-d.svg) no-repeat center;
-			width: 20px;
-			height: 20px;
-			transition: transform .3s ease-in-out;
+      .filters__container__content {
+        background-color: $ingredients-color;
+      }
+    }
 
-			&.active {
-				transform: rotate(180deg);
-			}
-		}
-	}
+    &[data-value="appliance"] {
+      background-color: $appareils-color;
+
+      .filters__container__content {
+        background-color: $appareils-color;
+      }
+    }
+
+    &[data-value="utensils"] {
+      background-color: $utensils-color;
+
+      .filters__container__content {
+        background-color: $utensils-color;
+      }
+    }
+
+    .input__container {
+      @include flex(row, space-between, center);
+      position: relative;
+      gap: 10px;
+    }
+
+    input {
+      cursor: pointer;
+      border: none;
+      background: inherit;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 22px;
+      text-transform: capitalize;
+      color: $white;
+      outline: none;
+
+      &::placeholder {
+        text-transform: none;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 22px;
+        color: #FFFFFF;
+        opacity: 0.5;
+      }
+    }
+
+    .custom__select-arrow {
+      background: url(../assets/arrow-d.svg) no-repeat center;
+      width: 20px;
+      height: 20px;
+      transition: transform .3s ease-in-out;
+    }
+
+    .filters__container__content {
+      position: absolute;
+      padding: 10px 5px 10px 19px;
+      border-radius: 5px;
+      top: 92%;
+      left: 0;
+    }
+
+    .filters__container__content__list {
+      ul {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 10px;
+        margin: 0;
+        list-style: none;
+        max-height: 350px;
+        overflow-y: auto;
+
+        &::-webkit-scrollbar {
+          width: 5px;
+        }
+
+        &::-webkit-scrollbar-track {
+          border-radius: 5px;
+          background: #f1f1f1;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          border-radius: 5px;
+          background: #888;
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+          background: #555;
+        }
+
+        li p {
+          font-weight: 400;
+          font-size: 18px;
+          line-height: 22px;
+          color: #FFFFFF;
+          position: relative;
+          display: inline;
+          margin-bottom: 1px;
+
+          background-image: linear-gradient(currentColor, currentColor);
+          background-position: 0 99%;
+          background-repeat: no-repeat;
+          background-size: 0 1px;
+          transition: background-size 0.3s;
+
+          &:hover {
+            background-size: 100% 1px;
+          }
+        }
+      }
+    }
+  }
+
 }

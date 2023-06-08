@@ -7,6 +7,7 @@ class SearchComponent extends HTMLElement {
         this.cardContainer = document.querySelector('.cards__container');
         this.ingredientsArr = []
         this.recipesArray = []
+        this.ingredientsNameArr = []
 
         this.init();
     }
@@ -30,23 +31,30 @@ class SearchComponent extends HTMLElement {
             // Create li element for each ingredient
             recipe.ingredients.forEach(ingredient => {
                 this.createIngredientsList(ingredient)
+                this.ingredientsNameArr.push(ingredient.ingredient)
             })
 
-            const cardElements = document.createElement('card-component');
-            cardElements.setAttribute('header-title', recipe.name);
-            cardElements.setAttribute('recipe-time', recipe.time);
-            cardElements.setAttribute('ingredients-array', this.ingredientsArr);
-            cardElements.setAttribute('description', recipe.description);
-            this.cardContainer.appendChild(cardElements);
+            this.cardElements = document.createElement('card-component');
+            this.cardElements.setAttribute('header-title', recipe.name);
+            this.cardElements.setAttribute('recipe-time', recipe.time);
+            this.cardElements.setAttribute('ingredients-array', this.ingredientsArr);
+            this.cardElements.setAttribute('description', recipe.description);
+            // attribute for the filters tags
+            this.cardElements.setAttribute('data-appliance', recipe.appliance);
+            this.cardElements.setAttribute('data-utensils', recipe.utensils);
+            this.cardElements.setAttribute('data-ingredients', this.ingredientsNameArr);
+
+            this.cardContainer.appendChild(this.cardElements);
 
             // Reset ingredients array
             this.ingredientsArr = []
+            this.ingredientsNameArr = []
 
             return {
                 title: recipe.name,
                 ingredients: recipe.ingredients,
                 description: recipe.description,
-                element: cardElements
+                element: this.cardElements
             }
         })
 

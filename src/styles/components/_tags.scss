@@ -17,6 +17,18 @@
 		line-height: 17px;
 		background-color: $grey-background-color;
 
+		&[data-tag-family="ingredients"] {
+			background-color: $ingredients-color;
+		}
+
+		&[data-tag-family="appliance"] {
+			background-color: $appareils-color;
+		}
+
+		&[data-tag-family="utensils"] {
+			background-color: $utensils-color;
+		}
+
 		.remove {
 			width: 20px;
 			height: 20px;

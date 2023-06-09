@@ -13,17 +13,17 @@ class SearchComponent extends HTMLElement {
     }
 
     createIngredientsList(ingredient) {
-        const ingredientsLi = document.createElement('div')
+        this.ingredientsLi = document.createElement('div')
 
         if (ingredient.unit === undefined && ingredient.quantity === undefined) {
-            ingredientsLi.innerHTML = `<li><strong>${ingredient.ingredient}</strong></li>`
+            this.ingredientsLi.innerHTML = `<li><strong>${ingredient.ingredient}</strong></li>`
         } else {
             if (ingredient.unit === undefined) ingredient.unit = ''
             if (ingredient.quantity === undefined) ingredient.quantity = ''
-            ingredientsLi.innerHTML = `<li><strong>${ingredient.ingredient}:</strong> ${ingredient.quantity} ${ingredient.unit}</li>`
+            this.ingredientsLi.innerHTML = `<li><strong>${ingredient.ingredient}:</strong> ${ingredient.quantity} ${ingredient.unit}</li>`
         }
 
-        this.ingredientsArr.push(ingredientsLi.innerHTML)
+        this.ingredientsArr.push(this.ingredientsLi.innerHTML)
     }
 
     init() {
@@ -61,12 +61,12 @@ class SearchComponent extends HTMLElement {
 
         this.searchInput.addEventListener('keyup', (e) => {
             // _***====== SECOND TYPE OF SEARCH ======***_
-            // const filteredRecipes = this.recipesArray.filter(recipe => {
+            // this.filteredRecipes = this.recipesArray.filter(recipe => {
             //  return recipe.title.toLowerCase().includes(e.target.value.toLowerCase()) ||
             //    recipe.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(e.target.value.toLowerCase())) ||
             //    recipe.description.toLowerCase().includes(e.target.value.toLowerCase())
             // })
-            // console.log(filteredRecipes)
+            // console.log(this.filteredRecipes)
 
 
             // Function that will remove diacritics from a string (é => e, à => a, etc.)
@@ -78,18 +78,18 @@ class SearchComponent extends HTMLElement {
             if (e.target.value.length < 3) return this.recipesArray.forEach(recipe => recipe.element.classList.remove('hide'))
 
             // remove diacritics from search value and make it lowercase
-            const searchValue = removeDiacritics(e.target.value.toLowerCase());
+            this.searchValue = removeDiacritics(e.target.value.toLowerCase());
 
             // Loop through recipes array and check if search value is included in title, ingredients or description
             this.recipesArray.forEach((recipe) => {
-                const isTitleVisible = removeDiacritics(recipe.title.toLowerCase()).includes(searchValue);
-                const areIngredientsVisible = recipe.ingredients.some((ingredient) => removeDiacritics(ingredient.ingredient.toLowerCase()).includes(searchValue));
-                const isDescriptionVisible = removeDiacritics(recipe.description.toLowerCase()).includes(searchValue);
+                this.isTitleVisible = removeDiacritics(recipe.title.toLowerCase()).includes(this.searchValue);
+                this.areIngredientsVisible = recipe.ingredients.some((ingredient) => removeDiacritics(ingredient.ingredient.toLowerCase()).includes(this.searchValue));
+                this.isDescriptionVisible = removeDiacritics(recipe.description.toLowerCase()).includes(this.searchValue);
 
-                const isVisible = isTitleVisible || areIngredientsVisible || isDescriptionVisible;
+                this.isVisible = this.isTitleVisible || this.areIngredientsVisible || this.isDescriptionVisible;
 
                 // Toggle hide class depending on if recipe is visible or not
-                recipe.element.classList.toggle('hide', !isVisible);
+                recipe.element.classList.toggle('hide', !this.isVisible);
             });
         });
 

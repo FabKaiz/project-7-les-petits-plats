@@ -19,13 +19,13 @@ class FiltersComponents extends HTMLElement {
         this.$cards = Array.from(document.querySelectorAll('card-component:not(.hide)'));
 
         this.$cards.forEach(card => {
-            const cardFilterTypes = card.dataset[filterName].toLowerCase().split(',');
+            this.cardFilterTypes = card.dataset[filterName].toLowerCase().split(',');
 
-            cardFilterTypes.forEach(filterType => {
-                const isFilterTypePresent = this.filtersArray.includes(filterType);
-                const isTagPresent = this.tags.some(tag => tag.dataset.tagName.toLowerCase() === filterType);
+            this.cardFilterTypes.forEach(filterType => {
+                this.isFilterTypePresent = this.filtersArray.includes(filterType);
+                this.isTagPresent = this.tags.some(tag => tag.dataset.tagName.toLowerCase() === filterType);
 
-                if (!isFilterTypePresent && !isTagPresent) {
+                if (!this.isFilterTypePresent && !this.isTagPresent) {
                     this.filtersArray.push(filterType);
                 }
             });

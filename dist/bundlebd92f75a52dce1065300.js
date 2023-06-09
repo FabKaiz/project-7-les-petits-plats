@@ -1420,22 +1420,43 @@ var CardComponents = /*#__PURE__*/function (_HTMLElement) {
     var _this;
     _classCallCheck(this, CardComponents);
     _this = _super.call(this);
-    _this.attrTitle = _this.getAttribute('header-title');
-    _this.attrTime = _this.getAttribute('recipe-time');
-    _this.attrIngredients = _this.getAttribute('ingredients-array');
-    _this.attrDescription = _this.getAttribute('description');
+    _this._time = _this.time;
+    _this._title = _this.title;
+    _this._ingredients = _this.ingredients;
+    _this._description = _this.description;
+    _this.ingredientsLiArray = [];
     _this.init();
     return _this;
   }
   _createClass(CardComponents, [{
     key: "createCardHTML",
     value: function createCardHTML(headerTitle, recipeTime, ingredients, description) {
-      return "\n      <article class=\"card\">\n        <div class=\"card__image-container\">\n        </div>\n    \n        <div class=\"card__content-container\">\n          <div class=\"card__header\">\n            <h2 class=\"card__header__title\">".concat(this.attrTitle, "</h2>\n    \n            <div class=\"recipe__time\">\n              <img src=\"").concat(_assets_time_svg__WEBPACK_IMPORTED_MODULE_0__, "\" alt=\"cooking time\" class=\"time-logo\">\n              <p>").concat(recipeTime, "</p>\n            </div>\n          </div>\n    \n          <div class=\"card__content\">\n            <div class=\"ingredients__container\">\n              <ul>\n                ").concat(ingredients.replace(/,/g, ''), "\n              </ul>\n              </div>\n    \n              <div class=\"description__container\">\n                <p class=\"line-clamp\">").concat(description, "</p>\n              </div>\n          </div>\n        </div>\n      </article>\n    ");
+      return "\n          <article class=\"card\">\n            <div class=\"card__image-container\">\n            </div>\n        \n            <div class=\"card__content-container\">\n              <div class=\"card__header\">\n                <h2 class=\"card__header__title\">".concat(headerTitle, "</h2>\n        \n                <div class=\"recipe__time\">\n                  <img src=\"").concat(_assets_time_svg__WEBPACK_IMPORTED_MODULE_0__, "\" alt=\"cooking time\" class=\"time-logo\">\n                  <p>").concat(recipeTime, "</p>\n                </div>\n              </div>\n        \n              <div class=\"card__content\">\n                <div class=\"ingredients__container\">\n                  <ul>\n                    ").concat(ingredients.map(function (ingredient) {
+        return ingredient;
+      }).join(''), "\n                  </ul>\n                  </div>\n        \n                  <div class=\"description__container\">\n                    <p class=\"line-clamp\">").concat(description, "</p>\n                  </div>\n              </div>\n            </div>\n          </article>\n        ");
+    }
+  }, {
+    key: "createIngredientsList",
+    value: function createIngredientsList(ingredient) {
+      this.ingredientsLi = document.createElement('li');
+      if (ingredient.unit === undefined && ingredient.quantity === undefined) {
+        this.ingredientsLi.innerHTML = "<li><strong>".concat(ingredient.ingredient, "</strong></li>");
+      } else {
+        if (ingredient.unit === undefined) ingredient.unit = '';
+        if (ingredient.quantity === undefined) ingredient.quantity = '';
+        this.ingredientsLi.innerHTML = "<li><strong>".concat(ingredient.ingredient, ":</strong> ").concat(ingredient.quantity, " ").concat(ingredient.unit, "</li>");
+      }
+      this.ingredientsLiArray.push(this.ingredientsLi.innerHTML);
     }
   }, {
     key: "init",
     value: function init() {
-      this.innerHTML = this.createCardHTML(this.attrTitle, this.attrTime, this.attrIngredients, this.attrDescription);
+      var _this2 = this;
+      // create li element for each ingredient and push it into an array than display it in the card
+      this._ingredients.forEach(function (ingredient) {
+        return _this2.createIngredientsList(ingredient);
+      });
+      this.innerHTML = this.createCardHTML(this._title, this._time, this.ingredientsLiArray, this._description);
     }
   }]);
   return CardComponents;
@@ -1505,6 +1526,8 @@ var FiltersComponents = /*#__PURE__*/function (_HTMLElement) {
       });
       return this.filtersArray;
     }
+
+    // TODO: Search inside the filters
   }, {
     key: "capitalizeFirstLetter",
     value: function capitalizeFirstLetter(string) {
@@ -1623,28 +1646,12 @@ var FiltersComponents = /*#__PURE__*/function (_HTMLElement) {
       return this.filterHTML;
     }
   }, {
-    key: "createEventListeners",
-    value: function createEventListeners() {
-      var _this6 = this;
-      this.filtersContainer = document.querySelector('.filters__container');
-      // Open the filters container
-      this.customSelects = this.filtersContainer.querySelectorAll('.custom__select');
-      this.customSelects.forEach(function (customSelect) {
-        customSelect.addEventListener('click', function () {
-          return _this6.openFilters(customSelect);
-        }, {
-          once: true
-        });
-      });
-    }
-  }, {
     key: "init",
     value: function init() {
-      var _this7 = this;
+      var _this6 = this;
       this.filtersTitle.forEach(function (key) {
-        return _this7.innerHTML += _this7.createFiltersHTML(key);
+        return _this6.innerHTML += _this6.createFiltersHTML(key);
       });
-      this.createEventListeners();
     }
   }]);
   return FiltersComponents;
@@ -1653,9 +1660,9 @@ customElements.get('filters-component') || customElements.define('filters-compon
 
 /***/ }),
 
-/***/ "./src/js/searchComponent.js":
+/***/ "./src/js/recipeComponent.js":
 /*!***********************************!*\
-  !*** ./src/js/searchComponent.js ***!
+  !*** ./src/js/recipeComponent.js ***!
   \***********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -1663,6 +1670,12 @@ customElements.get('filters-component') || customElements.define('filters-compon
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _data_recipes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../data/recipes */ "./src/data/recipes.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
@@ -1679,6 +1692,234 @@ function _isNativeFunction(fn) { return Function.toString.call(fn).indexOf("[nat
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+var RecipeComponent = /*#__PURE__*/function (_HTMLElement) {
+  _inherits(RecipeComponent, _HTMLElement);
+  var _super = _createSuper(RecipeComponent);
+  function RecipeComponent() {
+    var _this;
+    _classCallCheck(this, RecipeComponent);
+    _this = _super.call(this);
+    _this.cardContainer = _this.querySelector('.cards__container');
+    _this.recipesArray = [];
+    _this.init();
+    return _this;
+  }
+  _createClass(RecipeComponent, [{
+    key: "createRecipeCard",
+    value: function createRecipeCard() {
+      var _this2 = this;
+      this.recipesArray = _data_recipes__WEBPACK_IMPORTED_MODULE_0__.recipes.map(function (recipe) {
+        _this2.ingredientsNameArr = recipe.ingredients.map(function (ingredient) {
+          return ingredient.ingredient;
+        });
+
+        // create the card component and set the attributes for each recipe
+        _this2.cardElements = document.createElement('card-component');
+
+        // attribute for the filters tags
+        _this2.cardElements.setAttribute('data-appliance', recipe.appliance);
+        _this2.cardElements.setAttribute('data-utensils', recipe.utensils);
+        _this2.cardElements.setAttribute('data-ingredients', _this2.ingredientsNameArr);
+
+        // attribute for the search
+        _this2.cardElements.title = recipe.name;
+        _this2.cardElements.description = recipe.description;
+        _this2.cardElements.time = recipe.time;
+        _this2.cardElements.ingredients = recipe.ingredients;
+        _this2.cardContainer.appendChild(_this2.cardElements);
+        return {
+          title: recipe.name,
+          ingredients: recipe.ingredients,
+          description: recipe.description,
+          element: _this2.cardElements,
+          appliance: recipe.appliance,
+          utensils: recipe.utensils
+        };
+      });
+    }
+
+    // check 2 arrays if they have the same values (case-insensitive) and return true or false
+  }, {
+    key: "checker",
+    value: function checker(arr, target) {
+      return target.every(function (v) {
+        return arr.includes(v);
+      });
+    }
+  }, {
+    key: "searchTags",
+    value: function searchTags() {
+      var _this3 = this;
+      this.tagsTitleArray = this.tagsArray.map(function (tag) {
+        return _this3.removeDiacritics(tag.tagTitle);
+      });
+      this.recipesArray.forEach(function (recipe) {
+        // if the recipe is hidden, don't check it
+        if (recipe.element.classList.contains('hide')) return;
+
+        // create an array of the recipe appliance, utensils and ingredients to compare it with the tags array
+        _this3.recipeApplianceArr = [_this3.removeDiacritics(recipe.appliance)];
+        _this3.recipeUtensilsArr = recipe.utensils.map(function (utensil) {
+          return _this3.removeDiacritics(utensil);
+        });
+        _this3.ingredientsNameArr = recipe.ingredients.map(function (ingredient) {
+          return _this3.removeDiacritics(ingredient.ingredient);
+        });
+        // put all the arrays in one array
+        _this3.recipeTagsArr = [].concat(_toConsumableArray(_this3.recipeApplianceArr), _toConsumableArray(_this3.recipeUtensilsArr), _toConsumableArray(_this3.ingredientsNameArr));
+
+        // check if the recipe includes all the tags
+        _this3.cardContainTags = _this3.checker(_this3.recipeTagsArr, _this3.tagsTitleArray);
+        recipe.element.classList.toggle('hide', !_this3.cardContainTags);
+      });
+    }
+
+    // Function that will remove diacritics from a string (é => e, à => a, etc.)
+  }, {
+    key: "removeDiacritics",
+    value: function removeDiacritics(str) {
+      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+    }
+  }, {
+    key: "performSearch",
+    value: function performSearch() {
+      var _this4 = this;
+      this.searchInputValue = document.querySelector('search-component input').value;
+
+      // If search input value is < 3, show all recipes
+      if (this.searchInputValue.length < 3 && !this.tagsArray) return this.recipesArray.forEach(function (recipe) {
+        return recipe.element.classList.remove('hide');
+      });
+
+      // remove diacritics from search value and make it lowercase
+      this.searchValue = this.removeDiacritics(this.searchInputValue);
+
+      // Loop through recipes array and check if search value is included in title, ingredients or description
+      this.recipesArray.forEach(function (recipe) {
+        _this4.isTitleVisible = _this4.removeDiacritics(recipe.title).includes(_this4.searchValue);
+        _this4.areIngredientsVisible = recipe.ingredients.some(function (ingredient) {
+          return _this4.removeDiacritics(ingredient.ingredient).includes(_this4.searchValue);
+        });
+        _this4.isDescriptionVisible = _this4.removeDiacritics(recipe.description).includes(_this4.searchValue);
+        _this4.isVisible = _this4.isTitleVisible || _this4.areIngredientsVisible || _this4.isDescriptionVisible;
+
+        // Toggle hide class depending on if recipe is visible or not
+        recipe.element.classList.toggle('hide', !_this4.isVisible);
+      });
+      if (this.tagsArray) this.searchTags();
+
+      // TODO: If no recipe is visible, show "no recipe found" message
+    }
+  }, {
+    key: "createEventListeners",
+    value: function createEventListeners() {
+      var _this5 = this;
+      setTimeout(function () {
+        _this5.searchInput = document.querySelector('#search');
+        _this5.tagsContainer = document.querySelector('.tags__container');
+        _this5.searchInput.addEventListener('keyup', function (e) {
+          // _***====== SECOND TYPE OF SEARCH ======***_
+          // this.filteredRecipes = this.recipesArray.filter(recipe => {
+          //  return recipe.title.toLowerCase().includes(this.searchInputValue.toLowerCase()) ||
+          //    recipe.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(this.searchInputValue.toLowerCase())) ||
+          //    recipe.description.toLowerCase().includes(this.searchInputValue.toLowerCase())
+          // })
+          // console.log(this.filteredRecipes)
+          _this5.performSearch();
+        });
+        _this5.mutationObserver = new MutationObserver(function (entries) {
+          _this5.tagsArray = Array.from(_this5.tagsContainer.children);
+          // if a tag is added or removed, perform search to show/hide recipes
+          _this5.performSearch();
+
+          // if tag is added, pass it to the tagsEventListeners function to add event listeners to it
+          if (entries[0].addedNodes.length > 0) {
+            _this5.tagsEventListeners(entries[0].addedNodes[0]);
+          }
+        });
+
+        // Observe the tags container for changes
+        _this5.mutationObserver.observe(_this5.tagsContainer, {
+          childList: true
+        });
+        _this5.filtersEventListeners();
+      });
+    }
+  }, {
+    key: "createSearch",
+    value: function createSearch() {
+      this.searchContainer = document.querySelector('.search__container');
+      this.searchComponent = document.createElement('search-component');
+      this.searchContainer.appendChild(this.searchComponent);
+    }
+  }, {
+    key: "createFilters",
+    value: function createFilters() {
+      this.filtersContainer = document.querySelector('.filters__container');
+      this.filtersComponent = document.createElement('filters-component');
+      this.filtersContainer.appendChild(this.filtersComponent);
+    }
+  }, {
+    key: "filtersEventListeners",
+    value: function filtersEventListeners() {
+      var _this6 = this;
+      this.customSelects = document.querySelectorAll('.custom__select');
+
+      // Open the filters container
+      this.customSelects.forEach(function (customSelect) {
+        customSelect.addEventListener('click', function () {
+          return _this6.filtersComponent.openFilters(customSelect);
+        }, {
+          once: true
+        });
+      });
+    }
+  }, {
+    key: "tagsEventListeners",
+    value: function tagsEventListeners(tag) {
+      var _this7 = this;
+      this.tagsRemoveBtn = tag.querySelector('.remove');
+      this.tagsRemoveBtn.addEventListener('click', function () {
+        _this7.tagsContainer.removeChild(tag);
+      });
+    }
+  }, {
+    key: "init",
+    value: function init() {
+      this.createSearch();
+      this.createFilters();
+      this.createRecipeCard();
+      this.createEventListeners();
+    }
+  }]);
+  return RecipeComponent;
+}( /*#__PURE__*/_wrapNativeSuper(HTMLElement));
+customElements.get('recipe-component') || customElements.define('recipe-component', RecipeComponent);
+
+/***/ }),
+
+/***/ "./src/js/searchComponent.js":
+/*!***********************************!*\
+  !*** ./src/js/searchComponent.js ***!
+  \***********************************/
+/***/ (() => {
+
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct.bind(); } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeFunction(fn) { return Function.toString.call(fn).indexOf("[native code]") !== -1; }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 var SearchComponent = /*#__PURE__*/function (_HTMLElement) {
   _inherits(SearchComponent, _HTMLElement);
   var _super = _createSuper(SearchComponent);
@@ -1686,93 +1927,18 @@ var SearchComponent = /*#__PURE__*/function (_HTMLElement) {
     var _this;
     _classCallCheck(this, SearchComponent);
     _this = _super.call(this);
-    _this.searchInput = _this.querySelector('input#search');
-    _this.cardContainer = document.querySelector('.cards__container');
-    _this.ingredientsArr = [];
-    _this.recipesArray = [];
-    _this.ingredientsNameArr = [];
     _this.init();
     return _this;
   }
   _createClass(SearchComponent, [{
-    key: "createIngredientsList",
-    value: function createIngredientsList(ingredient) {
-      this.ingredientsLi = document.createElement('div');
-      if (ingredient.unit === undefined && ingredient.quantity === undefined) {
-        this.ingredientsLi.innerHTML = "<li><strong>".concat(ingredient.ingredient, "</strong></li>");
-      } else {
-        if (ingredient.unit === undefined) ingredient.unit = '';
-        if (ingredient.quantity === undefined) ingredient.quantity = '';
-        this.ingredientsLi.innerHTML = "<li><strong>".concat(ingredient.ingredient, ":</strong> ").concat(ingredient.quantity, " ").concat(ingredient.unit, "</li>");
-      }
-      this.ingredientsArr.push(this.ingredientsLi.innerHTML);
+    key: "createSearchHTML",
+    value: function createSearchHTML() {
+      return "\n            <section class=\"search__container\">\n                <label for=\"search\" class=\"hidden\">Rechercher</label>\n                <input type=\"search\" id=\"search\" placeholder=\"Rechercher une recette\">\n                <button class=\"search__button\"></button>\n            </section>\n        ";
     }
   }, {
     key: "init",
     value: function init() {
-      var _this2 = this;
-      this.recipesArray = _data_recipes__WEBPACK_IMPORTED_MODULE_0__.recipes.map(function (recipe) {
-        // Create li element for each ingredient
-        recipe.ingredients.forEach(function (ingredient) {
-          _this2.createIngredientsList(ingredient);
-          _this2.ingredientsNameArr.push(ingredient.ingredient);
-        });
-        _this2.cardElements = document.createElement('card-component');
-        _this2.cardElements.setAttribute('header-title', recipe.name);
-        _this2.cardElements.setAttribute('recipe-time', recipe.time);
-        _this2.cardElements.setAttribute('ingredients-array', _this2.ingredientsArr);
-        _this2.cardElements.setAttribute('description', recipe.description);
-        // attribute for the filters tags
-        _this2.cardElements.setAttribute('data-appliance', recipe.appliance);
-        _this2.cardElements.setAttribute('data-utensils', recipe.utensils);
-        _this2.cardElements.setAttribute('data-ingredients', _this2.ingredientsNameArr);
-        _this2.cardContainer.appendChild(_this2.cardElements);
-
-        // Reset ingredients array
-        _this2.ingredientsArr = [];
-        _this2.ingredientsNameArr = [];
-        return {
-          title: recipe.name,
-          ingredients: recipe.ingredients,
-          description: recipe.description,
-          element: _this2.cardElements
-        };
-      });
-      this.searchInput.addEventListener('keyup', function (e) {
-        // _***====== SECOND TYPE OF SEARCH ======***_
-        // this.filteredRecipes = this.recipesArray.filter(recipe => {
-        //  return recipe.title.toLowerCase().includes(e.target.value.toLowerCase()) ||
-        //    recipe.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(e.target.value.toLowerCase())) ||
-        //    recipe.description.toLowerCase().includes(e.target.value.toLowerCase())
-        // })
-        // console.log(this.filteredRecipes)
-
-        // Function that will remove diacritics from a string (é => e, à => a, etc.)
-        var removeDiacritics = function removeDiacritics(str) {
-          return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-        };
-
-        // If search input is < 3, show all recipes
-        if (e.target.value.length < 3) return _this2.recipesArray.forEach(function (recipe) {
-          return recipe.element.classList.remove('hide');
-        });
-
-        // remove diacritics from search value and make it lowercase
-        _this2.searchValue = removeDiacritics(e.target.value.toLowerCase());
-
-        // Loop through recipes array and check if search value is included in title, ingredients or description
-        _this2.recipesArray.forEach(function (recipe) {
-          _this2.isTitleVisible = removeDiacritics(recipe.title.toLowerCase()).includes(_this2.searchValue);
-          _this2.areIngredientsVisible = recipe.ingredients.some(function (ingredient) {
-            return removeDiacritics(ingredient.ingredient.toLowerCase()).includes(_this2.searchValue);
-          });
-          _this2.isDescriptionVisible = removeDiacritics(recipe.description.toLowerCase()).includes(_this2.searchValue);
-          _this2.isVisible = _this2.isTitleVisible || _this2.areIngredientsVisible || _this2.isDescriptionVisible;
-
-          // Toggle hide class depending on if recipe is visible or not
-          recipe.element.classList.toggle('hide', !_this2.isVisible);
-        });
-      });
+      this.innerHTML = this.createSearchHTML();
     }
   }]);
   return SearchComponent;
@@ -1813,95 +1979,9 @@ var TagComponent = /*#__PURE__*/function (_HTMLElement) {
   _createClass(TagComponent, [{
     key: "connectedCallback",
     value: function connectedCallback() {
-      var _this = this;
       this.tagFamily = this.getAttribute('tag-family');
       this.tagTitle = this.getAttribute('tag-title');
-      if (this.checkTag(this.tagTitle, this.tagFamily)) return;
       this.innerHTML = this.createTagHTML(this.tagTitle, this.tagFamily);
-      this.filterCards(this.tagFamily);
-
-      // add the event listener to the remove button
-      this.querySelector('.remove').addEventListener('click', function () {
-        return _this.removeTag(_this.tagTitle, _this.tagFamily);
-      });
-    }
-
-    // Check if the tag is already in the list
-  }, {
-    key: "checkTag",
-    value: function checkTag(tagName, tagFamily) {
-      this.tag = document.querySelector(".tag[data-tag-name=\"".concat(tagName, "\"][data-tag-family=\"").concat(tagFamily, "\"]"));
-      if (this.tag) return true;
-    }
-
-    // Filter the cards with the tags
-  }, {
-    key: "filterCards",
-    value: function filterCards(tagFamily) {
-      var _this2 = this;
-      this.cards = document.querySelectorAll('card-component:not(.hide)');
-      this.cards.forEach(function (card) {
-        if (!card.dataset[tagFamily].toLowerCase().split(',').includes(_this2.tagTitle.toLowerCase())) {
-          card.classList.add('hide');
-        }
-      });
-    }
-
-    // Remove tag from the list
-  }, {
-    key: "removeTag",
-    value: function removeTag(tagName, tagFamily) {
-      this.tag = document.querySelector(".tag[data-tag-name=\"".concat(tagName, "\"][data-tag-family=\"").concat(tagFamily, "\"]"));
-      this.tag.parentElement.remove();
-      this.showCardsWithoutThisTag();
-    }
-
-    // when the tag is removed, show the cards without the tag but not the cards with other tags
-  }, {
-    key: "showCardsWithoutThisTag",
-    value: function showCardsWithoutThisTag() {
-      var _this3 = this;
-      // get all the hided cards
-      this.cards = document.querySelectorAll('card-component.hide');
-      // get all active tags name
-      this.activeTags = document.querySelectorAll('.tag');
-      this.currentActiveTags = [];
-      this.activeTags.forEach(function (tag) {
-        return _this3.currentActiveTags.push(tag);
-      });
-
-      // if there are no active tags, show all the cards
-      if (this.currentActiveTags.length === 0) return this.cards.forEach(function (card) {
-        return card.classList.remove('hide');
-      });
-
-      // get all tags family and name from the current active tags
-      this.currentActiveTagsFamily = [];
-      this.currentActiveTagsName = [];
-      this.currentActiveTags.forEach(function (tag) {
-        return _this3.currentActiveTagsFamily.push(tag.dataset.tagFamily);
-      });
-      this.currentActiveTags.forEach(function (tag) {
-        return _this3.currentActiveTagsName.push(tag.dataset.tagName);
-      });
-
-      // get all the cards with the current active tags
-      this.cardsWithCurrentActiveTags = [];
-      this.currentActiveTagsFamily.forEach(function (tagFamily) {
-        _this3.cards.forEach(function (card) {
-          // check if the card has every current active tags
-          if (card.dataset[tagFamily].toLowerCase().split(',').every(function (tag) {
-            return _this3.currentActiveTagsName.includes(tag.toLowerCase());
-          })) {
-            _this3.cardsWithCurrentActiveTags.push(card);
-          }
-        });
-      });
-
-      // show the cards with the current active tags
-      this.cardsWithCurrentActiveTags.forEach(function (card) {
-        return card.classList.remove('hide');
-      });
     }
   }, {
     key: "createTagHTML",
@@ -1947,7 +2027,7 @@ var ___CSS_LOADER_URL_REPLACEMENT_1___ = _node_modules_css_loader_dist_runtime_g
 var ___CSS_LOADER_URL_REPLACEMENT_2___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_2___);
 var ___CSS_LOADER_URL_REPLACEMENT_3___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_3___);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "@charset \"UTF-8\";\n*,\nhtml,\nbody {\n  padding: 0;\n  margin: 0;\n  box-sizing: border-box;\n  font-family: \"Lato\", sans-serif; }\n\nhtml {\n  scroll-behavior: smooth; }\n\nbody {\n  min-height: 100vh;\n  display: flex;\n  flex-direction: column; }\n\na {\n  text-decoration: none;\n  color: inherit; }\n\nul,\nli {\n  list-style: none; }\n\nh1, .h1-style {\n  font-family: \"DM Sans\", sans-serif;\n  color: #D04F4F; }\n\nmain {\n  max-width: 1240px;\n  margin: 0 auto;\n  width: 100%; }\n\n/* clears the ‘X’ from Internet Explorer */\ninput[type=search]::-ms-clear {\n  display: none;\n  width: 0;\n  height: 0; }\n\ninput[type=search]::-ms-reveal {\n  display: none;\n  width: 0;\n  height: 0; }\n\n/* clears the ‘X’ from Chrome */\ninput[type=\"search\"]::-webkit-search-decoration,\ninput[type=\"search\"]::-webkit-search-cancel-button,\ninput[type=\"search\"]::-webkit-search-results-button,\ninput[type=\"search\"]::-webkit-search-results-decoration {\n  display: none; }\n\n.hidden {\n  position: absolute !important;\n  width: 1px !important;\n  height: 1px !important;\n  padding: 0 !important;\n  margin: -1px !important;\n  overflow: hidden !important;\n  clip: rect(0, 0, 0, 0) !important;\n  white-space: nowrap !important;\n  border: 0 !important; }\n\n.hide {\n  display: none; }\n\nsection {\n  padding: 0 24px; }\n  @media only screen and (min-width: 1288px) {\n    section {\n      padding: 0; } }\n\n.line-clamp {\n  display: -webkit-box;\n  -webkit-line-clamp: 6;\n  overflow: hidden;\n  -webkit-box-orient: vertical; }\n\n.filters__container filters-component {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 20px; }\n  .filters__container filters-component .custom__select {\n    display: flex;\n    flex-direction: column;\n    padding: 23px 10px 23px 19px;\n    border-radius: 5px;\n    cursor: pointer;\n    min-width: 170px;\n    position: relative;\n    transition: all 0.2s ease-out;\n    width: 0; }\n    .filters__container filters-component .custom__select:hover {\n      filter: brightness(1.08);\n      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); }\n    .filters__container filters-component .custom__select.open {\n      width: 62%; }\n      .filters__container filters-component .custom__select.open .custom__select-arrow {\n        transform: rotate(180deg); }\n      .filters__container filters-component .custom__select.open .filters__container__content {\n        width: 100%;\n        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25); }\n      .filters__container filters-component .custom__select.open:hover {\n        filter: none; }\n    .filters__container filters-component .custom__select[data-value=\"ingredients\"] {\n      background-color: #3282F7; }\n      .filters__container filters-component .custom__select[data-value=\"ingredients\"] .filters__container__content {\n        background-color: #3282F7; }\n    .filters__container filters-component .custom__select[data-value=\"appliance\"] {\n      background-color: #68D9A4; }\n      .filters__container filters-component .custom__select[data-value=\"appliance\"] .filters__container__content {\n        background-color: #68D9A4; }\n    .filters__container filters-component .custom__select[data-value=\"utensils\"] {\n      background-color: #ED6454; }\n      .filters__container filters-component .custom__select[data-value=\"utensils\"] .filters__container__content {\n        background-color: #ED6454; }\n    .filters__container filters-component .custom__select .input__container {\n      display: flex;\n      flex-direction: row;\n      justify-content: space-between;\n      align-items: center;\n      position: relative;\n      gap: 10px; }\n    .filters__container filters-component .custom__select input {\n      cursor: pointer;\n      border: none;\n      background: inherit;\n      font-weight: 700;\n      font-size: 18px;\n      line-height: 22px;\n      text-transform: capitalize;\n      color: #FFFFFF;\n      outline: none; }\n      .filters__container filters-component .custom__select input::placeholder {\n        text-transform: none;\n        font-weight: 700;\n        font-size: 18px;\n        line-height: 22px;\n        color: #FFFFFF;\n        opacity: 0.5; }\n    .filters__container filters-component .custom__select .custom__select-arrow {\n      background: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ") no-repeat center;\n      width: 20px;\n      height: 20px;\n      transition: transform .3s ease-in-out; }\n    .filters__container filters-component .custom__select .filters__container__content {\n      position: absolute;\n      padding: 10px 5px 10px 19px;\n      border-radius: 5px;\n      top: 92%;\n      left: 0; }\n    .filters__container filters-component .custom__select .filters__container__content__list ul {\n      display: grid;\n      grid-template-columns: repeat(3, 1fr);\n      grid-gap: 10px;\n      margin: 0;\n      list-style: none;\n      max-height: 350px;\n      overflow-y: auto; }\n      .filters__container filters-component .custom__select .filters__container__content__list ul::-webkit-scrollbar {\n        width: 5px; }\n      .filters__container filters-component .custom__select .filters__container__content__list ul::-webkit-scrollbar-track {\n        border-radius: 5px;\n        background: #f1f1f1; }\n      .filters__container filters-component .custom__select .filters__container__content__list ul::-webkit-scrollbar-thumb {\n        border-radius: 5px;\n        background: #888; }\n      .filters__container filters-component .custom__select .filters__container__content__list ul::-webkit-scrollbar-thumb:hover {\n        background: #555; }\n      .filters__container filters-component .custom__select .filters__container__content__list ul li p {\n        font-weight: 400;\n        font-size: 18px;\n        line-height: 22px;\n        color: #FFFFFF;\n        position: relative;\n        display: inline;\n        margin-bottom: 1px;\n        background-image: linear-gradient(currentColor, currentColor);\n        background-position: 0 99%;\n        background-repeat: no-repeat;\n        background-size: 0 1px;\n        transition: background-size 0.3s; }\n        .filters__container filters-component .custom__select .filters__container__content__list ul li p:hover {\n          background-size: 100% 1px; }\n\n.cards__container {\n  display: flex;\n  flex-wrap: wrap;\n  margin: 25px auto;\n  gap: 25px; }\n  @media only screen and (min-width: 1024px) {\n    .cards__container {\n      gap: 50px; } }\n\ncard-component {\n  background: #E7E7E7;\n  border-radius: 5px;\n  min-width: 350px;\n  width: 100%; }\n  @media only screen and (min-width: 1024px) {\n    card-component {\n      width: calc((100% / 3) - 34px); } }\n  card-component .card__image-container {\n    background: #C7BEBE;\n    height: 178px;\n    border-radius: 5px 5px 0 0; }\n  card-component .card__content-container {\n    border-radius: 5px;\n    padding: 20px; }\n    card-component .card__content-container .card__header {\n      display: flex;\n      flex-direction: row;\n      justify-content: space-between;\n      align-items: center;\n      margin-bottom: 20px; }\n      card-component .card__content-container .card__header .card__header__title {\n        font-style: normal;\n        font-weight: 400;\n        font-size: 18px;\n        line-height: 22px; }\n      card-component .card__content-container .card__header .recipe__time {\n        display: flex;\n        flex-direction: row;\n        justify-content: space-between;\n        align-items: center;\n        gap: 5px;\n        font-weight: 700;\n        font-size: 18px;\n        line-height: 22px; }\n  card-component .card__content {\n    display: flex;\n    gap: 10px; }\n    card-component .card__content .ingredients__container {\n      width: 50%; }\n      card-component .card__content .ingredients__container li {\n        font-weight: 400;\n        font-size: 12px;\n        line-height: 14px;\n        color: #000000; }\n    card-component .card__content .description__container {\n      width: 50%;\n      font-family: \"Roboto\", sans-serif;\n      font-weight: 400;\n      font-size: 12px;\n      line-height: 100%;\n      color: #000000; }\n\nsearch-component .search__container {\n  margin-bottom: 25px;\n  width: 100%;\n  position: relative;\n  /*\t&:after {\r\n\t\tcontent: '';\r\n\t\tposition: absolute;\r\n\t\ttop: 50%;\r\n\t\tright: 37px;\r\n\t\ttransform: translateY(-50%);\r\n\t\twidth: 26px;\r\n\t\theight: 26px;\r\n\t\tbackground-image: url('../assets/search.svg');\r\n\t\tbackground-repeat: no-repeat;\r\n\t\tbackground-position: center;\r\n\t\tbackground-size: cover;\r\n\t\ttransition: all 0.3s ease-in-out;\r\n\t}*/ }\n  search-component .search__container .search__button {\n    content: '';\n    position: absolute;\n    top: 50%;\n    right: 37px;\n    transform: translateY(-50%);\n    width: 26px;\n    height: 26px;\n    background-color: transparent;\n    background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_1___ + ");\n    background-repeat: no-repeat;\n    background-position: center;\n    background-size: cover;\n    border: none;\n    cursor: pointer;\n    transition: all 0.3s ease-in-out; }\n  search-component .search__container input[type=\"search\"] {\n    width: 100%;\n    height: 69px;\n    padding: 24px;\n    border-radius: 5px;\n    border: none;\n    font-weight: 400;\n    font-size: 18px;\n    line-height: 22px;\n    color: #000000;\n    background-color: #E7E7E7;\n    transition: all 0.3s ease-in-out; }\n    search-component .search__container input[type=\"search\"]:focus {\n      outline: none;\n      box-shadow: 0 0 10px rgba(0, 0, 0, 0.25); }\n      search-component .search__container input[type=\"search\"]:focus + .search__button {\n        transform: translateY(-50%) rotate(360deg); }\n      search-component .search__container input[type=\"search\"]:focus::placeholder {\n        color: transparent; }\n\n.tags__container {\n  display: flex;\n  flex-wrap: wrap;\n  margin-bottom: 15px;\n  min-height: 40px;\n  gap: 10px; }\n  .tags__container .tag {\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n    align-items: center;\n    border-radius: 5px;\n    padding: 10px 20px;\n    gap: 13px;\n    color: #FFFFFF;\n    font-weight: 700;\n    font-size: 14px;\n    line-height: 17px;\n    background-color: #E7E7E7; }\n    .tags__container .tag[data-tag-family=\"ingredients\"] {\n      background-color: #3282F7; }\n    .tags__container .tag[data-tag-family=\"appliance\"] {\n      background-color: #68D9A4; }\n    .tags__container .tag[data-tag-family=\"utensils\"] {\n      background-color: #ED6454; }\n    .tags__container .tag .remove {\n      width: 20px;\n      height: 20px;\n      border: none;\n      cursor: pointer;\n      background: url(" + ___CSS_LOADER_URL_REPLACEMENT_2___ + ") no-repeat center;\n      transition: all 0.2s ease-out; }\n      .tags__container .tag .remove:hover {\n        transform: scale(1.1);\n        background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_3___ + "); }\n    .tags__container .tag:not(:last-child) {\n      margin-right: 0.5rem; }\n    .tags__container .tag:hover {\n      filter: brightness(1.06); }\n\nheader {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  margin: 42px 0 17px; }\n", "",{"version":3,"sources":["webpack://./src/styles/main.scss","webpack://./src/styles/global/_base.scss","webpack://./src/styles/global/_fonts.scss","webpack://./src/styles/global/_colors.scss","webpack://./src/styles/global/_mixins.scss","webpack://./src/styles/components/_filters.scss","webpack://./src/styles/components/_cards.scss","webpack://./src/styles/components/_search.scss","webpack://./src/styles/components/_tags.scss","webpack://./src/styles/layouts/_header.scss"],"names":[],"mappings":"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","sourcesContent":["@import './global/base';\r\n\r\n@import './components/filters';\r\n@import './components/cards';\r\n@import './components/search';\r\n@import './components/tags';\r\n\r\n@import './layouts/header';\r\n","@import './fonts';\r\n@import \"../global/helpers\";\r\n\r\n$max-content-width: 1240px;\r\n\r\n*,\r\nhtml,\r\nbody {\r\n\tpadding: 0;\r\n\tmargin: 0;\r\n\tbox-sizing: border-box;\r\n\tfont-family: $font-base;\r\n}\r\n\r\nhtml {\r\n\tscroll-behavior: smooth;\r\n}\r\n\r\nbody {\r\n\tmin-height: 100vh;\r\n\tdisplay: flex;\r\n\tflex-direction: column;\r\n}\r\n\r\na {\r\n\ttext-decoration: none;\r\n\tcolor: inherit;\r\n}\r\n\r\nul,\r\nli {\r\n\tlist-style: none;\r\n}\r\n\r\nh1, .h1-style {\r\n\tfont-family: $font-title;\r\n\tcolor: $title-color;\r\n}\r\n\r\nmain {\r\n\tmax-width: $max-content-width;\r\n\tmargin: 0 auto;\r\n\twidth: 100%;\r\n}\r\n\r\n/* clears the ‘X’ from Internet Explorer */\r\ninput[type=search]::-ms-clear { display: none; width : 0; height: 0; }\r\ninput[type=search]::-ms-reveal { display: none; width : 0; height: 0; }\r\n/* clears the ‘X’ from Chrome */\r\ninput[type=\"search\"]::-webkit-search-decoration,\r\ninput[type=\"search\"]::-webkit-search-cancel-button,\r\ninput[type=\"search\"]::-webkit-search-results-button,\r\ninput[type=\"search\"]::-webkit-search-results-decoration { display: none; }\r\n\r\n.hidden {\r\n\tposition: absolute !important;\r\n\twidth: 1px !important;\r\n\theight: 1px !important;\r\n\tpadding: 0 !important;\r\n\tmargin: -1px !important;\r\n\toverflow: hidden !important;\r\n\tclip: rect(0, 0, 0, 0) !important;\r\n\twhite-space: nowrap !important;\r\n\tborder: 0 !important;\r\n}\r\n\r\n.hide {\r\n\tdisplay: none;\r\n}\r\n\r\nsection {\r\n\tpadding: 0 24px;\r\n\r\n\t@include media(max-content-width) {\r\n\t\tpadding: 0;\r\n\t}\r\n}\r\n\r\n.line-clamp {\r\n\tdisplay: -webkit-box;\r\n\t-webkit-line-clamp: 6;\r\n\toverflow: hidden;\r\n\t-webkit-box-orient: vertical;\r\n}","@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&family=Lato:wght@400;700&family=Roboto&display=swap');\r\n\r\n$font-base: 'Lato', sans-serif;\r\n$font-title: 'DM Sans', sans-serif;\r\n$font-description: 'Roboto', sans-serif;\r\n","// header\r\n$title-color: #D04F4F;\r\n\r\n// search\r\n$ingredients-color: #3282F7;\r\n$appareils-color: #68D9A4;\r\n$utensils-color: #ED6454;\r\n\r\n// cards\r\n$card-img-background-color: #C7BEBE;\r\n\r\n// all\r\n$grey-background-color: #E7E7E7;\r\n$black: #000000;\r\n$white: #FFFFFF;\r\n","// flex\r\n@mixin flex($direction, $justify, $align) {\r\n\tdisplay: flex;\r\n\tflex-direction: $direction;\r\n\tjustify-content: $justify;\r\n\talign-items: $align;\r\n}\r\n\r\n// media queries\r\n@mixin media($breakpoint) {\r\n\t@if $breakpoint == phone {\r\n\t\t@media only screen and (max-width: 767px) {\r\n\t\t\t@content;\r\n\t\t}\r\n\t}\r\n\t@if $breakpoint == tablet {\r\n\t\t@media only screen and (min-width: 768px) and (max-width: 1023px) {\r\n\t\t\t@content;\r\n\t\t}\r\n\t}\r\n\t@if $breakpoint == desktop {\r\n\t\t@media only screen and (min-width: 1024px) {\r\n\t\t\t@content;\r\n\t\t}\r\n\t}\r\n\t@if $breakpoint == max-content-width {\r\n\t\t@media only screen and (min-width: $max-content-width + 48px) {\r\n\t\t\t@content;\r\n\t\t}\r\n\t}\r\n}","@import '../global/helpers';\r\n\r\n\r\n.filters__container filters-component {\r\n  @include flex(row, flex-start, center);\r\n  gap: 20px;\r\n\r\n  .custom__select {\r\n    display: flex;\r\n    flex-direction: column;\r\n    padding: 23px 10px 23px 19px;\r\n    border-radius: 5px;\r\n    cursor: pointer;\r\n    min-width: 170px;\r\n    position: relative;\r\n    transition: all 0.2s ease-out;\r\n    width: 0;\r\n\r\n    &:hover {\r\n      filter: brightness(1.08);\r\n      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\r\n    }\r\n\r\n    &.open {\r\n      width: 62%;\r\n\r\n      .custom__select-arrow {\r\n        transform: rotate(180deg);\r\n      }\r\n\r\n      .filters__container__content {\r\n        width: 100%;\r\n        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);\r\n\r\n      }\r\n\r\n      &:hover {\r\n        filter: none;\r\n      }\r\n    }\r\n\r\n    &[data-value=\"ingredients\"] {\r\n      background-color: $ingredients-color;\r\n\r\n      .filters__container__content {\r\n        background-color: $ingredients-color;\r\n      }\r\n    }\r\n\r\n    &[data-value=\"appliance\"] {\r\n      background-color: $appareils-color;\r\n\r\n      .filters__container__content {\r\n        background-color: $appareils-color;\r\n      }\r\n    }\r\n\r\n    &[data-value=\"utensils\"] {\r\n      background-color: $utensils-color;\r\n\r\n      .filters__container__content {\r\n        background-color: $utensils-color;\r\n      }\r\n    }\r\n\r\n    .input__container {\r\n      @include flex(row, space-between, center);\r\n      position: relative;\r\n      gap: 10px;\r\n    }\r\n\r\n    input {\r\n      cursor: pointer;\r\n      border: none;\r\n      background: inherit;\r\n      font-weight: 700;\r\n      font-size: 18px;\r\n      line-height: 22px;\r\n      text-transform: capitalize;\r\n      color: $white;\r\n      outline: none;\r\n\r\n      &::placeholder {\r\n        text-transform: none;\r\n        font-weight: 700;\r\n        font-size: 18px;\r\n        line-height: 22px;\r\n        color: #FFFFFF;\r\n        opacity: 0.5;\r\n      }\r\n    }\r\n\r\n    .custom__select-arrow {\r\n      background: url(../assets/arrow-d.svg) no-repeat center;\r\n      width: 20px;\r\n      height: 20px;\r\n      transition: transform .3s ease-in-out;\r\n    }\r\n\r\n    .filters__container__content {\r\n      position: absolute;\r\n      padding: 10px 5px 10px 19px;\r\n      border-radius: 5px;\r\n      top: 92%;\r\n      left: 0;\r\n    }\r\n\r\n    .filters__container__content__list {\r\n      ul {\r\n        display: grid;\r\n        grid-template-columns: repeat(3, 1fr);\r\n        grid-gap: 10px;\r\n        margin: 0;\r\n        list-style: none;\r\n        max-height: 350px;\r\n        overflow-y: auto;\r\n\r\n        &::-webkit-scrollbar {\r\n          width: 5px;\r\n        }\r\n\r\n        &::-webkit-scrollbar-track {\r\n          border-radius: 5px;\r\n          background: #f1f1f1;\r\n        }\r\n\r\n        &::-webkit-scrollbar-thumb {\r\n          border-radius: 5px;\r\n          background: #888;\r\n        }\r\n\r\n        &::-webkit-scrollbar-thumb:hover {\r\n          background: #555;\r\n        }\r\n\r\n        li p {\r\n          font-weight: 400;\r\n          font-size: 18px;\r\n          line-height: 22px;\r\n          color: #FFFFFF;\r\n          position: relative;\r\n          display: inline;\r\n          margin-bottom: 1px;\r\n\r\n          background-image: linear-gradient(currentColor, currentColor);\r\n          background-position: 0 99%;\r\n          background-repeat: no-repeat;\r\n          background-size: 0 1px;\r\n          transition: background-size 0.3s;\r\n\r\n          &:hover {\r\n            background-size: 100% 1px;\r\n          }\r\n        }\r\n      }\r\n    }\r\n  }\r\n\r\n}","@import '../global/helpers';\r\n\r\n.cards__container {\r\n\tdisplay: flex;\r\n\tflex-wrap: wrap;\r\n\tmargin: 25px auto;\r\n\tgap: 25px;\r\n\r\n\t@include media(desktop) {\r\n\t\tgap: 50px;\r\n\t}\r\n}\r\n\r\ncard-component {\r\n\tbackground: $grey-background-color;\r\n\tborder-radius: 5px;\r\n\tmin-width: 350px;\r\n\twidth: 100%;\r\n\r\n\t@include media(desktop) {\r\n\t\twidth: calc((100% / 3) - 34px);\r\n\t}\r\n\r\n\t.card__image-container {\r\n\t\tbackground: $card-img-background-color;\r\n\t\theight: 178px;\r\n\t\tborder-radius: 5px 5px 0 0;\r\n\t}\r\n\r\n\t.card__content-container {\r\n\t\tborder-radius: 5px;\r\n\t\tpadding: 20px;\r\n\r\n\t\t.card__header {\r\n\t\t\t@include flex(row, space-between, center);\r\n\t\t\tmargin-bottom: 20px;\r\n\r\n\t\t\t.card__header__title {\r\n\t\t\t\tfont-style: normal;\r\n\t\t\t\tfont-weight: 400;\r\n\t\t\t\tfont-size: 18px;\r\n\t\t\t\tline-height: 22px;\r\n\t\t\t}\r\n\r\n\t\t\t.recipe__time {\r\n\t\t\t\t@include flex(row, space-between, center);\r\n\t\t\t\tgap: 5px;\r\n\t\t\t\tfont-weight: 700;\r\n\t\t\t\tfont-size: 18px;\r\n\t\t\t\tline-height: 22px;\r\n\t\t\t}\r\n\t\t}\r\n\t}\r\n\r\n\t.card__content {\r\n\t\tdisplay: flex;\r\n\t\tgap: 10px;\r\n\r\n\t\t.ingredients__container {\r\n\t\t\twidth: 50%;\r\n\r\n\t\t\tli {\r\n\t\t\t\tfont-weight: 400;\r\n\t\t\t\tfont-size: 12px;\r\n\t\t\t\tline-height: 14px;\r\n\t\t\t\tcolor: #000000;\r\n\t\t\t}\r\n\t\t}\r\n\r\n\t\t.description__container {\r\n\t\t\twidth: 50%;\r\n\t\t\tfont-family: $font-description;\r\n\t\t\tfont-weight: 400;\r\n\t\t\tfont-size: 12px;\r\n\t\t\tline-height: 100%;\r\n\t\t\tcolor: #000000;\r\n\t\t}\r\n\t}\r\n}\r\n\r\n","@import '../global/_helpers';\r\n\r\nsearch-component .search__container {\r\n\tmargin-bottom: 25px;\r\n\twidth: 100%;\r\n\tposition: relative;\r\n\r\n/*\t&:after {\r\n\t\tcontent: '';\r\n\t\tposition: absolute;\r\n\t\ttop: 50%;\r\n\t\tright: 37px;\r\n\t\ttransform: translateY(-50%);\r\n\t\twidth: 26px;\r\n\t\theight: 26px;\r\n\t\tbackground-image: url('../assets/search.svg');\r\n\t\tbackground-repeat: no-repeat;\r\n\t\tbackground-position: center;\r\n\t\tbackground-size: cover;\r\n\t\ttransition: all 0.3s ease-in-out;\r\n\t}*/\r\n\r\n\t.search__button {\r\n\t\tcontent: '';\r\n\t\tposition: absolute;\r\n\t\ttop: 50%;\r\n\t\tright: 37px;\r\n\t\ttransform: translateY(-50%);\r\n\t\twidth: 26px;\r\n\t\theight: 26px;\r\n\t\tbackground-color: transparent;\r\n\t\tbackground-image: url('../assets/search.svg');\r\n\t\tbackground-repeat: no-repeat;\r\n\t\tbackground-position: center;\r\n\t\tbackground-size: cover;\r\n\t\tborder: none;\r\n\t\tcursor: pointer;\r\n\t\ttransition: all 0.3s ease-in-out;\r\n\t}\r\n\r\n\tinput[type=\"search\"] {\r\n\t\twidth: 100%;\r\n\t\theight: 69px;\r\n\t\tpadding: 24px;\r\n\t\tborder-radius: 5px;\r\n\t\tborder: none;\r\n\t\tfont-weight: 400;\r\n\t\tfont-size: 18px;\r\n\t\tline-height: 22px;\r\n\t\tcolor: $black;\r\n\t\tbackground-color: $grey-background-color;\r\n\t\ttransition: all 0.3s ease-in-out;\r\n\r\n\t\t&:focus {\r\n\t\t\toutline: none;\r\n\t\t\tbox-shadow: 0 0 10px rgba(0, 0, 0, 0.25);\r\n\r\n\t\t\t+.search__button {\r\n\t\t\t\ttransform: translateY(-50%) rotate(360deg);\r\n\t\t\t}\r\n\r\n\t\t\t&::placeholder {\r\n\t\t\t\tcolor: transparent;\r\n\t\t\t}\r\n\t\t}\r\n\t}\r\n}","@import '../global/helpers';\r\n\r\n.tags__container {\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  margin-bottom: 15px;\r\n  min-height: 40px;\r\n  gap: 10px;\r\n\r\n  .tag {\r\n    @include flex(row, center, center);\r\n    border-radius: 5px;\r\n    padding: 10px 20px;\r\n    gap: 13px;\r\n    color: $white;\r\n    font-weight: 700;\r\n    font-size: 14px;\r\n    line-height: 17px;\r\n    background-color: $grey-background-color;\r\n\r\n    &[data-tag-family=\"ingredients\"] {\r\n      background-color: $ingredients-color;\r\n    }\r\n\r\n    &[data-tag-family=\"appliance\"] {\r\n      background-color: $appareils-color;\r\n    }\r\n\r\n    &[data-tag-family=\"utensils\"] {\r\n      background-color: $utensils-color;\r\n    }\r\n\r\n    .remove {\r\n      width: 20px;\r\n      height: 20px;\r\n      border: none;\r\n      cursor: pointer;\r\n      background: url(../assets/remove.svg) no-repeat center;\r\n      transition: all 0.2s ease-out;\r\n\r\n      &:hover {\r\n        transform: scale(1.1);\r\n        background-image: url(\"data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_51_0)'%3E%3Cpath d='M14.59 8L12 10.59L9.41 8L8 9.41L10.59 12L8 14.59L9.41 16L12 13.41L14.59 16L16 14.59L13.41 12L16 9.41L14.59 8ZM12 2C6.47 2 2 6.47 2 12C2 17.53 6.47 22 12 22C17.53 22 22 17.53 22 12C22 6.47 17.53 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z' fill='%23E7E7E7'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_51_0'%3E%3Crect width='24' height='24' fill='%23E7E7E7'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A\");\r\n      }\r\n    }\r\n\r\n    &:not(:last-child) {\r\n      margin-right: 0.5rem;\r\n    }\r\n\r\n    &:hover {\r\n      filter: brightness(1.06);\r\n    }\r\n  }\r\n}","@import '../global/helpers';\r\n\r\nheader {\r\n\t@include flex(column, center, center);\r\n\tmargin: 42px 0 17px;\r\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "@charset \"UTF-8\";\n*,\nhtml,\nbody {\n  padding: 0;\n  margin: 0;\n  box-sizing: border-box;\n  font-family: \"Lato\", sans-serif; }\n\nhtml {\n  scroll-behavior: smooth; }\n\nbody {\n  min-height: 100vh;\n  display: flex;\n  flex-direction: column; }\n\na {\n  text-decoration: none;\n  color: inherit; }\n\nul,\nli {\n  list-style: none; }\n\nh1, .h1-style {\n  font-family: \"DM Sans\", sans-serif;\n  color: #D04F4F; }\n\nmain {\n  max-width: 1240px;\n  margin: 0 auto;\n  width: 100%; }\n\n/* clears the ‘X’ from Internet Explorer */\ninput[type=search]::-ms-clear {\n  display: none;\n  width: 0;\n  height: 0; }\n\ninput[type=search]::-ms-reveal {\n  display: none;\n  width: 0;\n  height: 0; }\n\n/* clears the ‘X’ from Chrome */\ninput[type=\"search\"]::-webkit-search-decoration,\ninput[type=\"search\"]::-webkit-search-cancel-button,\ninput[type=\"search\"]::-webkit-search-results-button,\ninput[type=\"search\"]::-webkit-search-results-decoration {\n  display: none; }\n\n.hidden {\n  position: absolute !important;\n  width: 1px !important;\n  height: 1px !important;\n  padding: 0 !important;\n  margin: -1px !important;\n  overflow: hidden !important;\n  clip: rect(0, 0, 0, 0) !important;\n  white-space: nowrap !important;\n  border: 0 !important; }\n\n.hide {\n  display: none; }\n\nsection {\n  padding: 0 24px; }\n  @media only screen and (min-width: 1288px) {\n    section {\n      padding: 0; } }\n\n.line-clamp {\n  display: -webkit-box;\n  -webkit-line-clamp: 6;\n  overflow: hidden;\n  -webkit-box-orient: vertical; }\n\n.filters__container filters-component {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 20px; }\n  .filters__container filters-component .custom__select {\n    display: flex;\n    flex-direction: column;\n    padding: 23px 10px 23px 19px;\n    border-radius: 5px;\n    cursor: pointer;\n    min-width: 170px;\n    position: relative;\n    transition: all 0.2s ease-out;\n    width: 0; }\n    .filters__container filters-component .custom__select:hover {\n      filter: brightness(1.08);\n      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); }\n    .filters__container filters-component .custom__select.open {\n      width: 62%; }\n      .filters__container filters-component .custom__select.open .custom__select-arrow {\n        transform: rotate(180deg); }\n      .filters__container filters-component .custom__select.open .filters__container__content {\n        width: 100%;\n        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25); }\n      .filters__container filters-component .custom__select.open:hover {\n        filter: none; }\n    .filters__container filters-component .custom__select[data-value=\"ingredients\"] {\n      background-color: #3282F7; }\n      .filters__container filters-component .custom__select[data-value=\"ingredients\"] .filters__container__content {\n        background-color: #3282F7; }\n    .filters__container filters-component .custom__select[data-value=\"appliance\"] {\n      background-color: #68D9A4; }\n      .filters__container filters-component .custom__select[data-value=\"appliance\"] .filters__container__content {\n        background-color: #68D9A4; }\n    .filters__container filters-component .custom__select[data-value=\"utensils\"] {\n      background-color: #ED6454; }\n      .filters__container filters-component .custom__select[data-value=\"utensils\"] .filters__container__content {\n        background-color: #ED6454; }\n    .filters__container filters-component .custom__select .input__container {\n      display: flex;\n      flex-direction: row;\n      justify-content: space-between;\n      align-items: center;\n      position: relative;\n      gap: 10px; }\n    .filters__container filters-component .custom__select input {\n      cursor: pointer;\n      border: none;\n      background: inherit;\n      font-weight: 700;\n      font-size: 18px;\n      line-height: 22px;\n      text-transform: capitalize;\n      color: #FFFFFF;\n      outline: none; }\n      .filters__container filters-component .custom__select input::placeholder {\n        text-transform: none;\n        font-weight: 700;\n        font-size: 18px;\n        line-height: 22px;\n        color: #FFFFFF;\n        opacity: 0.5; }\n    .filters__container filters-component .custom__select .custom__select-arrow {\n      background: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ") no-repeat center;\n      width: 20px;\n      height: 20px;\n      transition: transform .3s ease-in-out; }\n    .filters__container filters-component .custom__select .filters__container__content {\n      position: absolute;\n      padding: 10px 5px 10px 19px;\n      border-radius: 5px;\n      top: 92%;\n      left: 0; }\n    .filters__container filters-component .custom__select .filters__container__content__list ul {\n      display: grid;\n      grid-template-columns: repeat(3, 1fr);\n      grid-gap: 10px;\n      margin: 0;\n      list-style: none;\n      max-height: 350px;\n      overflow-y: auto; }\n      .filters__container filters-component .custom__select .filters__container__content__list ul::-webkit-scrollbar {\n        width: 5px; }\n      .filters__container filters-component .custom__select .filters__container__content__list ul::-webkit-scrollbar-track {\n        border-radius: 5px;\n        background: #f1f1f1; }\n      .filters__container filters-component .custom__select .filters__container__content__list ul::-webkit-scrollbar-thumb {\n        border-radius: 5px;\n        background: #888; }\n      .filters__container filters-component .custom__select .filters__container__content__list ul::-webkit-scrollbar-thumb:hover {\n        background: #555; }\n      .filters__container filters-component .custom__select .filters__container__content__list ul li p {\n        font-weight: 400;\n        font-size: 18px;\n        line-height: 22px;\n        color: #FFFFFF;\n        position: relative;\n        display: inline;\n        margin-bottom: 1px;\n        background-image: linear-gradient(currentColor, currentColor);\n        background-position: 0 99%;\n        background-repeat: no-repeat;\n        background-size: 0 1px;\n        transition: background-size 0.3s; }\n        .filters__container filters-component .custom__select .filters__container__content__list ul li p:hover {\n          background-size: 100% 1px; }\n\n.cards__container {\n  display: flex;\n  flex-wrap: wrap;\n  margin: 25px auto;\n  gap: 25px; }\n  @media only screen and (min-width: 1024px) {\n    .cards__container {\n      gap: 50px; } }\n\ncard-component {\n  background: #E7E7E7;\n  border-radius: 5px;\n  min-width: 350px;\n  width: 100%; }\n  @media only screen and (min-width: 1024px) {\n    card-component {\n      width: calc((100% / 3) - 34px); } }\n  card-component .card__image-container {\n    background: #C7BEBE;\n    height: 178px;\n    border-radius: 5px 5px 0 0; }\n  card-component .card__content-container {\n    border-radius: 5px;\n    padding: 20px; }\n    card-component .card__content-container .card__header {\n      display: flex;\n      flex-direction: row;\n      justify-content: space-between;\n      align-items: center;\n      margin-bottom: 20px; }\n      card-component .card__content-container .card__header .card__header__title {\n        font-style: normal;\n        font-weight: 400;\n        font-size: 18px;\n        line-height: 22px; }\n      card-component .card__content-container .card__header .recipe__time {\n        display: flex;\n        flex-direction: row;\n        justify-content: space-between;\n        align-items: center;\n        gap: 5px;\n        font-weight: 700;\n        font-size: 18px;\n        line-height: 22px; }\n  card-component .card__content {\n    display: flex;\n    gap: 10px; }\n    card-component .card__content .ingredients__container {\n      width: 50%; }\n      card-component .card__content .ingredients__container li {\n        font-weight: 400;\n        font-size: 12px;\n        line-height: 14px;\n        color: #000000; }\n    card-component .card__content .description__container {\n      width: 50%;\n      font-family: \"Roboto\", sans-serif;\n      font-weight: 400;\n      font-size: 12px;\n      line-height: 100%;\n      color: #000000; }\n\nsearch-component .search__container {\n  margin-bottom: 25px;\n  width: 100%;\n  position: relative; }\n  search-component .search__container .search__button {\n    content: '';\n    position: absolute;\n    top: 50%;\n    right: 37px;\n    transform: translateY(-50%);\n    width: 26px;\n    height: 26px;\n    background-color: transparent;\n    background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_1___ + ");\n    background-repeat: no-repeat;\n    background-position: center;\n    background-size: cover;\n    border: none;\n    cursor: pointer;\n    transition: all 0.3s ease-in-out; }\n  search-component .search__container input[type=\"search\"] {\n    width: 100%;\n    height: 69px;\n    padding: 24px;\n    border-radius: 5px;\n    border: none;\n    font-weight: 400;\n    font-size: 18px;\n    line-height: 22px;\n    color: #000000;\n    background-color: #E7E7E7;\n    transition: all 0.3s ease-in-out; }\n    search-component .search__container input[type=\"search\"]:focus {\n      outline: none;\n      box-shadow: 0 0 10px rgba(0, 0, 0, 0.25); }\n      search-component .search__container input[type=\"search\"]:focus + .search__button {\n        transform: translateY(-50%) rotate(360deg); }\n      search-component .search__container input[type=\"search\"]:focus::placeholder {\n        color: transparent; }\n\n.tags__container {\n  display: flex;\n  flex-wrap: wrap;\n  margin-bottom: 15px;\n  min-height: 40px;\n  gap: 10px; }\n  .tags__container .tag {\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n    align-items: center;\n    border-radius: 5px;\n    padding: 10px 20px;\n    gap: 13px;\n    color: #FFFFFF;\n    font-weight: 700;\n    font-size: 14px;\n    line-height: 17px;\n    background-color: #E7E7E7; }\n    .tags__container .tag[data-tag-family=\"ingredients\"] {\n      background-color: #3282F7; }\n    .tags__container .tag[data-tag-family=\"appliance\"] {\n      background-color: #68D9A4; }\n    .tags__container .tag[data-tag-family=\"utensils\"] {\n      background-color: #ED6454; }\n    .tags__container .tag .remove {\n      width: 20px;\n      height: 20px;\n      border: none;\n      cursor: pointer;\n      background: url(" + ___CSS_LOADER_URL_REPLACEMENT_2___ + ") no-repeat center;\n      transition: all 0.2s ease-out; }\n      .tags__container .tag .remove:hover {\n        transform: scale(1.1);\n        background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_3___ + "); }\n    .tags__container .tag:not(:last-child) {\n      margin-right: 0.5rem; }\n    .tags__container .tag:hover {\n      filter: brightness(1.06); }\n\nheader {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  margin: 42px 0 17px; }\n", "",{"version":3,"sources":["webpack://./src/styles/main.scss","webpack://./src/styles/global/_base.scss","webpack://./src/styles/global/_fonts.scss","webpack://./src/styles/global/_colors.scss","webpack://./src/styles/global/_mixins.scss","webpack://./src/styles/components/_filters.scss","webpack://./src/styles/components/_cards.scss","webpack://./src/styles/components/_search.scss","webpack://./src/styles/components/_tags.scss","webpack://./src/styles/layouts/_header.scss"],"names":[],"mappings":"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","sourcesContent":["@import './global/base';\r\n\r\n@import './components/filters';\r\n@import './components/cards';\r\n@import './components/search';\r\n@import './components/tags';\r\n\r\n@import './layouts/header';\r\n","@import './fonts';\r\n@import \"../global/helpers\";\r\n\r\n$max-content-width: 1240px;\r\n\r\n*,\r\nhtml,\r\nbody {\r\n  padding: 0;\r\n  margin: 0;\r\n  box-sizing: border-box;\r\n  font-family: $font-base;\r\n}\r\n\r\nhtml {\r\n  scroll-behavior: smooth;\r\n}\r\n\r\nbody {\r\n  min-height: 100vh;\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n\r\na {\r\n  text-decoration: none;\r\n  color: inherit;\r\n}\r\n\r\nul,\r\nli {\r\n  list-style: none;\r\n}\r\n\r\nh1, .h1-style {\r\n  font-family: $font-title;\r\n  color: $title-color;\r\n}\r\n\r\nmain {\r\n  max-width: $max-content-width;\r\n  margin: 0 auto;\r\n  width: 100%;\r\n}\r\n\r\n/* clears the ‘X’ from Internet Explorer */\r\ninput[type=search]::-ms-clear {\r\n  display: none;\r\n  width: 0;\r\n  height: 0;\r\n}\r\n\r\ninput[type=search]::-ms-reveal {\r\n  display: none;\r\n  width: 0;\r\n  height: 0;\r\n}\r\n\r\n/* clears the ‘X’ from Chrome */\r\ninput[type=\"search\"]::-webkit-search-decoration,\r\ninput[type=\"search\"]::-webkit-search-cancel-button,\r\ninput[type=\"search\"]::-webkit-search-results-button,\r\ninput[type=\"search\"]::-webkit-search-results-decoration {\r\n  display: none;\r\n}\r\n\r\n.hidden {\r\n  position: absolute !important;\r\n  width: 1px !important;\r\n  height: 1px !important;\r\n  padding: 0 !important;\r\n  margin: -1px !important;\r\n  overflow: hidden !important;\r\n  clip: rect(0, 0, 0, 0) !important;\r\n  white-space: nowrap !important;\r\n  border: 0 !important;\r\n}\r\n\r\n.hide {\r\n  display: none;\r\n}\r\n\r\nsection {\r\n  padding: 0 24px;\r\n\r\n  @include media(max-content-width) {\r\n    padding: 0;\r\n  }\r\n}\r\n\r\n.line-clamp {\r\n  display: -webkit-box;\r\n  -webkit-line-clamp: 6;\r\n  overflow: hidden;\r\n  -webkit-box-orient: vertical;\r\n}","@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&family=Lato:wght@400;700&family=Roboto&display=swap');\r\n\r\n$font-base: 'Lato', sans-serif;\r\n$font-title: 'DM Sans', sans-serif;\r\n$font-description: 'Roboto', sans-serif;\r\n","// header\r\n$title-color: #D04F4F;\r\n\r\n// search\r\n$ingredients-color: #3282F7;\r\n$appareils-color: #68D9A4;\r\n$utensils-color: #ED6454;\r\n\r\n// cards\r\n$card-img-background-color: #C7BEBE;\r\n\r\n// all\r\n$grey-background-color: #E7E7E7;\r\n$black: #000000;\r\n$white: #FFFFFF;\r\n","// flex\r\n@mixin flex($direction, $justify, $align) {\r\n  display: flex;\r\n  flex-direction: $direction;\r\n  justify-content: $justify;\r\n  align-items: $align;\r\n}\r\n\r\n// media queries\r\n@mixin media($breakpoint) {\r\n  @if $breakpoint == phone {\r\n    @media only screen and (max-width: 767px) {\r\n      @content;\r\n    }\r\n  }\r\n  @if $breakpoint == tablet {\r\n    @media only screen and (min-width: 768px) and (max-width: 1023px) {\r\n      @content;\r\n    }\r\n  }\r\n  @if $breakpoint == desktop {\r\n    @media only screen and (min-width: 1024px) {\r\n      @content;\r\n    }\r\n  }\r\n  @if $breakpoint == max-content-width {\r\n    @media only screen and (min-width: $max-content-width + 48px) {\r\n      @content;\r\n    }\r\n  }\r\n}","@import '../global/helpers';\r\n\r\n\r\n.filters__container filters-component {\r\n  @include flex(row, flex-start, center);\r\n  gap: 20px;\r\n\r\n  .custom__select {\r\n    display: flex;\r\n    flex-direction: column;\r\n    padding: 23px 10px 23px 19px;\r\n    border-radius: 5px;\r\n    cursor: pointer;\r\n    min-width: 170px;\r\n    position: relative;\r\n    transition: all 0.2s ease-out;\r\n    width: 0;\r\n\r\n    &:hover {\r\n      filter: brightness(1.08);\r\n      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\r\n    }\r\n\r\n    &.open {\r\n      width: 62%;\r\n\r\n      .custom__select-arrow {\r\n        transform: rotate(180deg);\r\n      }\r\n\r\n      .filters__container__content {\r\n        width: 100%;\r\n        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);\r\n\r\n      }\r\n\r\n      &:hover {\r\n        filter: none;\r\n      }\r\n    }\r\n\r\n    &[data-value=\"ingredients\"] {\r\n      background-color: $ingredients-color;\r\n\r\n      .filters__container__content {\r\n        background-color: $ingredients-color;\r\n      }\r\n    }\r\n\r\n    &[data-value=\"appliance\"] {\r\n      background-color: $appareils-color;\r\n\r\n      .filters__container__content {\r\n        background-color: $appareils-color;\r\n      }\r\n    }\r\n\r\n    &[data-value=\"utensils\"] {\r\n      background-color: $utensils-color;\r\n\r\n      .filters__container__content {\r\n        background-color: $utensils-color;\r\n      }\r\n    }\r\n\r\n    .input__container {\r\n      @include flex(row, space-between, center);\r\n      position: relative;\r\n      gap: 10px;\r\n    }\r\n\r\n    input {\r\n      cursor: pointer;\r\n      border: none;\r\n      background: inherit;\r\n      font-weight: 700;\r\n      font-size: 18px;\r\n      line-height: 22px;\r\n      text-transform: capitalize;\r\n      color: $white;\r\n      outline: none;\r\n\r\n      &::placeholder {\r\n        text-transform: none;\r\n        font-weight: 700;\r\n        font-size: 18px;\r\n        line-height: 22px;\r\n        color: #FFFFFF;\r\n        opacity: 0.5;\r\n      }\r\n    }\r\n\r\n    .custom__select-arrow {\r\n      background: url(../assets/arrow-d.svg) no-repeat center;\r\n      width: 20px;\r\n      height: 20px;\r\n      transition: transform .3s ease-in-out;\r\n    }\r\n\r\n    .filters__container__content {\r\n      position: absolute;\r\n      padding: 10px 5px 10px 19px;\r\n      border-radius: 5px;\r\n      top: 92%;\r\n      left: 0;\r\n    }\r\n\r\n    .filters__container__content__list {\r\n      ul {\r\n        display: grid;\r\n        grid-template-columns: repeat(3, 1fr);\r\n        grid-gap: 10px;\r\n        margin: 0;\r\n        list-style: none;\r\n        max-height: 350px;\r\n        overflow-y: auto;\r\n\r\n        &::-webkit-scrollbar {\r\n          width: 5px;\r\n        }\r\n\r\n        &::-webkit-scrollbar-track {\r\n          border-radius: 5px;\r\n          background: #f1f1f1;\r\n        }\r\n\r\n        &::-webkit-scrollbar-thumb {\r\n          border-radius: 5px;\r\n          background: #888;\r\n        }\r\n\r\n        &::-webkit-scrollbar-thumb:hover {\r\n          background: #555;\r\n        }\r\n\r\n        li p {\r\n          font-weight: 400;\r\n          font-size: 18px;\r\n          line-height: 22px;\r\n          color: #FFFFFF;\r\n          position: relative;\r\n          display: inline;\r\n          margin-bottom: 1px;\r\n\r\n          background-image: linear-gradient(currentColor, currentColor);\r\n          background-position: 0 99%;\r\n          background-repeat: no-repeat;\r\n          background-size: 0 1px;\r\n          transition: background-size 0.3s;\r\n\r\n          &:hover {\r\n            background-size: 100% 1px;\r\n          }\r\n        }\r\n      }\r\n    }\r\n  }\r\n\r\n}","@import '../global/helpers';\r\n\r\n.cards__container {\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  margin: 25px auto;\r\n  gap: 25px;\r\n\r\n  @include media(desktop) {\r\n    gap: 50px;\r\n  }\r\n}\r\n\r\ncard-component {\r\n  background: $grey-background-color;\r\n  border-radius: 5px;\r\n  min-width: 350px;\r\n  width: 100%;\r\n\r\n  @include media(desktop) {\r\n    width: calc((100% / 3) - 34px);\r\n  }\r\n\r\n  .card__image-container {\r\n    background: $card-img-background-color;\r\n    height: 178px;\r\n    border-radius: 5px 5px 0 0;\r\n  }\r\n\r\n  .card__content-container {\r\n    border-radius: 5px;\r\n    padding: 20px;\r\n\r\n    .card__header {\r\n      @include flex(row, space-between, center);\r\n      margin-bottom: 20px;\r\n\r\n      .card__header__title {\r\n        font-style: normal;\r\n        font-weight: 400;\r\n        font-size: 18px;\r\n        line-height: 22px;\r\n      }\r\n\r\n      .recipe__time {\r\n        @include flex(row, space-between, center);\r\n        gap: 5px;\r\n        font-weight: 700;\r\n        font-size: 18px;\r\n        line-height: 22px;\r\n      }\r\n    }\r\n  }\r\n\r\n  .card__content {\r\n    display: flex;\r\n    gap: 10px;\r\n\r\n    .ingredients__container {\r\n      width: 50%;\r\n\r\n      li {\r\n        font-weight: 400;\r\n        font-size: 12px;\r\n        line-height: 14px;\r\n        color: #000000;\r\n      }\r\n    }\r\n\r\n    .description__container {\r\n      width: 50%;\r\n      font-family: $font-description;\r\n      font-weight: 400;\r\n      font-size: 12px;\r\n      line-height: 100%;\r\n      color: #000000;\r\n    }\r\n  }\r\n}\r\n\r\n","@import '../global/_helpers';\r\n\r\nsearch-component .search__container {\r\n  margin-bottom: 25px;\r\n  width: 100%;\r\n  position: relative;\r\n\r\n  .search__button {\r\n    content: '';\r\n    position: absolute;\r\n    top: 50%;\r\n    right: 37px;\r\n    transform: translateY(-50%);\r\n    width: 26px;\r\n    height: 26px;\r\n    background-color: transparent;\r\n    background-image: url('../assets/search.svg');\r\n    background-repeat: no-repeat;\r\n    background-position: center;\r\n    background-size: cover;\r\n    border: none;\r\n    cursor: pointer;\r\n    transition: all 0.3s ease-in-out;\r\n  }\r\n\r\n  input[type=\"search\"] {\r\n    width: 100%;\r\n    height: 69px;\r\n    padding: 24px;\r\n    border-radius: 5px;\r\n    border: none;\r\n    font-weight: 400;\r\n    font-size: 18px;\r\n    line-height: 22px;\r\n    color: $black;\r\n    background-color: $grey-background-color;\r\n    transition: all 0.3s ease-in-out;\r\n\r\n    &:focus {\r\n      outline: none;\r\n      box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);\r\n\r\n      + .search__button {\r\n        transform: translateY(-50%) rotate(360deg);\r\n      }\r\n\r\n      &::placeholder {\r\n        color: transparent;\r\n      }\r\n    }\r\n  }\r\n}","@import '../global/helpers';\r\n\r\n.tags__container {\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  margin-bottom: 15px;\r\n  min-height: 40px;\r\n  gap: 10px;\r\n\r\n  .tag {\r\n    @include flex(row, center, center);\r\n    border-radius: 5px;\r\n    padding: 10px 20px;\r\n    gap: 13px;\r\n    color: $white;\r\n    font-weight: 700;\r\n    font-size: 14px;\r\n    line-height: 17px;\r\n    background-color: $grey-background-color;\r\n\r\n    &[data-tag-family=\"ingredients\"] {\r\n      background-color: $ingredients-color;\r\n    }\r\n\r\n    &[data-tag-family=\"appliance\"] {\r\n      background-color: $appareils-color;\r\n    }\r\n\r\n    &[data-tag-family=\"utensils\"] {\r\n      background-color: $utensils-color;\r\n    }\r\n\r\n    .remove {\r\n      width: 20px;\r\n      height: 20px;\r\n      border: none;\r\n      cursor: pointer;\r\n      background: url(../assets/remove.svg) no-repeat center;\r\n      transition: all 0.2s ease-out;\r\n\r\n      &:hover {\r\n        transform: scale(1.1);\r\n        background-image: url(\"data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_51_0)'%3E%3Cpath d='M14.59 8L12 10.59L9.41 8L8 9.41L10.59 12L8 14.59L9.41 16L12 13.41L14.59 16L16 14.59L13.41 12L16 9.41L14.59 8ZM12 2C6.47 2 2 6.47 2 12C2 17.53 6.47 22 12 22C17.53 22 22 17.53 22 12C22 6.47 17.53 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z' fill='%23E7E7E7'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_51_0'%3E%3Crect width='24' height='24' fill='%23E7E7E7'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A\");\r\n      }\r\n    }\r\n\r\n    &:not(:last-child) {\r\n      margin-right: 0.5rem;\r\n    }\r\n\r\n    &:hover {\r\n      filter: brightness(1.06);\r\n    }\r\n  }\r\n}","@import '../global/helpers';\r\n\r\nheader {\r\n  @include flex(column, center, center);\r\n  margin: 42px 0 17px;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2640,15 +2720,18 @@ var __webpack_exports__ = {};
   \**********************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/main.scss */ "./src/styles/main.scss");
-/* harmony import */ var _js_searchComponent_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./js/searchComponent.js */ "./src/js/searchComponent.js");
-/* harmony import */ var _js_filtersComponents_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./js/filtersComponents.js */ "./src/js/filtersComponents.js");
-/* harmony import */ var _js_filtersComponents_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_js_filtersComponents_js__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _js_cardComponents_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./js/cardComponents.js */ "./src/js/cardComponents.js");
-/* harmony import */ var _js_tagComponent_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./js/tagComponent.js */ "./src/js/tagComponent.js");
-/* harmony import */ var _js_tagComponent_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_js_tagComponent_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _js_recipeComponent_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./js/recipeComponent.js */ "./src/js/recipeComponent.js");
+/* harmony import */ var _js_searchComponent_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./js/searchComponent.js */ "./src/js/searchComponent.js");
+/* harmony import */ var _js_searchComponent_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_js_searchComponent_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _js_filtersComponents_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./js/filtersComponents.js */ "./src/js/filtersComponents.js");
+/* harmony import */ var _js_filtersComponents_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_js_filtersComponents_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _js_cardComponents_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./js/cardComponents.js */ "./src/js/cardComponents.js");
+/* harmony import */ var _js_tagComponent_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./js/tagComponent.js */ "./src/js/tagComponent.js");
+/* harmony import */ var _js_tagComponent_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_js_tagComponent_js__WEBPACK_IMPORTED_MODULE_5__);
 
 
 // JS
+
 
 
 
@@ -2657,4 +2740,4 @@ __webpack_require__.r(__webpack_exports__);
 
 /******/ })()
 ;
-//# sourceMappingURL=bundleebba8036b51b5c736725.js.map
+//# sourceMappingURL=bundlebd92f75a52dce1065300.js.map

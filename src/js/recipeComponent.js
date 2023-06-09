@@ -1,12 +1,12 @@
-import {recipes} from "../data/recipes";
+import {recipes} from "../data/recipes"
 
 class RecipeComponent extends HTMLElement {
     constructor() {
-        super();
-        this.cardContainer = this.querySelector('.cards__container');
+        super()
+        this.cardContainer = this.querySelector('.cards__container')
         this.recipesArray = []
 
-        this.init();
+        this.init()
     }
 
     createRecipeCard() {
@@ -14,12 +14,12 @@ class RecipeComponent extends HTMLElement {
             this.ingredientsNameArr = recipe.ingredients.map(ingredient => ingredient.ingredient)
 
             // create the card component and set the attributes for each recipe
-            this.cardElements = document.createElement('card-component');
+            this.cardElements = document.createElement('card-component')
 
             // attribute for the filters tags
-            this.cardElements.setAttribute('data-appliance', recipe.appliance);
-            this.cardElements.setAttribute('data-utensils', recipe.utensils);
-            this.cardElements.setAttribute('data-ingredients', this.ingredientsNameArr);
+            this.cardElements.setAttribute('data-appliance', recipe.appliance)
+            this.cardElements.setAttribute('data-utensils', recipe.utensils)
+            this.cardElements.setAttribute('data-ingredients', this.ingredientsNameArr)
 
             // attribute for the search
             this.cardElements.title = recipe.name
@@ -27,7 +27,7 @@ class RecipeComponent extends HTMLElement {
             this.cardElements.time = recipe.time
             this.cardElements.ingredients = recipe.ingredients
 
-            this.cardContainer.appendChild(this.cardElements);
+            this.cardContainer.appendChild(this.cardElements)
 
             return {
                 title: recipe.name,
@@ -42,7 +42,7 @@ class RecipeComponent extends HTMLElement {
 
     // check 2 arrays if they have the same values (case-insensitive) and return true or false
     checker(arr, target) {
-        return target.every(v => arr.includes(v));
+        return target.every(v => arr.includes(v))
     }
 
     searchTags() {
@@ -78,19 +78,19 @@ class RecipeComponent extends HTMLElement {
         if (this.searchInputValue.length < 3 && !this.tagsArray) return this.recipesArray.forEach(recipe => recipe.element.classList.remove('hide'))
 
         // remove diacritics from search value and make it lowercase
-        this.searchValue = this.removeDiacritics(this.searchInputValue);
+        this.searchValue = this.removeDiacritics(this.searchInputValue)
 
         // Loop through recipes array and check if search value is included in title, ingredients or description
         this.recipesArray.forEach((recipe) => {
-            this.isTitleVisible = this.removeDiacritics(recipe.title).includes(this.searchValue);
-            this.areIngredientsVisible = recipe.ingredients.some((ingredient) => this.removeDiacritics(ingredient.ingredient).includes(this.searchValue));
-            this.isDescriptionVisible = this.removeDiacritics(recipe.description).includes(this.searchValue);
+            this.isTitleVisible = this.removeDiacritics(recipe.title).includes(this.searchValue)
+            this.areIngredientsVisible = recipe.ingredients.some((ingredient) => this.removeDiacritics(ingredient.ingredient).includes(this.searchValue))
+            this.isDescriptionVisible = this.removeDiacritics(recipe.description).includes(this.searchValue)
 
-            this.isVisible = this.isTitleVisible || this.areIngredientsVisible || this.isDescriptionVisible;
+            this.isVisible = this.isTitleVisible || this.areIngredientsVisible || this.isDescriptionVisible
 
             // Toggle hide class depending on if recipe is visible or not
-            recipe.element.classList.toggle('hide', !this.isVisible);
-        });
+            recipe.element.classList.toggle('hide', !this.isVisible)
+        })
 
         if (this.tagsArray) this.searchTags()
 
@@ -111,7 +111,7 @@ class RecipeComponent extends HTMLElement {
                 // })
                 // console.log(this.filteredRecipes)
                 this.performSearch()
-            });
+            })
 
             this.mutationObserver = new MutationObserver(entries => {
                 this.tagsArray = Array.from(this.tagsContainer.children)
@@ -173,4 +173,4 @@ class RecipeComponent extends HTMLElement {
     }
 }
 
-customElements.get('recipe-component') || customElements.define('recipe-component', RecipeComponent);
+customElements.get('recipe-component') || customElements.define('recipe-component', RecipeComponent)

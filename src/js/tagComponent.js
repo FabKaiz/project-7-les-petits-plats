@@ -1,6 +1,6 @@
 class TagComponent extends HTMLElement {
     constructor() {
-        super();
+        super()
     }
 
     connectedCallback() {
@@ -17,7 +17,6 @@ class TagComponent extends HTMLElement {
         </li>
       `
     }
-
 }
 
-customElements.get('tag-component') || customElements.define('tag-component', TagComponent);
+customElements.get('tag-component') || customElements.define('tag-component', TagComponent)

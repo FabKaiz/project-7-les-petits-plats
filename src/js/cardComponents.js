@@ -1,15 +1,15 @@
-import logoTime from "../assets/time.svg";
+import logoTime from "../assets/time.svg"
 
 class CardComponents extends HTMLElement {
     constructor() {
-        super();
+        super()
         this._time = this.time
         this._title = this.title
         this._ingredients = this.ingredients
         this._description = this.description
         this.ingredientsLiArray = []
 
-        this.init();
+        this.init()
     }
 
     createCardHTML(headerTitle, recipeTime, ingredients, description) {
@@ -60,9 +60,9 @@ class CardComponents extends HTMLElement {
 
     init() {
         // create li element for each ingredient and push it into an array than display it in the card
-        this._ingredients.forEach(ingredient => this.createIngredientsList(ingredient));
+        this._ingredients.forEach(ingredient => this.createIngredientsList(ingredient))
         this.innerHTML = this.createCardHTML(this._title, this._time, this.ingredientsLiArray, this._description)
     }
 }
 
-customElements.get('card-component') || customElements.define('card-component', CardComponents);
+customElements.get('card-component') || customElements.define('card-component', CardComponents)

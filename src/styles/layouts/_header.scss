@@ -1,6 +1,6 @@
 @import '../global/helpers';
 
 header {
-	@include flex(column, center, center);
-	margin: 42px 0 17px;
+  @include flex(column, center, center);
+  margin: 42px 0 17px;
 }

@@ -1,7 +1,7 @@
 class SearchComponent extends HTMLElement {
     constructor() {
-        super();
-        this.init();
+        super()
+        this.init()
     }
 
     createSearchHTML() {
@@ -15,8 +15,8 @@ class SearchComponent extends HTMLElement {
     }
 
     init() {
-        this.innerHTML = this.createSearchHTML();
+        this.innerHTML = this.createSearchHTML()
     }
 }
 
-customElements.get('search-component') || customElements.define('search-component', SearchComponent);
+customElements.get('search-component') || customElements.define('search-component', SearchComponent)

@@ -1,6 +1,6 @@
 class FiltersComponents extends HTMLElement {
     constructor() {
-        super();
+        super()
 
         // Make an array of the filters we want to create
         this.filtersTitle = ['ingredients', 'appliance', 'utensils']
@@ -10,34 +10,34 @@ class FiltersComponents extends HTMLElement {
             this[filter] = []
         })
 
-        this.init();
+        this.init()
     }
 
     createFiltersArray(filterName) {
-        this.filtersArray = [];
-        this.tags = Array.from(document.querySelectorAll('.tag'));
-        this.$cards = Array.from(document.querySelectorAll('card-component:not(.hide)'));
+        this.filtersArray = []
+        this.tags = Array.from(document.querySelectorAll('.tag'))
+        this.$cards = Array.from(document.querySelectorAll('card-component:not(.hide)'))
 
         this.$cards.forEach(card => {
-            this.cardFilterTypes = card.dataset[filterName].toLowerCase().split(',');
+            this.cardFilterTypes = card.dataset[filterName].toLowerCase().split(',')
 
             this.cardFilterTypes.forEach(filterType => {
-                this.isFilterTypePresent = this.filtersArray.includes(filterType);
-                this.isTagPresent = this.tags.some(tag => tag.dataset.tagName.toLowerCase() === filterType);
+                this.isFilterTypePresent = this.filtersArray.includes(filterType)
+                this.isTagPresent = this.tags.some(tag => tag.dataset.tagName.toLowerCase() === filterType)
 
                 if (!this.isFilterTypePresent && !this.isTagPresent) {
-                    this.filtersArray.push(filterType);
+                    this.filtersArray.push(filterType)
                 }
-            });
-        });
+            })
+        })
 
-        return this.filtersArray;
+        return this.filtersArray
     }
 
     // TODO: Search inside the filters
 
     capitalizeFirstLetter(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
+        return string.charAt(0).toUpperCase() + string.slice(1)
     }
 
     createList(filterName) {
@@ -128,16 +128,16 @@ class FiltersComponents extends HTMLElement {
         switch (filterName) {
             case 'ingredients':
                 this.displayValue = 'Ingrédients'
-                break;
+                break
             case 'appliance':
                 this.displayValue = 'Appareil'
-                break;
+                break
             case 'utensils':
                 this.displayValue = 'Ustensiles'
-                break;
+                break
 
             default:
-                break;
+                break
         }
 
         return this.displayValue
@@ -160,4 +160,4 @@ class FiltersComponents extends HTMLElement {
     }
 }
 
-customElements.get('filters-component') || customElements.define('filters-component', FiltersComponents);
+customElements.get('filters-component') || customElements.define('filters-component', FiltersComponents)

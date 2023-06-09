@@ -34,6 +34,8 @@ class FiltersComponents extends HTMLElement {
         return this.filtersArray;
     }
 
+    // TODO: Search inside the filters
+
     capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
@@ -153,19 +155,8 @@ class FiltersComponents extends HTMLElement {
         return this.filterHTML
     }
 
-    createEventListeners() {
-        this.filtersContainer = document.querySelector('.filters__container')
-        // Open the filters container
-        this.customSelects = this.filtersContainer.querySelectorAll('.custom__select')
-
-        this.customSelects.forEach(customSelect => {
-            customSelect.addEventListener('click', () => this.openFilters(customSelect), {once: true})
-        })
-    }
-
     init() {
         this.filtersTitle.forEach(key => this.innerHTML += this.createFiltersHTML(key))
-        this.createEventListeners()
     }
 }
 

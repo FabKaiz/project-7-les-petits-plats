@@ -152,6 +152,8 @@ class FiltersComponents extends HTMLElement {
   createFilterItemsListeners(customSelect) {
     this.filterItems = customSelect.querySelectorAll('.filter__item p')
     this.filterItems.forEach(filterItem => {
+      // if the item is the not found message, don't add the event listener
+      if (filterItem.parentElement.classList.contains('not__found')) return
       filterItem.addEventListener('click', () => this.createTag(filterItem.innerText, customSelect))
     })
   }

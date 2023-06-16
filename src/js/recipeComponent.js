@@ -70,6 +70,9 @@ class RecipeComponent extends HTMLElement {
         return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
     };
 
+    /* Function benchmark :
+    * https://jsben.ch/8FgCT
+    * */
     performSearch() {
         this.searchInputValue = document.querySelector('search-component input').value
         this.noResultMessage = document.querySelector('.no-result')

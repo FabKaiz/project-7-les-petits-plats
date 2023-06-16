@@ -1555,7 +1555,13 @@ var FiltersComponents = /*#__PURE__*/function (_HTMLElement) {
     value: function createList(filterName) {
       var _this4 = this;
       this.list = '';
-      this.createFiltersArray(filterName).forEach(function (item) {
+      var filtersArray = this.createFiltersArray(filterName);
+
+      // if there are no filters to show,add no filter found message
+      if (filtersArray.length === 0) {
+        this.list = "<li class='filter__item not__found'><p>Aucun filtre trouv\xE9e</p></li>";
+      }
+      filtersArray.forEach(function (item) {
         _this4.list += "<li class='filter__item'><p>".concat(_this4.capitalizeFirstLetter(item), "</p></li>");
       });
       return this.list;
@@ -2788,4 +2794,4 @@ __webpack_require__.r(__webpack_exports__);
 
 /******/ })()
 ;
-//# sourceMappingURL=bundleaca2af2de14bee57d2b6.js.map
+//# sourceMappingURL=bundlec18cad2cc1fac09bc1ee.js.map

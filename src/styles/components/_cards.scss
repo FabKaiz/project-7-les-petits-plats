@@ -9,15 +9,28 @@
   @include media(desktop) {
     gap: 50px;
   }
+
+  .no-result {
+    display: none;
+  }
 }
 
 card-component {
   background: $grey-background-color;
   border-radius: 5px;
-  min-width: 350px;
   width: 100%;
+  transition: all 0.2s ease-out;
+  cursor: pointer;
 
-  @include media(desktop) {
+  &:hover {
+    transform: scale(1.02);
+  }
+
+  @include media(custom, 1000px) {
+    width: calc((100% / 2) - 25px);
+  }
+
+  @include media(custom, 1250px) {
     width: calc((100% / 3) - 34px);
   }
 

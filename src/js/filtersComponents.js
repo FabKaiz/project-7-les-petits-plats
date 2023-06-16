@@ -102,6 +102,8 @@ class FiltersComponents extends HTMLElement {
 
     // remove the filter item from the list
     this.filterItems.forEach(filterItem => {
+      // if the item is the not found message, don't add the event listener
+      if (filterItem.parentElement.classList.contains('not__found')) return
       if (filterItem.innerText === tagTitle) filterItem.parentElement.remove()
     })
 

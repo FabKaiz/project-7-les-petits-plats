@@ -60,7 +60,14 @@ class FiltersComponents extends HTMLElement {
 
   createList(filterName) {
     this.list = ''
-    this.createFiltersArray(filterName).forEach(item => {
+    const filtersArray = this.createFiltersArray(filterName)
+
+    // if there are no filters to show,add no filter found message
+    if (filtersArray.length === 0) {
+      this.list = `<li class='filter__item not__found'><p>Aucun filtre trouvée</p></li>`
+    }
+
+    filtersArray.forEach(item => {
       this.list += `<li class='filter__item'><p>${this.capitalizeFirstLetter(item)}</p></li>`
     })
     return this.list

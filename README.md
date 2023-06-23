@@ -5,8 +5,12 @@ Code for project 7 of the Front-End Developer path
 #### JSBench with console.log: https://jsben.ch/FEFIg
 #### JSBench with only return (faster): https://jsben.ch/PpeVz
 
+## Algorigramme
+![algo](algori.png)
+
 ## Website: 
 [HERE](https://fabkaiz.github.io/project-7-les-petits-plats/dist/)
+
 
 ## Available Scripts
 

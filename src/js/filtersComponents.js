@@ -37,21 +37,18 @@ class FiltersComponents extends HTMLElement {
   searchFilters(filterName, customSelect) {
     this.filtersContainer = document.querySelector('.filters__container__content__list')
     this.filteredArray = this.filtersArray.filter(filter => filter.includes(event.target.value.toLowerCase()))
+    this.ulElement = this.filtersContainer.querySelector('ul')
 
     if (this.filteredArray.length === 0) {
-      this.filtersContainer.querySelector('ul').innerHTML = `<li class='filter__item not__found'><p>Aucun ${filterName.toLowerCase()} trouvée</p></li>`
+      this.ulElement.innerHTML = `<li class='filter__item not__found'><p>Aucun ${filterName.toLowerCase()} trouvée</p></li>`
       return
     }
 
-    this.filtersContainer.querySelector('ul').innerHTML = ''
-    this.filteredArray.forEach(filter => {
-      this.filtersContainer.querySelector('ul').innerHTML += `<li class='filter__item'><p>${this.capitalizeFirstLetter(filter)}</p></li>`
-    })
+    this.ulElement.innerHTML = this.filteredArray.map(filter => `<li class='filter__item'><p>${this.capitalizeFirstLetter(filter)}</p></li>`).join('')
 
     this.filtersContainer.querySelectorAll('.filter__item').forEach(filterItem => {
       filterItem.addEventListener('click', () => this.createTag(filterItem.innerText, customSelect))
     })
-
   }
 
   capitalizeFirstLetter(string) {
@@ -93,7 +90,6 @@ class FiltersComponents extends HTMLElement {
 
   createTag(tagTitle, customSelect) {
     this.tag = document.createElement('tag-component')
-
     this.tag.setAttribute('tag-title', tagTitle)
     this.tag.setAttribute('tag-family', customSelect.dataset.value)
 
@@ -102,6 +98,8 @@ class FiltersComponents extends HTMLElement {
 
     // remove the filter item from the list
     this.filterItems.forEach(filterItem => {
+      // if the item is the not found message, don't add the event listener
+      if (filterItem.parentElement.classList.contains('not__found')) return
       if (filterItem.innerText === tagTitle) filterItem.parentElement.remove()
     })
 
@@ -123,14 +121,14 @@ class FiltersComponents extends HTMLElement {
 
     // create the filters container
     customSelect.innerHTML += `
-            <div class='filters__container__content'>
-                <div class='filters__container__content__list'>
-                    <ul>
-                    ${this.createList(customSelect.dataset.value)}
-                    </ul>
-                </div>
-            </div>
-        `
+      <div class='filters__container__content'>
+        <div class='filters__container__content__list'>
+          <ul>
+            ${this.createList(customSelect.dataset.value)}
+          </ul>
+        </div>
+      </div>
+    `
 
     this.customSelectInput = customSelect.querySelector('input')
     this.customSelectName = this.translateFilters(customSelect.dataset.value)
@@ -152,8 +150,6 @@ class FiltersComponents extends HTMLElement {
   createFilterItemsListeners(customSelect) {
     this.filterItems = customSelect.querySelectorAll('.filter__item p')
     this.filterItems.forEach(filterItem => {
-      // if the item is the not found message, don't add the event listener
-      if (filterItem.parentElement.classList.contains('not__found')) return
       filterItem.addEventListener('click', () => this.createTag(filterItem.innerText, customSelect))
     })
   }
@@ -166,34 +162,24 @@ class FiltersComponents extends HTMLElement {
   }
 
   translateFilters(filterName) {
-    // translate the key value to french
-    switch (filterName) {
-      case 'ingredients':
-        this.displayValue = 'Ingrédients'
-        break
-      case 'appliance':
-        this.displayValue = 'Appareil'
-        break
-      case 'utensils':
-        this.displayValue = 'Ustensiles'
-        break
-
-      default:
-        break
+    const translations = {
+      ingredients: 'Ingrédients',
+      appliance: 'Appareil',
+      utensils: 'Ustensiles'
     }
 
-    return this.displayValue
+    return translations[filterName] || filterName
   }
 
   createFiltersHTML(value) {
     this.filterHTML = `
-           <div class='custom__select' data-value='${value}'>
-               <div class='input__container'>
-                    <input type='button' value='${this.translateFilters(value)}'>
-                    <span class='custom__select-arrow'></span>
-                </div>
-            </div>
-        `
+      <div class='custom__select' data-value='${value}'>
+        <div class='input__container'>
+          <input type='button' value='${this.translateFilters(value)}'>
+          <span class='custom__select-arrow'></span>
+        </div>
+      </div>
+    `
     return this.filterHTML
   }
 

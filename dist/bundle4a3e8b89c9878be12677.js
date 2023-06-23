@@ -1431,9 +1431,9 @@ var CardComponents = /*#__PURE__*/function (_HTMLElement) {
   _createClass(CardComponents, [{
     key: "createCardHTML",
     value: function createCardHTML(headerTitle, recipeTime, ingredients, description) {
-      return "\n          <article class='card'>\n            <div class='card__image-container'>\n            </div>\n        \n            <div class='card__content-container'>\n              <div class='card__header'>\n                <h2 class='card__header__title'>".concat(headerTitle, "</h2>\n        \n                <div class='recipe__time'>\n                  <img src='").concat(_assets_time_svg__WEBPACK_IMPORTED_MODULE_0__, "' alt='cooking time' class='time-logo'>\n                  <p>").concat(recipeTime, "</p>\n                </div>\n              </div>\n        \n              <div class='card__content'>\n                <div class='ingredients__container'>\n                  <ul>\n                    ").concat(ingredients.map(function (ingredient) {
+      return "\n      <article class='card'>\n        <div class='card__image-container'>\n        </div>\n    \n        <div class='card__content-container'>\n          <div class='card__header'>\n            <h2 class='card__header__title'>".concat(headerTitle, "</h2>\n    \n            <div class='recipe__time'>\n              <img src='").concat(_assets_time_svg__WEBPACK_IMPORTED_MODULE_0__, "' alt='cooking time' class='time-logo'>\n              <p>").concat(recipeTime, "</p>\n            </div>\n          </div>\n    \n          <div class='card__content'>\n            <div class='ingredients__container'>\n              <ul>\n                ").concat(ingredients.map(function (ingredient) {
         return ingredient;
-      }).join(''), "\n                  </ul>\n                  </div>\n        \n                  <div class='description__container'>\n                    <p class='line-clamp'>").concat(description, "</p>\n                  </div>\n              </div>\n            </div>\n          </article>\n        ");
+      }).join(''), "\n              </ul>\n              </div>\n    \n              <div class='description__container'>\n                <p class='line-clamp'>").concat(description, "</p>\n              </div>\n          </div>\n        </div>\n      </article>\n    ");
     }
   }, {
     key: "createIngredientsList",
@@ -1531,14 +1531,14 @@ var FiltersComponents = /*#__PURE__*/function (_HTMLElement) {
       this.filteredArray = this.filtersArray.filter(function (filter) {
         return filter.includes(event.target.value.toLowerCase());
       });
+      this.ulElement = this.filtersContainer.querySelector('ul');
       if (this.filteredArray.length === 0) {
-        this.filtersContainer.querySelector('ul').innerHTML = "<li class='filter__item not__found'><p>Aucun ".concat(filterName.toLowerCase(), " trouv\xE9e</p></li>");
+        this.ulElement.innerHTML = "<li class='filter__item not__found'><p>Aucun ".concat(filterName.toLowerCase(), " trouv\xE9e</p></li>");
         return;
       }
-      this.filtersContainer.querySelector('ul').innerHTML = '';
-      this.filteredArray.forEach(function (filter) {
-        _this3.filtersContainer.querySelector('ul').innerHTML += "<li class='filter__item'><p>".concat(_this3.capitalizeFirstLetter(filter), "</p></li>");
-      });
+      this.ulElement.innerHTML = this.filteredArray.map(function (filter) {
+        return "<li class='filter__item'><p>".concat(_this3.capitalizeFirstLetter(filter), "</p></li>");
+      }).join('');
       this.filtersContainer.querySelectorAll('.filter__item').forEach(function (filterItem) {
         filterItem.addEventListener('click', function () {
           return _this3.createTag(filterItem.innerText, customSelect);
@@ -1600,6 +1600,8 @@ var FiltersComponents = /*#__PURE__*/function (_HTMLElement) {
 
       // remove the filter item from the list
       this.filterItems.forEach(function (filterItem) {
+        // if the item is the not found message, don't add the event listener
+        if (filterItem.parentElement.classList.contains('not__found')) return;
         if (filterItem.innerText === tagTitle) filterItem.parentElement.remove();
       });
 
@@ -1621,7 +1623,7 @@ var FiltersComponents = /*#__PURE__*/function (_HTMLElement) {
       customSelect.classList.add('open');
 
       // create the filters container
-      customSelect.innerHTML += "\n            <div class='filters__container__content'>\n                <div class='filters__container__content__list'>\n                    <ul>\n                    ".concat(this.createList(customSelect.dataset.value), "\n                    </ul>\n                </div>\n            </div>\n        ");
+      customSelect.innerHTML += "\n      <div class='filters__container__content'>\n        <div class='filters__container__content__list'>\n          <ul>\n            ".concat(this.createList(customSelect.dataset.value), "\n          </ul>\n        </div>\n      </div>\n    ");
       this.customSelectInput = customSelect.querySelector('input');
       this.customSelectName = this.translateFilters(customSelect.dataset.value);
 
@@ -1650,8 +1652,6 @@ var FiltersComponents = /*#__PURE__*/function (_HTMLElement) {
       var _this7 = this;
       this.filterItems = customSelect.querySelectorAll('.filter__item p');
       this.filterItems.forEach(function (filterItem) {
-        // if the item is the not found message, don't add the event listener
-        if (filterItem.parentElement.classList.contains('not__found')) return;
         filterItem.addEventListener('click', function () {
           return _this7.createTag(filterItem.innerText, customSelect);
         });
@@ -1668,26 +1668,17 @@ var FiltersComponents = /*#__PURE__*/function (_HTMLElement) {
   }, {
     key: "translateFilters",
     value: function translateFilters(filterName) {
-      // translate the key value to french
-      switch (filterName) {
-        case 'ingredients':
-          this.displayValue = 'Ingrédients';
-          break;
-        case 'appliance':
-          this.displayValue = 'Appareil';
-          break;
-        case 'utensils':
-          this.displayValue = 'Ustensiles';
-          break;
-        default:
-          break;
-      }
-      return this.displayValue;
+      var translations = {
+        ingredients: 'Ingrédients',
+        appliance: 'Appareil',
+        utensils: 'Ustensiles'
+      };
+      return translations[filterName] || filterName;
     }
   }, {
     key: "createFiltersHTML",
     value: function createFiltersHTML(value) {
-      this.filterHTML = "\n           <div class='custom__select' data-value='".concat(value, "'>\n               <div class='input__container'>\n                    <input type='button' value='").concat(this.translateFilters(value), "'>\n                    <span class='custom__select-arrow'></span>\n                </div>\n            </div>\n        ");
+      this.filterHTML = "\n      <div class='custom__select' data-value='".concat(value, "'>\n        <div class='input__container'>\n          <input type='button' value='").concat(this.translateFilters(value), "'>\n          <span class='custom__select-arrow'></span>\n        </div>\n      </div>\n    ");
       return this.filterHTML;
     }
   }, {
@@ -1755,31 +1746,37 @@ var RecipeComponent = /*#__PURE__*/function (_HTMLElement) {
     value: function createRecipeCard() {
       var _this2 = this;
       this.recipesArray = _data_recipes__WEBPACK_IMPORTED_MODULE_0__.recipes.map(function (recipe) {
-        _this2.ingredientsNameArr = recipe.ingredients.map(function (ingredient) {
+        var name = recipe.name,
+          ingredients = recipe.ingredients,
+          description = recipe.description,
+          appliance = recipe.appliance,
+          utensils = recipe.utensils,
+          time = recipe.time;
+        _this2.ingredientsNameArr = ingredients.map(function (ingredient) {
           return ingredient.ingredient;
         });
 
-        // create the card component and set the attributes for each recipe
+        // create the card component and set the attributes for each recipe for the filters tag
         _this2.cardElements = document.createElement('card-component');
-
-        // attribute for the filters tags
-        _this2.cardElements.setAttribute('data-appliance', recipe.appliance);
-        _this2.cardElements.setAttribute('data-utensils', recipe.utensils);
+        _this2.cardElements.setAttribute('data-appliance', appliance);
+        _this2.cardElements.setAttribute('data-utensils', utensils);
         _this2.cardElements.setAttribute('data-ingredients', _this2.ingredientsNameArr);
 
         // attribute for the search
-        _this2.cardElements.title = recipe.name;
-        _this2.cardElements.description = recipe.description;
-        _this2.cardElements.time = recipe.time;
-        _this2.cardElements.ingredients = recipe.ingredients;
+        Object.assign(_this2.cardElements, {
+          title: name,
+          description: description,
+          time: time,
+          ingredients: ingredients
+        });
         _this2.cardContainer.appendChild(_this2.cardElements);
         return {
-          title: recipe.name,
-          ingredients: recipe.ingredients,
-          description: recipe.description,
+          title: name,
+          ingredients: ingredients,
+          description: description,
           element: _this2.cardElements,
-          appliance: recipe.appliance,
-          utensils: recipe.utensils
+          appliance: appliance,
+          utensils: utensils
         };
       });
     }
@@ -1804,15 +1801,11 @@ var RecipeComponent = /*#__PURE__*/function (_HTMLElement) {
         if (recipe.element.classList.contains('hide')) return;
 
         // create an array of the recipe appliance, utensils and ingredients to compare it with the tags array
-        _this3.recipeApplianceArr = [_this3.removeDiacritics(recipe.appliance)];
-        _this3.recipeUtensilsArr = recipe.utensils.map(function (utensil) {
+        _this3.recipeTagsArr = [_this3.removeDiacritics(recipe.appliance)].concat(_toConsumableArray(recipe.utensils.map(function (utensil) {
           return _this3.removeDiacritics(utensil);
-        });
-        _this3.ingredientsNameArr = recipe.ingredients.map(function (ingredient) {
+        })), _toConsumableArray(recipe.ingredients.map(function (ingredient) {
           return _this3.removeDiacritics(ingredient.ingredient);
-        });
-        // put all the arrays in one array
-        _this3.recipeTagsArr = [].concat(_toConsumableArray(_this3.recipeApplianceArr), _toConsumableArray(_this3.recipeUtensilsArr), _toConsumableArray(_this3.ingredientsNameArr));
+        })));
 
         // check if the recipe includes all the tags
         _this3.cardContainTags = _this3.checker(_this3.recipeTagsArr, _this3.tagsTitleArray);
@@ -1830,8 +1823,9 @@ var RecipeComponent = /*#__PURE__*/function (_HTMLElement) {
     key: "performSearch2",
     value:
     /* Function benchmark :
-     * https://jsben.ch/FEFIg
-     * */
+    * JSBench with console.log: https://jsben.ch/FEFIg
+    * JSBench with only return (faster): https://jsben.ch/PpeVz
+    * */
     function performSearch2() {
       var _this4 = this;
       this.searchInputValue = document.querySelector('search-component input').value;
@@ -1910,7 +1904,7 @@ var RecipeComponent = /*#__PURE__*/function (_HTMLElement) {
         _this5.searchInput = document.querySelector('#search');
         _this5.tagsContainer = document.querySelector('.tags__container');
         _this5.searchInput.addEventListener('keyup', function () {
-          return _this5.performSearch2();
+          return _this5.performSearch();
         });
         _this5.mutationObserver = new MutationObserver(function (entries) {
           _this5.tagsArray = Array.from(_this5.tagsContainer.children);
@@ -1918,9 +1912,7 @@ var RecipeComponent = /*#__PURE__*/function (_HTMLElement) {
           _this5.performSearch2();
 
           // if tag is added, pass it to the tagsEventListeners function to add event listeners to it
-          if (entries[0].addedNodes.length > 0) {
-            _this5.tagsEventListeners(entries[0].addedNodes[0]);
-          }
+          if (entries[0].addedNodes.length > 0) _this5.tagsEventListeners(entries[0].addedNodes[0]);
         });
 
         // Observe the tags container for changes
@@ -1965,7 +1957,7 @@ var RecipeComponent = /*#__PURE__*/function (_HTMLElement) {
       var _this7 = this;
       this.tagsRemoveBtn = tag.querySelector('.remove');
       this.tagsRemoveBtn.addEventListener('click', function () {
-        _this7.tagsContainer.removeChild(tag);
+        return _this7.tagsContainer.removeChild(tag);
       });
     }
   }, {
@@ -2018,7 +2010,7 @@ var SearchComponent = /*#__PURE__*/function (_HTMLElement) {
   _createClass(SearchComponent, [{
     key: "createSearchHTML",
     value: function createSearchHTML() {
-      return "\n            <section class=\"search__container\">\n                <label for=\"search\" class=\"hidden\">Rechercher</label>\n                <input type=\"search\" id=\"search\" placeholder=\"Rechercher une recette\">\n                <button class=\"search__button\"></button>\n            </section>\n        ";
+      return "\n      <section class='search__container'>\n        <label for='search' class='hidden'>Rechercher</label>\n        <input type='search' id='search' placeholder='Rechercher une recette'>\n        <button class='search__button'></button>\n      </section>\n    ";
     }
   }, {
     key: "init",
@@ -2071,7 +2063,7 @@ var TagComponent = /*#__PURE__*/function (_HTMLElement) {
   }, {
     key: "createTagHTML",
     value: function createTagHTML(tagName, tagFamily) {
-      return "\n        <li class=\"tag\" data-tag-name=\"".concat(tagName, "\" data-tag-family=\"").concat(tagFamily, "\">\n          <p class=\"tag__name\">").concat(tagName, "</p>\n          <button class=\"remove\"></button>\n        </li>\n      ");
+      return "\n      <li class='tag' data-tag-name='".concat(tagName, "' data-tag-family='").concat(tagFamily, "'>\n        <p class='tag__name'>").concat(tagName, "</p>\n        <button class='remove'></button>\n      </li>\n    ");
     }
   }]);
   return TagComponent;
@@ -2825,4 +2817,4 @@ __webpack_require__.r(__webpack_exports__);
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle137cca2be9ee48cab3bf.js.map
+//# sourceMappingURL=bundle4a3e8b89c9878be12677.js.map

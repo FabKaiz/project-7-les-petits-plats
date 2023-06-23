@@ -1,6 +1,13 @@
 # les-petits-plats
 Code for project 7 of the Front-End Developer path
 
+## Search algo bench:
+#### JSBench with console.log: https://jsben.ch/FEFIg
+#### JSBench with only return (faster): https://jsben.ch/PpeVz
+
+## Website: 
+[HERE](https://fabkaiz.github.io/project-7-les-petits-plats/dist/)
+
 ## Available Scripts
 
 In the project directory, you can run:

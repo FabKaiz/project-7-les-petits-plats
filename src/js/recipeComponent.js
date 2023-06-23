@@ -71,7 +71,7 @@ class RecipeComponent extends HTMLElement {
     };
 
     /* Function benchmark :
-    * https://jsben.ch/8FgCT
+    * https://jsben.ch/FEFIg
     * */
     performSearch() {
         this.searchInputValue = document.querySelector('search-component input').value

@@ -69,48 +69,50 @@ class RecipeComponent extends HTMLElement {
   removeDiacritics(str) {
     return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
   };
-
+   /* Function benchmark :
+    * https://jsben.ch/8FgCT
+    * */
   performSearch2() {
-  this.searchInputValue = document.querySelector('search-component input').value
-  this.noResultMessage = document.querySelector('.no-result')
+    this.searchInputValue = document.querySelector('search-component input').value
+    this.noResultMessage = document.querySelector('.no-result')
 
-  // If search input value is < 3 and no tags, show all recipes and hide no result message
-  if (this.searchInputValue.length < 3 && !this.tagsArray) {
+    // If search input value is < 3 and no tags, show all recipes and hide no result message
+    if (this.searchInputValue.length < 3 && !this.tagsArray) {
+      for (const recipe of this.recipesArray) {
+        recipe.element.classList.remove('hide')
+      }
+      this.noResultMessage.style.display = 'none'
+      return
+    }
+
+    // remove diacritics from search value and make it lowercase
+    this.searchValue = this.removeDiacritics(this.searchInputValue)
+
+    // Loop through recipes array and check if search value is included in title, ingredients or description
     for (const recipe of this.recipesArray) {
-      recipe.element.classList.remove('hide')
+      this.isTitleVisible = this.removeDiacritics(recipe.title).includes(this.searchValue)
+      this.areIngredientsVisible = recipe.ingredients.some((ingredient) => this.removeDiacritics(ingredient.ingredient).includes(this.searchValue))
+      this.isDescriptionVisible = this.removeDiacritics(recipe.description).includes(this.searchValue)
+
+      this.isVisible = this.isTitleVisible || this.areIngredientsVisible || this.isDescriptionVisible
+
+      // Toggle hide class depending on if recipe is visible or not
+      recipe.element.classList.toggle('hide', !this.isVisible)
     }
-    this.noResultMessage.style.display = 'none'
-    return
-  }
 
-  // remove diacritics from search value and make it lowercase
-  this.searchValue = this.removeDiacritics(this.searchInputValue)
+    // If there is at least one tag, continue filtering with tags
+    if (this.tagsArray) this.searchTags()
 
-  // Loop through recipes array and check if search value is included in title, ingredients or description
-  for (const recipe of this.recipesArray) {
-    this.isTitleVisible = this.removeDiacritics(recipe.title).includes(this.searchValue)
-    this.areIngredientsVisible = recipe.ingredients.some((ingredient) => this.removeDiacritics(ingredient.ingredient).includes(this.searchValue))
-    this.isDescriptionVisible = this.removeDiacritics(recipe.description).includes(this.searchValue)
-
-    this.isVisible = this.isTitleVisible || this.areIngredientsVisible || this.isDescriptionVisible
-
-    // Toggle hide class depending on if recipe is visible or not
-    recipe.element.classList.toggle('hide', !this.isVisible)
-  }
-
-  // If there is at least one tag, continue filtering with tags
-  if (this.tagsArray) this.searchTags()
-
-  // if no recipe is visible, show the no result message
-  let isNoResult = true
-  for (const recipe of this.recipesArray) {
-    if (!recipe.element.classList.contains('hide')) {
-      isNoResult = false
-      break
+    // if no recipe is visible, show the no result message
+    let isNoResult = true
+    for (const recipe of this.recipesArray) {
+      if (!recipe.element.classList.contains('hide')) {
+        isNoResult = false
+        break
+      }
     }
+    this.noResultMessage.style.display = isNoResult ? 'block' : 'none'
   }
-  this.noResultMessage.style.display = isNoResult ? 'block' : 'none'
-}
 
   createEventListeners() {
     setTimeout(() => {

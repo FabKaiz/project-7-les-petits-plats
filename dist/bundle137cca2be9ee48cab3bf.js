@@ -1830,7 +1830,7 @@ var RecipeComponent = /*#__PURE__*/function (_HTMLElement) {
     key: "performSearch2",
     value:
     /* Function benchmark :
-     * https://jsben.ch/8FgCT
+     * https://jsben.ch/FEFIg
      * */
     function performSearch2() {
       var _this4 = this;
@@ -2825,4 +2825,4 @@ __webpack_require__.r(__webpack_exports__);
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle22795564956550d0cd2f.js.map
+//# sourceMappingURL=bundle137cca2be9ee48cab3bf.js.map

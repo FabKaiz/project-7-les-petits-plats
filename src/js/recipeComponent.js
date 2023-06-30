@@ -11,32 +11,20 @@ class RecipeComponent extends HTMLElement {
 
   createRecipeCard() {
     this.recipesArray = recipes.map(recipe => {
-      this.ingredientsNameArr = recipe.ingredients.map(ingredient => ingredient.ingredient)
+      const { name, ingredients, description, appliance, utensils, time } = recipe
+      this.ingredientsNameArr = ingredients.map(ingredient => ingredient.ingredient)
 
-      // create the card component and set the attributes for each recipe
+      // create the card component and set the attributes for each recipe for the filters tag
       this.cardElements = document.createElement('card-component')
-
-      // attribute for the filters tags
-      this.cardElements.setAttribute('data-appliance', recipe.appliance)
-      this.cardElements.setAttribute('data-utensils', recipe.utensils)
+      this.cardElements.setAttribute('data-appliance', appliance)
+      this.cardElements.setAttribute('data-utensils', utensils)
       this.cardElements.setAttribute('data-ingredients', this.ingredientsNameArr)
 
       // attribute for the search
-      this.cardElements.title = recipe.name
-      this.cardElements.description = recipe.description
-      this.cardElements.time = recipe.time
-      this.cardElements.ingredients = recipe.ingredients
-
+      Object.assign(this.cardElements, { title: name, description, time, ingredients })
       this.cardContainer.appendChild(this.cardElements)
 
-      return {
-        title: recipe.name,
-        ingredients: recipe.ingredients,
-        description: recipe.description,
-        element: this.cardElements,
-        appliance: recipe.appliance,
-        utensils: recipe.utensils
-      }
+      return { title: name, ingredients, description, element: this.cardElements, appliance, utensils }
     })
   }
 
@@ -53,11 +41,11 @@ class RecipeComponent extends HTMLElement {
       if (recipe.element.classList.contains('hide')) return
 
       // create an array of the recipe appliance, utensils and ingredients to compare it with the tags array
-      this.recipeApplianceArr = [this.removeDiacritics(recipe.appliance)]
-      this.recipeUtensilsArr = recipe.utensils.map(utensil => this.removeDiacritics(utensil))
-      this.ingredientsNameArr = recipe.ingredients.map(ingredient => this.removeDiacritics(ingredient.ingredient))
-      // put all the arrays in one array
-      this.recipeTagsArr = [...this.recipeApplianceArr, ...this.recipeUtensilsArr, ...this.ingredientsNameArr]
+      this.recipeTagsArr = [
+        this.removeDiacritics(recipe.appliance),
+        ...recipe.utensils.map(utensil => this.removeDiacritics(utensil)),
+        ...recipe.ingredients.map(ingredient => this.removeDiacritics(ingredient.ingredient))
+      ]
 
       // check if the recipe includes all the tags
       this.cardContainTags = this.checker(this.recipeTagsArr, this.tagsTitleArray)
@@ -69,15 +57,17 @@ class RecipeComponent extends HTMLElement {
   removeDiacritics(str) {
     return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
   };
-
+  /* Function benchmark :
+  * JSBench with console.log: https://jsben.ch/FEFIg
+  * JSBench with only return (faster): https://jsben.ch/PpeVz
+  * */
   performSearch2() {
     this.searchInputValue = document.querySelector('search-component input').value
     this.noResultMessage = document.querySelector('.no-result')
 
-    // If search input value is < 3, show all recipes and hide no result message
+    // If search input value is < 3 and no tags, show all recipes and hide no result message
     if (this.searchInputValue.length < 3 && !this.tagsArray) {
-      for (const index in this.recipesArray) {
-        const recipe = this.recipesArray[index]
+      for (const recipe of this.recipesArray) {
         recipe.element.classList.remove('hide')
       }
       this.noResultMessage.style.display = 'none'
@@ -88,8 +78,7 @@ class RecipeComponent extends HTMLElement {
     this.searchValue = this.removeDiacritics(this.searchInputValue)
 
     // Loop through recipes array and check if search value is included in title, ingredients or description
-    for (const index in this.recipesArray) {
-      const recipe = this.recipesArray[index]
+    for (const recipe of this.recipesArray) {
       this.isTitleVisible = this.removeDiacritics(recipe.title).includes(this.searchValue)
       this.areIngredientsVisible = recipe.ingredients.some((ingredient) => this.removeDiacritics(ingredient.ingredient).includes(this.searchValue))
       this.isDescriptionVisible = this.removeDiacritics(recipe.description).includes(this.searchValue)
@@ -105,8 +94,7 @@ class RecipeComponent extends HTMLElement {
 
     // if no recipe is visible, show the no result message
     let isNoResult = true
-    for (const index in this.recipesArray) {
-      const recipe = this.recipesArray[index]
+    for (const recipe of this.recipesArray) {
       if (!recipe.element.classList.contains('hide')) {
         isNoResult = false
         break
@@ -120,7 +108,7 @@ class RecipeComponent extends HTMLElement {
       this.searchInput = document.querySelector('#search')
       this.tagsContainer = document.querySelector('.tags__container')
 
-      this.searchInput.addEventListener('keyup', () => this.performSearch2())
+      this.searchInput.addEventListener('keyup', () => this.performSearch())
 
       this.mutationObserver = new MutationObserver(entries => {
         this.tagsArray = Array.from(this.tagsContainer.children)
@@ -128,19 +116,13 @@ class RecipeComponent extends HTMLElement {
         this.performSearch2()
 
         // if tag is added, pass it to the tagsEventListeners function to add event listeners to it
-        if (entries[0].addedNodes.length > 0) {
-          this.tagsEventListeners(entries[0].addedNodes[0])
-        }
+        if (entries[0].addedNodes.length > 0) this.tagsEventListeners(entries[0].addedNodes[0])
       })
 
       // Observe the tags container for changes
-      this.mutationObserver.observe(this.tagsContainer, {
-        childList: true
-      })
-
+      this.mutationObserver.observe(this.tagsContainer, { childList: true })
       this.filtersEventListeners()
     })
-
   }
 
   createSearch() {
@@ -168,9 +150,7 @@ class RecipeComponent extends HTMLElement {
 
   tagsEventListeners(tag) {
     this.tagsRemoveBtn = tag.querySelector('.remove')
-    this.tagsRemoveBtn.addEventListener('click', () => {
-      this.tagsContainer.removeChild(tag)
-    })
+    this.tagsRemoveBtn.addEventListener('click', () => this.tagsContainer.removeChild(tag))
   }
 
 

@@ -80,7 +80,7 @@ input[type="search"]::-webkit-search-results-decoration {
   display: none;
 }
 
-section {
+section, .section {
   padding: 0 24px;
 
   @include media(max-content-width) {

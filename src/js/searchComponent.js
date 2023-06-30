@@ -6,11 +6,11 @@ class SearchComponent extends HTMLElement {
 
   createSearchHTML() {
     return `
-      <section class='search__container'>
+      <div class='search__container'>
         <label for='search' class='hidden'>Rechercher</label>
         <input type='search' id='search' placeholder='Rechercher une recette'>
         <button class='search__button'></button>
-      </section>
+      </div>
     `
   }
 

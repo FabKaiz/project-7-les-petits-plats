@@ -1904,7 +1904,7 @@ var RecipeComponent = /*#__PURE__*/function (_HTMLElement) {
         _this5.searchInput = document.querySelector('#search');
         _this5.tagsContainer = document.querySelector('.tags__container');
         _this5.searchInput.addEventListener('keyup', function () {
-          return _this5.performSearch();
+          return _this5.performSearch2();
         });
         _this5.mutationObserver = new MutationObserver(function (entries) {
           _this5.tagsArray = Array.from(_this5.tagsContainer.children);
@@ -2817,4 +2817,4 @@ __webpack_require__.r(__webpack_exports__);
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle02b712c4089e3b1d7168.js.map
+//# sourceMappingURL=bundlee54a8b9803cd0835dd1c.js.map

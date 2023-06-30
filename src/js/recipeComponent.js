@@ -108,7 +108,7 @@ class RecipeComponent extends HTMLElement {
       this.searchInput = document.querySelector('#search')
       this.tagsContainer = document.querySelector('.tags__container')
 
-      this.searchInput.addEventListener('keyup', () => this.performSearch())
+      this.searchInput.addEventListener('keyup', () => this.performSearch2())
 
       this.mutationObserver = new MutationObserver(entries => {
         this.tagsArray = Array.from(this.tagsContainer.children)
